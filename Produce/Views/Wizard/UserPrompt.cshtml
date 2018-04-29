@@ -1,0 +1,117 @@
+﻿@using Intelledox.Model
+@using Intelledox.Produce
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.UserPromptQuestionViewModel>
+@{
+    Layout = "~/Views/Shared/_QuestionLayout.cshtml";
+    var qid = @IdHelper.IdFor(Model.Question);
+    var questionModel = Model.Question.UserPromptQuestionModel;
+    var passwordClear = "";
+    if (questionModel.ValidationType == ValidationType.Password)
+        passwordClear = Intelledox.QAWizard.UserPromptQuestion.PASSWORD_DEFAULT;
+}
+@if (!Model.Question.IsEditable)
+{
+    if (Model.Value == null || String.IsNullOrEmpty(Model.Value.ToString()))
+    {
+        <div id="@qid" class="question-label notAnswered">@Intelledox.Produce.Resources.Strings.NotAnswered</div>
+    }
+    else
+    {
+        <div id="@qid" class="question-label@(questionModel.IsRightAligned ? " right" : "")" @Html.Raw(questionModel.TextBoxWidth > 0 ? "style=\"width:" + questionModel.TextBoxWidth.ToString() + "px\"" : "")>@Model.Value</div>
+    }
+}
+else
+{
+    if (questionModel.ValidationType == ValidationType.Text && questionModel.TextRows > 1)
+    {
+        <textarea id="@qid"
+                  name="@qid"
+                  class="form-control"
+                  spellcheck="true"
+                  placeholder="@Model.Question.WatermarkFormatted"
+                  @Html.Raw(questionModel.TextBoxWidth > 0 ? "style=\"width:" + questionModel.TextBoxWidth.ToString() + "px\"" : "")
+                  rows="@questionModel.TextRows.ToString()"
+                  cols="20"
+                  @Html.Raw(Model.Question.IsMandatory ? "required" : "") 
+                  @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onchange=\"$('#" + qid + "_change').val('1');\" onblur=\"if ($('#" + qid + "_change').val() == '1') {wiz.delayPostback();}\"" : "")
+                  @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "") @Html.Raw(Model.Question.IsMandatory ? "required" : "")
+                  @if (Model.LogInteractions) { <text>data-analyticsid="@Model.AnalyticsID"</text> }>@Model.Value</textarea>
+        if (Model.Question.IsParentQuestion)
+        {
+            <input type="hidden" id="@(qid)_change" name="@(qid)_change" value="0" />
+            <script type="text/javascript">
+                wiz.wireTextChanged('#@(qid)', '#@(qid)_change', '');
+            </script>
+        }
+    }
+    else
+    {
+        string inputType;
+        string additionalAttributes = "";
+        string onBlurAction = "";
+
+        if (Model.Question.IsRealtimeParentQuestion)
+        {
+            onBlurAction = "if ($('#" + qid + "_change').val() == '1') {wiz.delayPostback();}";
+        }
+
+        switch (questionModel.ValidationType)
+        {
+            case ValidationType.Numeric:
+                inputType = "text";
+                additionalAttributes = "pattern=\"\\d*\"";
+                break;
+
+            case ValidationType.PhoneNumber:
+                inputType = "tel";
+                break;
+
+            case ValidationType.Email:
+                inputType = "email";
+                break;
+
+            case ValidationType.Password:
+                inputType = "password";
+                additionalAttributes = "autocomplete=\"off\"";
+                break;
+
+            case ValidationType.Currency:
+                inputType = "text";
+                additionalAttributes = "onfocus=\"wiz.removeFormat(this, '" + HttpUtility.JavaScriptStringEncode(questionModel.CurrencySymbol) + "', '" + System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator + "')\"";
+                onBlurAction = "wiz.applyFormat('" + Url.Content("~/") + "', this, '" + HttpUtility.JavaScriptStringEncode(questionModel.CurrencySymbol) + "', '" +
+                    System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator + "', " +
+                    questionModel.CurrencyPositivePattern + ", " +
+                    questionModel.CurrencyNegativePattern + ", " +
+                    questionModel.DecimalPlaces + ");" + onBlurAction;
+                break;
+
+            default:
+                inputType = "text";
+                additionalAttributes = "spellcheck=\"true\"";
+                break;
+        }
+
+        <input type="@inputType"
+               id="@qid"
+               name="@qid"
+               value="@Model.Value"
+               placeholder="@Model.Question.WatermarkFormatted"
+               class="form-control@(questionModel.IsRightAligned ? " right" : "")"
+               @Html.Raw(additionalAttributes)
+               @Html.Raw(questionModel.TextBoxWidth > 0 ? "style=\"width:" + questionModel.TextBoxWidth + "px\"" : "")
+               @Html.Raw(Model.MaxLength > 0 ? "maxlength=\"" + Model.MaxLength + "\"" : "")
+               @Html.Raw(string.IsNullOrEmpty(onBlurAction) ? "" : "onblur=\"" + onBlurAction + "\" autocomplete=\"off\"")
+               @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "")
+               @Html.Raw(Model.Question.IsMandatory ? "required" : "")
+               @if (Model.LogInteractions) { <text>data-analyticsid="@Model.AnalyticsID"</text> } />
+        if (Model.Question.IsParentQuestion || questionModel.ValidationType == ValidationType.Password || questionModel.ValidationType == ValidationType.Currency)
+        {
+            <input type="hidden" id="@(qid)_change" name="@(qid)_change" value="0" />
+            <script type="text/javascript">
+                wiz.wireTextChanged('#@(qid)', '#@(qid)_change', '@passwordClear');
+            </script>
+        }
+    }
+}
+@Html.DisplayValidation(Model.Question.LastValidationMessage, qid)

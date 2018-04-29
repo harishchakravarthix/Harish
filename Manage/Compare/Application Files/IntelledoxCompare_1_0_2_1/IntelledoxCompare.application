@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xrml="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <assemblyIdentity name="IntelledoxCompare.application" version="1.0.2.1" publicKeyToken="2b02d71366cd5eb2" language="neutral" processorArchitecture="x86" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="IntelledoxCompare" asmv2:product="IntelledoxCompare" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <deployment install="false" mapFileExtensions="true" trustURLParameters="true" />
+  <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
+    <framework targetVersion="4.5.1" profile="Full" supportedRuntime="4.0.30319" />
+  </compatibleFrameworks>
+  <dependency>
+    <dependentAssembly dependencyType="install" codebase="Application Files\IntelledoxCompare_1_0_2_1\IntelledoxCompare.exe.manifest" size="21767">
+      <assemblyIdentity name="IntelledoxCompare.exe" version="1.0.2.1" publicKeyToken="2b02d71366cd5eb2" language="neutral" processorArchitecture="x86" type="win32" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lJf/5kQUl8qdmr/9xSrLrVKFq3yH+/Y4JmwmULsP4xQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+<publisherIdentity name="CN=Intelledox Pty Ltd, OU=Intelledox Pty Ltd, O=Intelledox Pty Ltd, L=Canberra, S=Australian Capital Territory, C=AU" issuerKeyHash="d40d653f7abd34c6fe47e74c0dc0bdf2de15ab71" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>E/w5bkmxtm6ZgoBp65nDadlnAP4=</DigestValue></Reference></SignedInfo><SignatureValue>HqKXkjHanq/2YEiiEsvgZcz3hDKvXCNbWOtsxJzS+1l/4PvHOJpSGXbWZup4sJ+1dT1vW2AwbFtZlUrE+wCqkOqPwAIztoFOQCvAoFZa5kZpdT7gcLLNSLBdGJQUdu3/QWGPvpT31EA5gaFKv0CWqNOIWSP5C+entj79LYdLZs7Q8XQQxqubotanhPTQVTklOMfhPBfvAIVp1mKlE4GXA5SrYnOwQMEiIVCSZRFzRaBmtqK9ny8L236MhfQiAnn8/tu+Q61FjJpgUxPEAbAzIoA5VhjVXFIdmUFO7nhIgEJVzmlXcOZQAHa/yY5UmQo9Fmu7aHPNOV2k+jXc3H/1Ng==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>s/Z8v/yyzOUBnJPyOFjCvWYvYC8uLQqLTJ7lZM5vmPVaTsv76aYjoktMOAOY83KmwnPGU4ruibe6pbg91LubsGp2wivdSdzVlcBqrN8MgnFs5yGjJL0aSxoKwEzH1gfJo+0r0htnEiFE7LemE54vRAKL8blOc5DqtaJ3pnTuYggePF+4pQ13GCIytAlZn99Y7X/gCNSX4kNGLH8motxRoG6Xi5V+eFjiMI1GWfcKJFr/I50sLDFDuewIrYzEdGHswrxTCO02qbzOV/qnSB+GSuKiEmhx9MBgl3rQtonGYZUeQZ+GN4AlZ1FdfAJq4k+8o3diK25QQxLGW4lDnm4FPQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="fe0067d969c399eb698082996eb6b1496e39fc13" Description="" Url=""><as:assemblyIdentity name="IntelledoxCompare.application" version="1.0.2.1" publicKeyToken="2b02d71366cd5eb2" language="neutral" processorArchitecture="x86" xmlns="urn:schemas-microsoft-com:asm.v1" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Intelledox Pty Ltd, OU=Intelledox Pty Ltd, O=Intelledox Pty Ltd, L=Canberra, S=Australian Capital Territory, C=AU</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>UGIEqunVkixUY1I6RQ7PJVfK7PM=</DigestValue></Reference></SignedInfo><SignatureValue>X2Dbt7VFNIuAfiOVXvCInRUG7tRFKjYvhpj1yWrnFeUksK25DsK+nPyFs0Ovv7QPR40bHtKAGSIjHekBboA4vGnr6XI+eK1Y1QvuZOhP/iR77FI8sBJ4ZTkRnEXfgu6LysrcB6zeCqcmHW6QNJ94JAikFI7jxnZhbpBv3C0DseGa/TzhXTPMr6bM46IqY4OL0DKiHUZttbxCZjWem5gnyw4ckloQmWkQ9VG15Tmk4wd29Pon9kjyFk5vNpwzWEAvvATDkJc8+yrTwzK1OFdnyFtBtxgXHDxJD4k1KZ9EG13wAUIU0mNOZX21UMaIynASGTwtbYNiNJnbuYBP1RMlIw==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>s/Z8v/yyzOUBnJPyOFjCvWYvYC8uLQqLTJ7lZM5vmPVaTsv76aYjoktMOAOY83KmwnPGU4ruibe6pbg91LubsGp2wivdSdzVlcBqrN8MgnFs5yGjJL0aSxoKwEzH1gfJo+0r0htnEiFE7LemE54vRAKL8blOc5DqtaJ3pnTuYggePF+4pQ13GCIytAlZn99Y7X/gCNSX4kNGLH8motxRoG6Xi5V+eFjiMI1GWfcKJFr/I50sLDFDuewIrYzEdGHswrxTCO02qbzOV/qnSB+GSuKiEmhx9MBgl3rQtonGYZUeQZ+GN4AlZ1FdfAJq4k+8o3diK25QQxLGW4lDnm4FPQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIESTCCAzGgAwIBAgIQAu63nygWcqhrnnl2XDIs1zANBgkqhkiG9w0BAQUFADBKMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMVGhhd3RlLCBJbmMuMSQwIgYDVQQDExtUaGF3dGUgQ29kZSBTaWduaW5nIENBIC0gRzIwHhcNMTMwNDE3MDAwMDAwWhcNMTUwNjIxMjM1OTU5WjCBnjELMAkGA1UEBhMCQVUxJTAjBgNVBAgTHEF1c3RyYWxpYW4gQ2FwaXRhbCBUZXJyaXRvcnkxETAPBgNVBAcTCENhbmJlcnJhMRswGQYDVQQKFBJJbnRlbGxlZG94IFB0eSBMdGQxGzAZBgNVBAsUEkludGVsbGVkb3ggUHR5IEx0ZDEbMBkGA1UEAxQSSW50ZWxsZWRveCBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs/Z8v/yyzOUBnJPyOFjCvWYvYC8uLQqLTJ7lZM5vmPVaTsv76aYjoktMOAOY83KmwnPGU4ruibe6pbg91LubsGp2wivdSdzVlcBqrN8MgnFs5yGjJL0aSxoKwEzH1gfJo+0r0htnEiFE7LemE54vRAKL8blOc5DqtaJ3pnTuYggePF+4pQ13GCIytAlZn99Y7X/gCNSX4kNGLH8motxRoG6Xi5V+eFjiMI1GWfcKJFr/I50sLDFDuewIrYzEdGHswrxTCO02qbzOV/qnSB+GSuKiEmhx9MBgl3rQtonGYZUeQZ+GN4AlZ1FdfAJq4k+8o3diK25QQxLGW4lDnm4FPQIDAQABo4HVMIHSMAwGA1UdEwEB/wQCMAAwOwYDVR0fBDQwMjAwoC6gLIYqaHR0cDovL2NzLWcyLWNybC50aGF3dGUuY29tL1RoYXd0ZUNTRzIuY3JsMB8GA1UdJQQYMBYGCCsGAQUFBwMDBgorBgEEAYI3AgEWMB0GA1UdBAQWMBQwDjAMBgorBgEEAYI3AgEWAwIHgDAyBggrBgEFBQcBAQQmMCQwIgYIKwYBBQUHMAGGFmh0dHA6Ly9vY3NwLnRoYXd0ZS5jb20wEQYJYIZIAYb4QgEBBAQDAgQQMA0GCSqGSIb3DQEBBQUAA4IBAQCp8CplxkysaKB+oCIqbGy207c+dPQfVl3DtmNjwY4gsyScbu2NhR/38L8h9GobTBm7/bXAEukgwjehrJRkwhuT91ovj+AzmFjwUVde5dN7zP8wXHoGtYHolZMhUy91J6Z23zpIbkJj6L+43xzchyGpB/Vyas5o9qjImOdlNSQbNvDZmGd5CfqnLhH1007+rskZRoLdf47C+gkoGnurjZ6WeThVd0yOqAu1Uc8eQ0cLZqCNkScNTSAAwmbS5m69Kalp3qXrqGxL6iIywGcok3cFxDwE0u1+gTOsCBvTYd5/JUqsZSNRIn7Mp/wHub0Dnr4SwnZ20Nl1qMyfm0os7XeM</X509Certificate><X509Certificate>MIIEnDCCA4SgAwIBAgIQR5dNeHOlvKsNL7NwGS/OXjANBgkqhkiG9w0BAQUFADCBqTELMAkGA1UEBhMCVVMxFTATBgNVBAoTDHRoYXd0ZSwgSW5jLjEoMCYGA1UECxMfQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBEaXZpc2lvbjE4MDYGA1UECxMvKGMpIDIwMDYgdGhhd3RlLCBJbmMuIC0gRm9yIGF1dGhvcml6ZWQgdXNlIG9ubHkxHzAdBgNVBAMTFnRoYXd0ZSBQcmltYXJ5IFJvb3QgQ0EwHhcNMTAwMjA4MDAwMDAwWhcNMjAwMjA3MjM1OTU5WjBKMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMVGhhd3RlLCBJbmMuMSQwIgYDVQQDExtUaGF3dGUgQ29kZSBTaWduaW5nIENBIC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC3i891W58l2n45sJPbONOpI9CC+ukkflwLjoP45npZ5qPFmKeZ0kT/AKalOQSK2imI6tui8xyZFSbCsfT84QxHqQkRBgogkrnHoASMXJQZq1slLB1ifnANzmFs3SuCyc5dSF/3wr68QSMeTyld10+89MUq/GPmfCZOmad5QZ4QSnp5ycaG94aV0ibOPBgq1nzOr82tu/eCLHAmN0XlD0cixgEovS6DXGqkR8Hn0NhrgUY/IRf1B8VDWqZnLLh7YBG1g+71dApycUQ9WP7oGqs4w1nbf244fXbHcmmYNpZX02Yc0lSRBC5UGbDcPbUiXobVKn4g313merFl/sUCTjEtAgMBAAGjggEcMIIBGDASBgNVHRMBAf8ECDAGAQH/AgEAMDQGA1UdHwQtMCswKaAnoCWGI2h0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQQ0EuY3JsMA4GA1UdDwEB/wQEAwIBBjAyBggrBgEFBQcBAQQmMCQwIgYIKwYBBQUHMAGGFmh0dHA6Ly9vY3NwLnRoYXd0ZS5jb20wHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMDMCkGA1UdEQQiMCCkHjAcMRowGAYDVQQDExFWZXJpU2lnbk1QS0ktMi0xMDAdBgNVHQ4EFgQU1A1lP3q9NMb+R+dMDcC98t4Vq3EwHwYDVR0jBBgwFoAUe1tFz6/Oy3r9MZIaarbzRutXSFAwDQYJKoZIhvcNAQEFBQADggEBAFb+U1zhx568p+1+U21qFEtRjEBegF+qpOgv7zjIBMnKPs/fOlhOsNS2Y8UpV/oCBZpFTWjbKhvUND2fAMNay5VJpW7hsMX8QU1BSm/Td8jXOI3kGd4Y8x8VZYNtRQxT+QqaLqVdv28ygRiSGWpVAK1jHFIGflXZKWiuSnwYmnmIayMj2Cc4KimHdsr7x7ZiIx/telZM3ZwyW/U9DEYYlTsqI2iDZEHZAG0PGSQVaHK9xXFnbqxM25DrUaUaYgfQvmoARzxyL+xPYT5zhc5aCre6wBwTdeMiOSjdbR0JRp1PuuhAgZHGpM6UchsBzypuFWeVia59t7fN+Qo9dbZrPCU=</X509Certificate></X509Data></KeyInfo><Object><as:Timestamp>MIIL0wYJKoZIhvcNAQcCoIILxDCCC8ACAQExCzAJBgUrDgMCGgUAMIIBEwYJKoZI
+hvcNAQcBoIIBBASCAQBfYNu3tUU0i4B+I5Ve8IidFQbu1EUqNi+GmPXJaucV5SSw
+rbkOwr6c/IWzQ6+/tA9HjRse0oAZIiMd6QFugDi8aevpcj54rVjVC+5k6E/+JHvs
+UjywEnhlORGcRd+C7ovKytwHrN4KpyYdbpA0n3gkCKQUjuPGdmFukG/cLQOx4Zr9
+POFdM8yvpszjoipjg4vQMqIdRm21vEJmNZ6bmCfLDhySWhCZaRD1UbXlOaTjB3b0
++if2SPIWTm82nDNYQC+8BMOQlzz7KtPDMrU4V2fIW0G3GBccPEkPiTUpn0QbXfAB
+QhTSY05lfbVQxojKcBIZPC1tg2I0mdu5gE/VEyUjoIIImTCCA+4wggNXoAMCAQIC
+EH6T6/t8xk5Z6kuad9QG/DswDQYJKoZIhvcNAQEFBQAwgYsxCzAJBgNVBAYTAlpB
+MRUwEwYDVQQIEwxXZXN0ZXJuIENhcGUxFDASBgNVBAcTC0R1cmJhbnZpbGxlMQ8w
+DQYDVQQKEwZUaGF3dGUxHTAbBgNVBAsTFFRoYXd0ZSBDZXJ0aWZpY2F0aW9uMR8w
+HQYDVQQDExZUaGF3dGUgVGltZXN0YW1waW5nIENBMB4XDTEyMTIyMTAwMDAwMFoX
+DTIwMTIzMDIzNTk1OVowXjELMAkGA1UEBhMCVVMxHTAbBgNVBAoTFFN5bWFudGVj
+IENvcnBvcmF0aW9uMTAwLgYDVQQDEydTeW1hbnRlYyBUaW1lIFN0YW1waW5nIFNl
+cnZpY2VzIENBIC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCx
+rLNJVEuXHBIK2CV5kSJXKm/cuCbEQ3Nrwr8uUFr7FMJ2jkMBJUO0oeJF9Oi3e8N0
+zCLXtJQAAvdN7b+0t0Qka81fRTvRRM5DEnMXgotptCvLmR6schsmTXEfsTHd+1Fh
+AlOmqvVJLAV4RaUvic7nmef+jOJXPz3GktxK+Hsz5HkK+/B1iEGc/8UDUZmq12yf
+k2mHZSmDhcJgFMTIyTsU2sCB8B8NdN6SIqvK9/t0fCfm90obf6fDni2uiuqm5qon
+Fn1h95hxEbziUKFL5V365Q6nLJ+qZSDT2JboyHylTkhE/xniRAeSC9dohIBdanhk
+Rc1gRn5UwRN8xXnxycFxAgMBAAGjgfowgfcwHQYDVR0OBBYEFF+a9W5czMx0mtTd
+fe8/2+xMgC7dMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcwAYYWaHR0cDovL29j
+c3AudGhhd3RlLmNvbTASBgNVHRMBAf8ECDAGAQH/AgEAMD8GA1UdHwQ4MDYwNKAy
+oDCGLmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVUaW1lc3RhbXBpbmdDQS5j
+cmwwEwYDVR0lBAwwCgYIKwYBBQUHAwgwDgYDVR0PAQH/BAQDAgEGMCgGA1UdEQQh
+MB+kHTAbMRkwFwYDVQQDExBUaW1lU3RhbXAtMjA0OC0xMA0GCSqGSIb3DQEBBQUA
+A4GBAAMJm495739ZMKrvaLX64wkdu0+CBl03X6ZSnxaN6hySCURu9W3rWHww6Plp
+jSNzCxJvR6muORH4KrGbsBrDjutZlgCtzgxNstAxpghcKnr84nodV0yoZRjpeUBi
+JZZux8c3aoMhCI5B6t3ZVz8dd0mHKhYGXqY4aiISo1EZg362MIIEozCCA4ugAwIB
+AgIQDs/0OMj+vzVuBNhqmBsaUDANBgkqhkiG9w0BAQUFADBeMQswCQYDVQQGEwJV
+UzEdMBsGA1UEChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xMDAuBgNVBAMTJ1N5bWFu
+dGVjIFRpbWUgU3RhbXBpbmcgU2VydmljZXMgQ0EgLSBHMjAeFw0xMjEwMTgwMDAw
+MDBaFw0yMDEyMjkyMzU5NTlaMGIxCzAJBgNVBAYTAlVTMR0wGwYDVQQKExRTeW1h
+bnRlYyBDb3Jwb3JhdGlvbjE0MDIGA1UEAxMrU3ltYW50ZWMgVGltZSBTdGFtcGlu
+ZyBTZXJ2aWNlcyBTaWduZXIgLSBHNDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+AQoCggEBAKJjCzlEuLsjp0RJuw7/ofBhClOTsJjbrSwPSsVu/4Y8U1UPFc4EPyv9
+qZaW2b5heQtbyUyGduXgQ0sile7CK0PBn9hotI5AT+6FOLkRxSPyZFjwFTJvTleh
+roikAtcqHs1L4d1j1ReJMluwXplaqJ0oUA4X7pbbYTtFUR3PElYLkkf8q672Zj1H
+rHBy55LnX80QucSDZJQZvSWA4ejSIqXQugJ6oXeTW2XD7hd0vEGGKtwITIySjJEt
+nndEH2jWqHR32w5bMotWizO92WPISZ06xcXqMwvS8aMb9Iu+2bNXizveBKd6IrIk
+ri7HcMW+ToMmCPsLvalPmQjhEChyqs0CAwEAAaOCAVcwggFTMAwGA1UdEwEB/wQC
+MAAwFgYDVR0lAQH/BAwwCgYIKwYBBQUHAwgwDgYDVR0PAQH/BAQDAgeAMHMGCCsG
+AQUFBwEBBGcwZTAqBggrBgEFBQcwAYYeaHR0cDovL3RzLW9jc3Aud3Muc3ltYW50
+ZWMuY29tMDcGCCsGAQUFBzAChitodHRwOi8vdHMtYWlhLndzLnN5bWFudGVjLmNv
+bS90c3MtY2EtZzIuY2VyMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly90cy1jcmwu
+d3Muc3ltYW50ZWMuY29tL3Rzcy1jYS1nMi5jcmwwKAYDVR0RBCEwH6QdMBsxGTAX
+BgNVBAMTEFRpbWVTdGFtcC0yMDQ4LTIwHQYDVR0OBBYEFEbGaaMOShQe1UzaUmMX
+P142vA3mMB8GA1UdIwQYMBaAFF+a9W5czMx0mtTdfe8/2+xMgC7dMA0GCSqGSIb3
+DQEBBQUAA4IBAQB4O7SRKgBM8I9iMDd4o4QnB28Yst4l3KDUlAOqhk4ln5pAAxzd
+zuN5yyFoBtq2MrRtv/QsJmMz5ElkbQ3mw2cO9wWkNWx8iRbG6bLfsundIMZxD82V
+dNy2XN69Nx9DeOZ4tc0oBCCjqvFLxIgpkQ6A0RH83Vx2bk9eDkVGQW4NsOo4mrE6
+2glxEPwcebSAe6xp9P2ctgwWK/F/Wwk9m1viFsoTgW0ALjgNqCmPLOGy9FqpAa8V
+nCwvSRvbIrvD/niUUcOGsYKIXfA9tFGheTMrLnu53CAJE3Hrahlbz+ilMFcsiUk/
+uc9/yb8+ImhjU5q9aXSsxR08f5Lgw7wc2AR1MYIB+DCCAfQCAQEwcjBeMQswCQYD
+VQQGEwJVUzEdMBsGA1UEChMUU3ltYW50ZWMgQ29ycG9yYXRpb24xMDAuBgNVBAMT
+J1N5bWFudGVjIFRpbWUgU3RhbXBpbmcgU2VydmljZXMgQ0EgLSBHMgIQDs/0OMj+
+vzVuBNhqmBsaUDAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEH
+ATAcBgkqhkiG9w0BCQUxDxcNMTQxMjEyMDAyNDEzWjAjBgkqhkiG9w0BCQQxFgQU
+zVaTGpoD+7vqUA/aH3oIrmV9yxAwDQYJKoZIhvcNAQEBBQAEggEAg3vbnruHav2a
+rRjdSDORPIoFvz8yzsYOyxF6TmR51KZBffgWwLKTYBSDehGh44P2hTDgZaXBM1+G
+7geKp9Sfb8ccGggoClzWe3p0RqAQAcd5LKWYYlSTG1KgDYaz6NLeUHY6wS1j/CTj
+LU/AQaPIUAPplFFhQOW9sT4C2GvCPg7PYcUOer4HAlMVG1PT6sjCAsIO7qBEYQZP
+htMZIHCDJJdZCGzlhL1BnVAAAUqJYucW32PmdmuDa4Nw6qfVQVICT/OZ8RjYLDaS
+36iqrEgmFWW0bcRhPqUR4VGl7ikYdF1yC+V5f1t5m3qbo71oUQF2Pq3s2TyRT5Mp
+gDapRqeISw==
+</as:Timestamp></Object></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

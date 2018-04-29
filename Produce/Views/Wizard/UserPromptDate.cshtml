@@ -1,0 +1,118 @@
+﻿@using Intelledox.Produce
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.UserPromptDateQuestionViewModel>
+@{ 
+    Layout = "~/Views/Shared/_QuestionLayout.cshtml";
+    var qid = @IdHelper.IdFor(Model.Question);
+}
+@if (Model.Question.IsEditable)
+{
+<div class="input-group" style="width:200px">
+    <input type="@(Model.UseNativePicker ? "date" : "text")" id="@qid" name="@qid" class="form-control" 
+           placeholder="@Model.Question.WatermarkFormatted"
+           value="@(Model.UseNativePicker ? Model.ValueUniversalString : Model.ValueString)" @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onblur=\"if ($('#" + qid + "_change').val() == '1') {wiz.delayPostback();}\" autocomplete=\"off\"" : "") 
+           @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "") @Html.Raw(Model.Question.IsMandatory ? "required" : "") 
+           @if (Model.LogInteractions) { <text>data-analyticsid="@Model.AnalyticsID"</text> }
+           @if (Model.UseNativePicker && Model.MinDate.HasValue) { <text>min="@(Model.MinDate.Value.ToString("yyyy-MM-dd"))"</text> }
+           @if (Model.UseNativePicker && Model.MaxDate.HasValue) { <text>max="@(Model.MaxDate.Value.ToString("yyyy-MM-dd"))"</text> }
+           @if (Model.UseNativePicker && Model.Question.UserPromptQuestionModel.WeekdaysOnly) { <text>data-valmsg="@Intelledox.Produce.Resources.Strings.DateWeekendsOnly"</text> }/>
+    <span class="input-group-btn">
+        <button class="btn btn-default btn-calendar" type="button" onclick="@(Model.UseNativePicker ? "$('#" + qid + "').click();" : "$('#" + qid + "').datepicker('show');")" id="@(qid)_btn">
+            <img height="16" alt="@Intelledox.Produce.Resources.Strings.SelectDate" src="~/Images/IX_Calendar.svg" />
+        </button>
+    </span>
+</div>
+}
+else
+{
+    if (Model.Value == null || String.IsNullOrEmpty(Model.Value.ToString()))
+    {
+        <div id="@qid" class="question-label notAnswered">@Intelledox.Produce.Resources.Strings.NotAnswered</div>
+    }
+    else
+    {
+        <div id="@qid" class="question-label">@Model.ValueString</div>
+    }
+}
+@Html.DisplayValidation(Model.Question.LastValidationMessage, qid)
+@if (Model.Question.IsParentQuestion)
+{
+    <input type="hidden" id="@(qid)_change" name="@(qid)_change" value="0" />
+    <script type="text/javascript">
+        wiz.wireTextChanged('#@(qid)', '#@(qid)_change', '');
+    </script>
+}
+
+@if (Model.Question.IsEditable)
+{
+    if (Model.UseNativePicker)
+    {
+        if (Model.Question.UserPromptQuestionModel.WeekdaysOnly)
+        {
+            <script>
+                document.getElementById('@qid').addEventListener('input', wiz.disableUniversalWeekends);
+            </script>
+        }
+    }
+    else
+    {
+        <script type="text/javascript">
+            $('#@qid').datepicker({
+            showOn: 'none', changeMonth:true,changeYear:true,nextText:'>',prevText:'<',dayNames: [@Html.JQueryDate().DayNames],dayNamesMin: [@Html.JQueryDate().DayNamesMin],
+                monthNamesShort: [@Html.JQueryDate().MonthNames],dateFormat: '@Html.JQueryDate().DatePattern',
+                isRTL: @(System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft ? "true" : "false"),
+                yearRange:'@Model.YearRange', constrainInput: false, onSelect: function(tsDate, troPicker) {
+                $('#@qid').focus();
+                @if (Model.Question.IsParentQuestion)
+                {
+                    @:$('#@(qid)_change').val('1');
+                }
+                @if (Model.Question.IsRealtimeParentQuestion) // Force onblur
+                {
+                    @:$('#@(qid)_btn').focus();
+                }
+            },
+            @if (Model.MinDate.HasValue)
+            {
+            @:minDate: new Date(@Model.MinDate.Value.Year, @Model.MinDate.Value.Month - 1, @Model.MinDate.Value.Day),
+            }
+            @if (Model.MaxDate.HasValue)
+            {
+            @:maxDate: new Date(@Model.MaxDate.Value.Year, @Model.MaxDate.Value.Month - 1, @Model.MaxDate.Value.Day),
+            }
+            @if (Model.Question.UserPromptQuestionModel.WeekdaysOnly)
+            {
+                @:beforeShowDay: wiz.disableWeekends,
+            }
+            @* Work around JQuery UI bug http://bugs.jqueryui.com/ticket/8434 *@
+            onChangeMonthYear:function(year, month, inst)
+                {
+                    if (year == 1899 || year == 1900 || year == 0)
+                    {
+                        $(this).datepicker('setDate', $(this).val());
+                        var now = $(this).datepicker("getDate");
+
+                        if (now == null)
+                        {
+                            now = new Date();
+                        }
+
+                        if (year == 1899) // Clicked backward
+                        {
+                            now.setMonth(now.getMonth() - 1);
+                        }
+                        else if (year == 1900) // Clicked forward
+                        {
+                            now.setMonth(now.getMonth() + 1);
+                        }
+                        else if (year == 0) // Clicked a month
+                        {
+                            now.setMonth(month - 1);
+                        }
+                        $(this).datepicker('setDate', now);
+                    }
+                }
+            });
+        </script>
+    }
+}

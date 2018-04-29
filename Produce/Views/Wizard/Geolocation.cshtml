@@ -1,0 +1,40 @@
+﻿@using Intelledox.Produce
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.GeolocationQuestionViewModel>
+@{ 
+    Layout = "~/Views/Shared/_QuestionLayout.cshtml";
+    var qid = @IdHelper.IdFor(Model.Question);
+    var isDisabled = !Model.Question.IsEditable;
+}
+<div class="form-group">
+    <label for="@(qid)_Latitude">@Intelledox.Produce.Resources.Strings.Latitude</label>
+    <div>
+        <input type="number" id="@(qid)_Latitude" name="@(qid)_Latitude" class="form-control" value="@Model.LatitudeString" disabled="@isDisabled" step="any" @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onblur=\"if ($('#" + qid + "_change').val() == '1') {wiz.delayPostback();}\" autocomplete=\"off\"" : "") @Html.Raw(Model.Question.IsMandatory ? "required" : "") @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)_Lat"</text> }/>
+    </div>
+</div>
+<div class="form-group">
+    <label for="@(qid)_Longitude">@Intelledox.Produce.Resources.Strings.Longitude</label>
+    <div>
+        <input type="number" id="@(qid)_Longitude" name="@(qid)_Longitude" class="form-control" value="@Model.LongitudeString" disabled="@isDisabled" step="any" @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onblur=\"if ($('#" + qid + "_change').val() == '1') {wiz.delayPostback();}\" autocomplete=\"off\"" : "") @Html.Raw(Model.Question.IsMandatory ? "required" : "") @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)_Long"</text> }/>
+    </div>
+    @if (isDisabled)
+    {
+        @Html.DisplayValidation(Model.Question.LastValidationMessage, qid)
+    }
+</div>
+<span style="display:none" class="wrn" id="@(qid)_Warn">@Intelledox.Produce.Resources.Strings.GeolocationNotSupported</span>
+@if (!isDisabled)
+{
+    <div><button type="button" class="btn btn-default btn-get" onclick="getGeolocation('@Model.Question.WizardFragment.WizardSession.UserGuid.ToString()', '@(qid)_Latitude', '@(qid)_Longitude', '@(qid)_Warn', @Model.HighAccuracy.ToString().ToLower(), function() {$('#@(qid)_Latitude').trigger( 'change' )});@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'geolocation'" + ");" : "")">@Intelledox.Produce.Resources.Strings.UseCurrentLocation</button></div>
+}
+@if (Model.Question.IsParentQuestion && !isDisabled)
+{
+    <input type="hidden" id="@(qid)_change" name="@(qid)_change" value="0" />
+    <script type="text/javascript">
+        wiz.wireTextChanged('#@(qid)_Latitude,#@(qid)_Longitude', '#@(qid)_change', '');
+    </script>
+}
+@if (!isDisabled)
+{
+    @Html.DisplayValidation(Model.Question.LastValidationMessage, qid)
+}

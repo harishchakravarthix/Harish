@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <section name="IntelledoxCompare.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+        </sectionGroup>
+        <section name="nlog" type="NLog.Config.ConfigSectionHandler, NLog"/>
+    </configSections>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.1"/>
+    </startup>
+  <nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <targets>
+      <target name="file" xsi:type="File"
+          layout="${longdate}|${level:uppercase=true}|${logger}|${message}${onexception:inner=${newline}${exception:format=tostring}}"
+          fileName="${tempdir}/comparelogfile.txt"
+          keepFileOpen="false"
+          deleteOldFileOnStartup="true"/>
+    </targets>
+
+    <rules>
+      <logger name="*" minlevel="Debug" writeTo="file"/>
+    </rules>
+  </nlog>
+    <applicationSettings>
+        <IntelledoxCompare.Properties.Settings>
+            <setting name="IntelledoxCompare_IxAuthServices1_AuthenticationService"
+                serializeAs="String">
+                <value>http://localhost/Managev8_7_1/services/authenticationservice.asmx</value>
+            </setting>
+            <setting name="IntelledoxCompare_IxPlatformService1_AdminService"
+                serializeAs="String">
+                <value>http://localhost/Managev8_7_1/services/adminservice.asmx</value>
+            </setting>
+        </IntelledoxCompare.Properties.Settings>
+    </applicationSettings>
+</configuration>
