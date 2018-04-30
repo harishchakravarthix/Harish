@@ -1,14 +1,13 @@
-﻿@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.QAViewModel>
-<input type="hidden" id="reloadPageUrl" value="~/wizard/reloadPage/@Model.ProjectGroupGuid.ToString()/?@Model.QueryString" />
-<input type="hidden" id="saveActionUrl" value="~/wizard/saveAnswerFile/@Model.ProjectGroupGuid.ToString()/?@Model.QueryString" />
-<input type="hidden" id="tempUserReassignUrl" value="~/wizard/TempUserReassign/@Model.ProjectGroupGuid.ToString()/?@Model.QueryString" />
-<input type="hidden" id="changeSortUrl" value="~/wizard/ChangeSort/@Model.ProjectGroupGuid.ToString()/?@Model.QueryString" />
-<input type="hidden" id="selectTabUrl" value="~/wizard/selectTab/@Model.ProjectGroupGuid.ToString()/?@Model.QueryString" />
-<input type="hidden" id="logUrl" value="~/wizard/@Model.ProjectGroupGuid.ToString()/?@(Model.QueryString.ToString().Contains("logguid") ? Model.QueryString.ToString() : "logguid=" + Model.Wizard.ProjectLog + "&" + Model.QueryString)" />
-<form action="~/wizard/generateProject/@Model.ProjectGroupGuid.ToString()/?@Model.QueryString" id="aspnetForm" method="post"
+﻿<input type="hidden" id="reloadPageUrl" value="~/wizard/ReloadPage/@Request.RequestContext.RouteData.Values["id"].ToString()/?@Request.QueryString" />
+<input type="hidden" id="saveActionUrl" value="~/wizard/SaveAnswerFile/@Request.RequestContext.RouteData.Values["id"].ToString()/?@Request.QueryString" />
+<input type="hidden" id="tempUserReassignUrl" value="~/wizard/TempUserReassign/@Request.RequestContext.RouteData.Values["id"].ToString()/?@Request.QueryString" />
+<input type="hidden" id="changeSortUrl" value="~/wizard/ChangeSort/@Request.RequestContext.RouteData.Values["id"].ToString()/?@Request.QueryString" />
+<input type="hidden" id="selectTabUrl" value="~/wizard/SelectTab/@Request.RequestContext.RouteData.Values["id"].ToString()/?@Request.QueryString" />
+<input type="hidden" id="logUrl" value="~/wizard/@Request.RequestContext.RouteData.Values["id"].ToString()/?@(Request.QueryString.ToString().Contains("logguid") ? Request.QueryString.ToString() : "logguid=" + Model.ProjectLog + "&" + Request.QueryString.ToString())" />
+<form action="~/wizard/WizardAction/@Request.RequestContext.RouteData.Values["id"].ToString()/?@Request.QueryString" id="aspnetForm" method="post"
       novalidate="novalidate">
     <div id="up">
-        @{ Html.RenderAction("RenderPage", new Intelledox.ViewModel.Core.RenderPageRouteData() { LogGuid = Model.Wizard.ProjectLog, ScrollToTop = false, LogRenderPage = true }); }
+        @{ Html.RenderAction("RenderPage", new { logGuid = Model.ProjectLog, scrollToTop = false, logRenderPage = true }); }
     </div>
 
     <div id="popupModal" class="modal fade" role="dialog" aria-hidden="true">
@@ -59,16 +58,16 @@
         this.disabled = true;
     });
 
-    @if (Model.Wizard.AllowTimeout)
+    @if (Model.AllowTimeout)
     {
-        @:wiz.logOut(@(Model.Wizard.TimeoutPeriod));
+        @:wiz.logOut(@(Model.TimeoutPeriod));
     }
     else
     {
-        @:wiz.keepAlive('@(Model.Wizard.ProjectLog)', @(Model.Wizard.TimeoutPeriod));
+        @:wiz.keepAlive('@(Model.ProjectLog)', @(Model.TimeoutPeriod));
     }
-    @if (Model.Wizard.WizardModel.LiveRefresh)
+    @if (Model.WizardModel.LiveRefresh)
     {
-        @:wiz.liveRefresh(@((Model.Wizard.WizardModel.RefreshPeriod * 1000).ToString()));
+        @:wiz.liveRefresh(@((Model.WizardModel.RefreshPeriod * 1000).ToString()));
     }
  </script>

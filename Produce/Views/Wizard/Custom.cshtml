@@ -1,9 +1,8 @@
 ﻿@using Intelledox.Produce
-@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.CustomQuestionViewModel>
+@model Intelledox.ViewModel.Core.CustomQuestionViewModel
 @{ 
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = @IdHelper.IdFor(Model.Question);
+    var qid = @Html.IdFor(Model.Question);
 
     var writer = new System.IO.StringWriter();
     Model.Question.WriteHtml(qid, writer);

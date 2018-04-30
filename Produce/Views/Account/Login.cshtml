@@ -12,7 +12,7 @@
         <div id="divLoginMessage">@ViewBag.Message</div>
         }
         <div id="tblLogin">
-            <h3 class="login-title">@Intelledox.Produce.Resources.Strings.Login</h3>
+            <h3 class="login-title">@Resources.Strings.Login</h3>
             <div class="form-group">
                 <label for="txtUsername" id="lblUsername" class="col-sm-3 control-label">@ViewBag.UsernameTitle</label>
                 <div class="col-sm-9">
@@ -21,14 +21,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="txtPassword" class="col-sm-3 control-label">@Intelledox.Produce.Resources.Strings.Password</label>
+                <label for="txtPassword" class="col-sm-3 control-label">@Resources.Strings.Password</label>
                 <div class="col-sm-9">
                     <input name="Password" type="password" id="txtPassword" class="form-control" autocomplete="off" />
                 </div>
             </div>
             <div class="pull-right">
-                <a href="~/Account/ForgotPassword?returnURL=@ViewBag.ReturnUrl" class="btn btn-link" id="lnkForgotPassword">@Intelledox.Produce.Resources.Strings.ForgotPassword</a>
-                <input type="submit" value="@Intelledox.Produce.Resources.Strings.Login" id="btnSignIn" class="btn btn-primary btn-submit" />
+                <a href="~/Account/ForgotPassword?returnURL=@ViewBag.ReturnUrl" class="btn btn-link" id="lnkForgotPassword">@Resources.Strings.ForgotPassword</a>
+                <input type="submit" value="@Resources.Strings.Login" id="btnSignIn" class="btn btn-primary" />
             </div>
         </div>
         <br /><br />

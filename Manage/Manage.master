@@ -1,4 +1,5 @@
 <%@ Master Language="VB" Inherits="Intelledox.Manage.ManageMaster" CodeBehind="Manage.master.vb" %>
+
 <!DOCTYPE HTML>
 <html dir="<%=IIf(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft, "rtl", "ltr") %>" lang="<%=System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName%>">
 <head runat="server">
@@ -7,7 +8,7 @@
     <title>Intelledox Infiniti</title>
     <link rel="shortcut icon" href="~/favicon.ico" />
     <link type="text/css" href="~/Content/base.css" rel="stylesheet" runat="server" id="BaseStyleSheet" />
-    <link type="text/css" href="~/Content/site.css?v=10.1.2" rel="stylesheet" runat="server" id="StyleSheet" />
+    <link type="text/css" href="~/Content/site.css" rel="stylesheet" runat="server" id="StyleSheet" />
     <link type="text/css" href="~/Content/siteRtl.css?v=10" rel="stylesheet" runat="server" id="lnkStylesRtl" />
     <meta name="msapplication-starturl" content="./" />
     <meta name="application-name" content="Infiniti Manage" />
@@ -25,9 +26,9 @@
                             <img src="Images/ProduceIcon.svg" alt="<%=Resources.Strings.Produce %>" width="32" height="32" /><br />
                             <asp:HyperLink ID="ProduceLink" runat="server" Text="<%$Resources:Strings, Produce %>" EnableViewState="false"></asp:HyperLink>
                         </span>
-                        <span class="mnu" id="WebDesignMenu" runat="server" visible="false" clientidmode="Predictable" enableviewstate="false" onclick="window.open('WebDesign/index.html?v=23435131442619815197')">
+                        <span class="mnu" id="WebDesignMenu" runat="server" visible="false" clientidmode="Predictable" enableviewstate="false" onclick="window.open('WebDesign/index.html?v=16359271001267416691')">
                             <img src="Images/DesignIcon.svg" alt="<%=Resources.Strings.Design %>" width="32" height="32" /><br />
-                            <asp:HyperLink ID="WebDesignLink" runat="server" Text="<%$Resources:Strings, Design %>" NavigateUrl="WebDesign/index.html?v=23435131442619815197" Target="_blank" onclick="if (event.stopPropagation) {event.stopPropagation();} else { event.cancelBubble = true; }"></asp:HyperLink>
+                            <asp:HyperLink ID="WebDesignLink" runat="server" Text="<%$Resources:Strings, Design %>" NavigateUrl="WebDesign/index.html?v=16359271001267416691" Target="_blank" onclick="if (event.stopPropagation) {event.stopPropagation();} else { event.cancelBubble = true; }"></asp:HyperLink>
                         </span>
                         <span class="mnu" id="DesignMenu" runat="server" visible="false" clientidmode="Predictable" enableviewstate="false">
                             <img src="Images/DesignIcon.svg" alt="<%=Resources.Strings.DesignApp %>" width="32" height="32" /><br />

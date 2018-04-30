@@ -1,52 +1,66 @@
-﻿@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.ProjectViewModel>
+﻿@using System.Security.Claims
+@using Infiniti.MvcControllers
+@model Intelledox.Produce.ProjectViewModel
 @{
     var demoMessage = "";
-
-    if (Model.LicenseType == Intelledox.Model.LicenseType.Demo)
+    var locationCollectionEnabled = Intelledox.Controller.LicenseController.HasModule(UserSettings.BusinessUnit, Intelledox.Model.IntelledoxModule.Analytics) && Intelledox.Controller.GlobalOptionsController.GetStoreLocation(UserSettings.BusinessUnit, true);
+    var licenseType = Intelledox.Controller.LicenseController.GetLicense(UserSettings.BusinessUnit).Type;
+    if (licenseType == Intelledox.Model.LicenseType.Demo)
     {
-        demoMessage = Intelledox.Produce.Resources.Strings.DemoFormMessage;
+        demoMessage = Resources.Strings.DemoFormMessage;
     }
-    else if (Model.LicenseType == Intelledox.Model.LicenseType.Test)
+    else if (licenseType == Intelledox.Model.LicenseType.Test)
     {
-        demoMessage = Intelledox.Produce.Resources.Strings.TestFormMessage;
+        demoMessage = Resources.Strings.TestFormMessage;
     }
 }
 <!DOCTYPE HTML>
-<html dir="@(Model.IsRightToLeft ? "rtl" : "ltr")" lang="@(Model.TwoLetterISOLanguageName)">
+<html dir="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")" lang="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName )">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8,IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>@Model.ThemePageTitle</title>
+    <title>@Html.Raw(ApplicationSettings.ThemePageTitle)</title>
     <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link href="~/Content/bootstrap.min.css?v=337" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-theme.min.css?v=337" rel="stylesheet" />
     <link href="~/Content/datatables.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Site.css?v=10.1.4" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Site.css?v=10.0.36" type="text/css" rel="stylesheet" />
     <link href="~/Content/toastr.css?v=9.7.3" rel="stylesheet" />
     
-    @if (Model.IsRightToLeft)
+    @if (System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
     {
         <link href="~/Content/SiteRtl.css?v=9.7.3" type="text/css" rel="stylesheet" />
     }
-    @Html.Raw(Model.HtmlThemeCss)
+    @Html.Raw(ApplicationSettings.ThemeCss(Url.Content("~/")))
     @{
+        var skinPublishedDate = string.Empty;
+        var projectSkinPublishedDate = string.Empty;
+        var projectId = string.Empty;
         var defaultLogo = "<img src=\"" + Url.Content("~/Images/produce.svg") + "\" alt=\"Infiniti Logo\" height=\"56\" width=\"165\" /><span class=\"sr-only\">Infiniti</span>";
-        var skin = Intelledox.Controller.SkinController.GetTenantSkin(Model.BusinessUnitGuid);
-        if (skin.HasSkinCssSettings)
+        var skin = Intelledox.Controller.SkinController.GetTenantSkin(UserSettings.BusinessUnit);
+        if (skin.HasSkinSettings)
         {
-            var skinPublishedDate = Intelledox.Common.DateHelper.UtcDateTimeToJsString(skin.Published);
-            <link href="~/Styles/Skin?v=@skinPublishedDate" rel="stylesheet" id="siteSkin" />
+            skinPublishedDate = Intelledox.Common.DateHelper.UtcDateTimeToJsString(skin.Published);
+            <link href="~/Styles/Skin?v=@skinPublishedDate" rel="stylesheet" />
             if (skin.Logo != null && skin.Logo.Length > 0)
             {
                 defaultLogo = string.Empty;
             }
         }
+        var cookieName = Infiniti.MvcControllers.UserSettings.UserGuid + "_locationAccuracy";
+        var timeStampClaim = ClaimsPrincipal.Current.FindFirst(Intelledox.Common.ConstantValues.TIMESTAMP_CLAIM);
+        var timeStamp = string.Empty;
+        if (timeStampClaim != null && !string.IsNullOrWhiteSpace(timeStampClaim.Value))
+        {
+            timeStamp = timeStampClaim.Value;
+        }
     }
-    @if (Model.Skin.HasSkinCssSettings)
+    @if (Model.Skin.HasSkinSettings)
     {
-        var projectSkinPublishedDate = Intelledox.Common.DateHelper.UtcDateTimeToJsString(Model.Skin.Published);
-        <link href="~/Styles/ProjectSkin?id=@Model.Skin.ProjectGroupGuid&v=@projectSkinPublishedDate" rel="stylesheet" id="projectSkin" />
+        projectSkinPublishedDate = Intelledox.Common.DateHelper.UtcDateTimeToJsString(Model.Skin.Published);
+        projectId = Model.Skin.ProjectGroupGuid.ToString();
+        <link href="~/Styles/ProjectSkin?id=@Model.Skin.ProjectGroupGuid&v=@projectSkinPublishedDate" rel="stylesheet"/>
         if (Model.Skin.Logo != null && Model.Skin.Logo.Length > 0)
         {
             defaultLogo = string.Empty;
@@ -58,35 +72,14 @@
     <script src="~/scripts/jquery.history.js?v=1.8b2" type="text/javascript"></script>
     <script src="~/scripts/tinymce/tinymce.min.js?v=4.2.6" type="text/javascript"></script>
     <script src="~/scripts/signature_pad-1.5.3.js?v=9.6" type="text/javascript"></script>
-    <script src="~/scripts/wizard.js?v=10.1.2" type="text/javascript"></script>
+    <script src="~/scripts/wizard.js?v=10.0.56" type="text/javascript"></script>
     <script src="~/scripts/location.js?v=10.0.31" type="text/javascript"></script>
     <script src="~/scripts/jquery.ui.touch.js" type="text/javascript"></script>
     <script src="~/scripts/bootstrap.min.js?v=337"></script>
     <script src="~/scripts/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
     <script src="~/scripts/datatables.min.js" type="text/javascript"></script>
-    <script src="~/scripts/dataTables.rowGroup.js" type="text/javascript"></script>
+    <script src="~/scripts/datatables.rowGroup.js" type="text/javascript"></script>
     <script src="~/scripts/toastr.js?v=9.7.3" type="text/javascript"></script>
-    <script>
-        function getWizardUrl(url, callback) {
-            if (wiz.isNative) {
-                NativeFunc("doGetUrl", url, callback);
-            } else {
-                $.ajaxSetup({
-                    cache: false
-                });
-
-                $.get(url, callback);
-            }
-        }
-        function postWizardUrl(formDataCallBack, resultCallBack) {
-            if (wiz.isNative) {
-                resultCallBack(NativeFunc("doPostUrl", formDataCallBack(), resultCallBack));
-                return false;
-            } else {
-                return true;
-            }
-        }
-    </script>
 
     <!--[if lt IE 9]>
     <script src="@Url.Content("~/scripts/html5shiv.min.js")"></script>
@@ -107,7 +100,7 @@
             <p style="font-size:16px; font-weight:bold; font-family:'Times New Roman', Times, serif; margin-bottom:0; padding: 4px">@demoMessage</p>
         </div>
     }
-    <span id="wizHeader">@Html.Raw(Model.HtmlThemeWizardHeader)</span>
+    <span id="wizHeader">@Html.Raw(ApplicationSettings.ThemeWizardHeader)</span>
     @if (!(Model.IsPortal || Model.IsPortalSave))
     {
         <header class="navbar navbar-inverse navbar-fixed-top ix-nav">
@@ -119,13 +112,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @{
-                        var homeUrl = "#";
-                        if (Model.ShowHome)
-                        {
-                            homeUrl = Url.Content("~/Home/GoToHome");
-                        }
+                @{
+                    var homeUrl = "#";
+                    if (Model.ShowHome)
+                    {
+                        homeUrl = ApplicationSettings.ProduceUrl + (Infiniti.MvcControllers.ApplicationSettings.ProduceUrl.EndsWith("/")?"":"/") + "Home/GoToHome";
                     }
+                }
 
                     <a class="navbar-brand analyticslog" href="@homeUrl" id="lnkHomeHead" data-analyticsid="goToHome">
                         <div id="ixInfinitiLogo">@Html.Raw(defaultLogo)</div></a>
@@ -136,7 +129,7 @@
                         @if (!Model.IsWizardMode && Model.ShowHome)
                         {
                             <li>
-                                <a href="~/Home/GoToHome" id="lnkHome" title="@Intelledox.Produce.Resources.Strings.Home" class="analyticslog" data-analyticsid="goToHome">@Intelledox.Produce.Resources.Strings.Home</a>
+                                <a href="~/Home/GoToHome" id="lnkHome" title="@Resources.Strings.Home" class="analyticslog" data-analyticsid="goToHome">@Resources.Strings.Home</a>
                             </li>
                         }
                     </ul>
@@ -145,7 +138,7 @@
                         @if (Model.ShowSignOut)
                         {
                             <li id="LogoutMenu">
-                                <a id="lnkSignOut" class="signout-link analyticslog" href="~/Account/LogOff" data-analyticsid="logoff">@Intelledox.Produce.Resources.Strings.LogOut</a>
+                                <a id="lnkSignOut" class="signout-link analyticslog" href="~/Account/LogOff" data-analyticsid="logoff">@Resources.Strings.LogOut</a>
                             </li>
                         }
                     </ul>
@@ -168,12 +161,15 @@
             </div>
         </header>
     }
+    <input type="hidden" id="skinCss" value="@skinPublishedDate"/>
+    <input type="hidden" id="projectSkinCss" value="@projectSkinPublishedDate" />
+    <input type="hidden" id="projectId" value="@projectId" />
     <input type="hidden" id="baseUrl" value="~/" />
-    <input type="hidden" id="exitMessage" value="@Intelledox.Produce.Resources.Strings.ExitMessage" />
-    <input type="hidden" id="savePopupTitle" value="@Intelledox.Produce.Resources.Strings.Save" />
-    <input type="hidden" id="reassignPopupTitle" value="@Intelledox.Produce.Resources.Strings.Reassign" />
-    <input type="hidden" id="uploadPopupTitle" value="@Intelledox.Produce.Resources.Strings.Upload" />
-    <input type="hidden" id="importPopupTitle" value="@Intelledox.Produce.Resources.Strings.Import" />
+    <input type="hidden" id="exitMessage" value="@Resources.Strings.ExitMessage" />
+    <input type="hidden" id="savePopupTitle" value="@Resources.Strings.Save" />
+    <input type="hidden" id="reassignPopupTitle" value="@Resources.Strings.Reassign" />
+    <input type="hidden" id="uploadPopupTitle" value="@Resources.Strings.Upload" />
+    <input type="hidden" id="importPopupTitle" value="@Resources.Strings.Import" />
     <input type="hidden" name="Latitude" id="Latitude"/>
     <input type="hidden" name="Longitude" id="Longitude" />
     <input type="hidden" name="Warn" id="Warn" />
@@ -183,37 +179,37 @@
         <tr>
             <td id="Sections">
                 <div class="collapse navbar-collapse ix-pagenav" role="navigation">
-                    @Html.Raw(Model.HtmlThemeWizardHeaderLogo)
+                    @Html.Raw(ApplicationSettings.ThemeWizardHeaderLogo)
                     <div id="OptionPanel">
                         <div id="plhCustomUI"></div>
                         <div id="pagesList"></div>
                     </div>
                     <div id="ProjectAnswerFiles">
-                        @if (Model.AnswerFiles.Count > 0 && !Model.IsTemporaryUser)
+                        @if (Model.AnswerFiles.Count > 0 && !Infiniti.MvcControllers.UserSettings.IsTemporaryUser)
                         {
                             <h5 class="sidebarTop titleAnswerFiles">
-                                @Intelledox.Produce.Resources.Strings.LoadAnswerFile
+                                @Resources.Strings.LoadAnswerFile
                             </h5>
                             <div class="sidebarContent">
                                 @foreach (var af in Model.AnswerFiles)
                                 {
                                     <div class="sidebarItem" style="overflow:hidden;">
-                                        <div class="bullet ImageSize">
+                                        <div class="bullet">
                                             @if (!af.InProgress)
                                             {
                                                 <span>
-                                                    <a href="~/wizard/@Model.ProjectGroupGuid.ToString()/?Gen=true&wizardmode=@Model.IsWizardMode.ToString()&portal=@Model.IsPortal.ToString()&portalsave=@Model.IsPortalSave.ToString()&AnswerFileID=@af.Id">
-                                                        <img src="~/Images/IX_SavedAnswer.svg" alt="@Intelledox.Produce.Resources.Strings.GenDocFromFile" />
+                                                    <a href="~/wizard/@this.Request.RequestContext.RouteData.Values["id"].ToString()/?Gen=true&wizardmode=@Model.IsWizardMode.ToString()&portal=@Model.IsPortal.ToString()&portalsave=@Model.IsPortalSave.ToString()&AnswerFileID=@af.Id">
+                                                        <img src="~/Images/GenIcon.png" alt="@Resources.Strings.GenDocFromFile" />
                                                     </a>
                                                 </span>
                                             }
                                             else
                                             {
-                                                <img src="~/Images/IX_Recent.svg" alt="@Intelledox.Produce.Resources.Strings.Recent" />
+                                                <img src="~/Images/Recent.png" alt="@Resources.Strings.Recent" />
                                             }
                                         </div>
                                         <div class="indent">
-                                            <a title="@af.RunDate" href="~/wizard/@Model.ProjectGroupGuid.ToString()/?wizardmode=@Model.IsWizardMode.ToString()&portal=@Model.IsPortal.ToString()&portalsave=@Model.IsPortalSave.ToString()&AnswerFileID=@af.Id&InProgress=@(af.InProgress ? "1" : "0")">
+                                            <a title="@af.RunDate" href="~/wizard/@this.Request.RequestContext.RouteData.Values["id"].ToString()/?wizardmode=@Model.IsWizardMode.ToString()&portal=@Model.IsPortal.ToString()&portalsave=@Model.IsPortalSave.ToString()&AnswerFileID=@af.Id&InProgress=@(af.InProgress ? "1" : "0")">
                                                 @af.Description
                                             </a>
                                         </div>
@@ -222,44 +218,14 @@
                             </div>
                         }
                     </div>
-                    @if (Model.IsNative && Model.IsHomePage)
-                    {
-                        <div id="NativeButtons">
-                            <h5 class="sidebarTop titleNativeButtons">
-                                @Intelledox.Produce.Resources.Strings.Actions
-                            </h5>
-                            <div class="sidebarContent">
-                                <div class="sidebarItem" style="overflow:hidden;">
-                                    <div class="bullet ImageSize">
-                                        <img src="~/Images/IX_Recent.svg" alt="@Intelledox.Produce.Resources.Strings.Synchronise" />
-                                    </div>
-                                    <div class="indent">
-                                        <a title="@Intelledox.Produce.Resources.Strings.Synchronise" href="~/wizard/synchronise">
-                                            @Intelledox.Produce.Resources.Strings.Synchronise
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="sidebarItem" style="overflow:hidden;">
-                                    <div class="bullet ImageSize">
-                                        <img src="~/Images/IX_Recent.svg" alt="@Intelledox.Produce.Resources.Strings.LogOut" />
-                                    </div>
-                                    <div class="indent">
-                                        <a title="@Intelledox.Produce.Resources.Strings.LogOut" href="~/wizard/logout">
-                                            @Intelledox.Produce.Resources.Strings.LogOut
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @if (Model.HtmlHelpText != "")
+                    @if (Model.HelpText.ToString() != "")
                     {
                         <div id="ProjectHelp">
                             <h5 class="sidebarTop titleProjectHelp">
-                                @Intelledox.Produce.Resources.Strings.TemplateHelp
+                                @Resources.Strings.TemplateHelp
                             </h5>
                             <div class="sidebarContent">
-                                <p>@Html.Raw(Model.HtmlHelpText)</p>
+                                <p>@Model.HelpText</p>
                             </div>
                         </div>
                     }
@@ -269,77 +235,89 @@
         </tr>
     </table>
     <div class="modal" id="waitShort-modal"></div>
-    <div class="modal" id="wait-modal" title="@Intelledox.Produce.Resources.Strings.Loading">
+    <div class="modal" id="wait-modal" title="@Resources.Strings.Loading">
         <div class="modal-dialog wait-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div style="text-align:center" aria-live="assertive">
-                        <div id="wait-spinner" title="@Intelledox.Produce.Resources.Strings.Loading" aria-label="@Intelledox.Produce.Resources.Strings.Loading"></div>
+                        <div id="wait-spinner" title="@Resources.Strings.Loading" aria-label="@Resources.Strings.Loading" ></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="previewWin" style="display: none; position: absolute; z-index: 1000"></div>
-    <span id="wizFooter">@Html.Raw(Model.HtmlThemeWizardFooter)</span>
+    <span id="wizFooter">@Html.Raw(ApplicationSettings.ThemeWizardFooter)</span>
 </div>
-    @{
-        var js = "getGeolocation('" + Model.UserGuid.ToString() + "', 'Latitude', 'Longitude', 'Warn', true);";
+    @{ 
+        var js = "getGeolocation('" + UserSettings.UserGuid.ToString() + "', 'Latitude', 'Longitude', 'Warn', true);";
     }
     <script type="text/javascript">
         function updateLocation() {
-            @if (Model.LocationCollectionEnabled) {
+            @if (locationCollectionEnabled) {
                 @Html.Raw(js)
             }
             return true;
         }
-    </script>
+    </script>    
 
 @{
     var function = "null";
-    if (Model.UpdateLog && Model.LocationCollectionEnabled)
+    if (HttpContext.Current.Request.Cookies[cookieName] == null && locationCollectionEnabled)
     {
         function = "function () { " +
-                   "updateLog('" + Url.Content("~/") + "','"
-                   + Model.UserGuid + "','"
-                   + Model.TimeStamp + "','"
-                   + Model.BusinessUnitGuid + "',"
+                   "updateLog('" + ApplicationSettings.ProduceUrl + (ApplicationSettings.ProduceUrl.EndsWith("/") ? "" : "/") + "','"
+                   + UserSettings.UserGuid + "','"
+                   + timeStamp + "','"
+                   + UserSettings.BusinessUnit + "',"
                    + "$(\"#Latitude\").val()," + "$(\"#Longitude\").val()" + ");}";
     }
 }
-@if (!String.IsNullOrEmpty(Model.HtmlHomeMessage))
+@if (!String.IsNullOrEmpty(ViewBag.HomeMessage))
 {
     <script>
-        $(document).ready(function() {
-            toastr.options = {
-                "timeOut":
-                "3000",
-                "extendedTimeOut":
-                "1000"
-            };
-            toastr.success("@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.HtmlHomeMessage))");
-        });
+        $(document).ready(function()
+            {
+                toastr.options =
+                {
+                    "timeOut":
+                    "3000",
+                    "extendedTimeOut":
+                    "1000"
+                }
+                ;
+                toastr.success("@Html.Raw(HttpUtility.JavaScriptStringEncode(ViewBag.HomeMessage))");
+            }
+        );
     </script>
 }
-else if (!String.IsNullOrEmpty(Model.HtmlHomeError))
+else if (!String.IsNullOrEmpty(ViewBag.HomeError))
 {
     <script>
-        $(document).ready(function() {
-            toastr.options = {
-                "timeOut":
-                "10000",
-                "extendedTimeOut":
-                "2000"
-            };
-            toastr.error("@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.HtmlHomeError))");
-        });
+        $(document).ready(function()
+            {
+                toastr.options =
+                {
+                    "timeOut":
+                    "10000",
+                    "extendedTimeOut":
+                    "2000"
+                }
+                ;
+                toastr.error("@Html.Raw(HttpUtility.JavaScriptStringEncode(ViewBag.HomeError))");
+            }
+        );
     </script>
-}
+}    
 
 <script type="text/javascript">
-    wiz.initWizard(@Model.IsNative.ToString().ToLowerInvariant());
+    wiz.initWizard();
     wiz.waitDialogTimerExpired();
-    getWizardUrl('@Url.Content("~/")wizard/QA/@Model.ProjectGroupGuid.ToString()?@Html.Raw(Model.QueryString)',
+    $.ajaxSetup({
+        cache: false
+    });
+    $.get(
+        '@Url.Content("~/")wizard/QA/@this.Request.RequestContext.RouteData.Values["id"].ToString()/?@Html.Raw(Request.QueryString.ToString())',
         function(data) {
             $("#Questions").html(data);
             if (document.getElementById('lnkHome') != null &&
@@ -352,16 +330,16 @@ else if (!String.IsNullOrEmpty(Model.HtmlHomeError))
         });
 </script>
 
-@if (Model.LocationCollectionEnabled)
+@if (locationCollectionEnabled)
 {
     <script type="text/javascript">
-    getGeolocation('@Model.UserGuid.ToString()',
+    getGeolocation('@UserSettings.UserGuid.ToString()',
         'Latitude',
         'Longitude',
         'Warn',
         true,
         @Html.Raw(function));
-    </script>
+    </script> 
 }
 </body>
 </html>

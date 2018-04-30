@@ -60,10 +60,8 @@
                         </tr>
                         <tr>
                             <td valign="top" width="230">
-                                <div class="TreeViewImageSizer">
-                                    <asp:TreeView ID="treeFolders" runat="server" ShowExpandCollapse="false" NodeStyle-CssClass="TreeSelectLink" SelectedNodeStyle-CssClass="TreeSelectLinkSelected" SkipLinkText="">
-                                    </asp:TreeView>
-                                </div>
+                                <asp:TreeView ID="treeFolders" runat="server" ShowExpandCollapse="false" NodeStyle-CssClass="TreeSelectLink" SelectedNodeStyle-CssClass="TreeSelectLinkSelected" SkipLinkText="">
+                                </asp:TreeView>
                             </td>
                             <td valign="top">
                                 <Controls:PagedGridView ID="grdProjects" runat="server" Width="100%" AutoGenerateColumns="false" EnableViewState="false" DataSourceID="odsProjects" PageSize="50" CssClass="grd">

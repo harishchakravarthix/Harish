@@ -5,15 +5,15 @@
 @if (Model.TaskListResults.Count > 0)
 {
     <h2 class="titleProgress">
-        @Intelledox.Produce.Resources.Strings.FormsAssignedToMe
-        <img id="TaskListButton" class="ContractButton" alt="@Intelledox.Produce.Resources.Strings.Open/@Intelledox.Produce.Resources.Strings.Close" />
+        @Resources.Strings.FormsAssignedToMe
+        <img id="TaskListButton" src="~/images/up-dk.png" class="ExpandButton" alt="@Resources.Strings.Open/@Resources.Strings.Close" />
     </h2>
 
     var grid = new WebGrid(source: Model.TaskListResults, canPage: true, rowsPerPage: 20, fieldNamePrefix: "task");
     <div class="table-responsive" id="listProgress">
         @{
             var gridColumns = new List<WebGridColumn>();
-            gridColumns.Add(grid.Column("ProjectName", Intelledox.Produce.Resources.Strings.Form, @<text>
+            gridColumns.Add(grid.Column("ProjectName", Resources.Strings.Form, @<text>
             @if (item.TaskListStateId != Guid.Empty)
             {
                 <a href="~/wizard/@item.ProjectGroupGuid.ToString()/?WorkflowId=@item.TaskListStateId.ToString()">@item.ProjectName - @item.StateName</a>
@@ -27,40 +27,40 @@
                 <div class="dropdown pull-right">
                     <button class="btn btn-default btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
-                        <span class="sr-only">@Intelledox.Produce.Resources.Strings.ToggleActionDropdown</span>
+                        <span class="sr-only">@Resources.Strings.ToggleActionDropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
                         @if (@item.AllowReassign)
                         {
-                            <li role="presentation"><a role="menuitem" href="~/Home/Reassign/@item.TaskListStateId.ToString()">@Intelledox.Produce.Resources.Strings.Reassign</a></li>
+                            <li role="presentation"><a role="menuitem" href="~/Home/Reassign/@item.TaskListStateId.ToString()">@Resources.Strings.Reassign</a></li>
                         }
                         else if (@item.AllowUnlock)
                         {
-                            <li role="presentation"><a role="menuitem" href="~/Home?unlock=@item.TaskListStateId.ToString()">@Intelledox.Produce.Resources.Strings.Unlock</a></li>
+                            <li role="presentation"><a role="menuitem" href="~/Home?unlock=@item.TaskListStateId.ToString()">@Resources.Strings.Unlock</a></li>
                         }
                         @if (@item.AllowCancellation)
                         {
-                            <li role="presentation"><a role="menuitem" href="~/Home/AbortForm/@item.TaskListStateId.ToString()" onclick="if (confirm('@Intelledox.Produce.Resources.Strings.ConfirmDelete')) {document.getElementById('actionForm').setAttribute('action',this.getAttribute('href'));document.getElementById('actionForm').submit();} return false;">@Intelledox.Produce.Resources.Strings.Delete</a></li>
+                            <li role="presentation"><a role="menuitem" href="~/Home/AbortForm/@item.TaskListStateId.ToString()" onclick="if (confirm('@Resources.Strings.ConfirmDelete')) {document.getElementById('actionForm').setAttribute('action',this.getAttribute('href'));document.getElementById('actionForm').submit();} return false;">@Resources.Strings.Delete</a></li>
                         }
                         @if (@item.TaskListStateId == Guid.Empty)
                         {
-                            <li role="presentation"><a role="menuitem" href="~/Home/DeleteInProgress?id=@item.AnswerFileId.ToString()" onclick="if (confirm('@Intelledox.Produce.Resources.Strings.ConfirmDelete')) {document.getElementById('actionForm').setAttribute('action', this.getAttribute('href')); document.getElementById('actionForm').submit();} return false;">@Intelledox.Produce.Resources.Strings.Delete</a></li>
+                            <li role="presentation"><a role="menuitem" href="~/Home/DeleteInProgress?id=@item.AnswerFileId.ToString()" onclick="if (confirm('@Resources.Strings.ConfirmDelete')) {document.getElementById('actionForm').setAttribute('action', this.getAttribute('href')); document.getElementById('actionForm').submit();} return false;">@Resources.Strings.Delete</a></li>
                         }
                     </ul>
                 </div>
             }</text>));
-            gridColumns.Add(grid.Column("AssignedBy", @Intelledox.Produce.Resources.Strings.AssignedBy, @<text>@Intelledox.Common.Functions.FormatDisplayName(@item.AssignedByName, @item.AssignedBy, false)</text>));
-            gridColumns.Add(grid.Column("DateCreatedUtc", @Intelledox.Produce.Resources.Strings.DateAssigned, @<text>@Infiniti.MvcControllers.UserSettings.FormatLocalDate(@item.DateCreatedUtc, "g")</text>, "width:15%"));
+            gridColumns.Add(grid.Column("AssignedBy", @Resources.Strings.AssignedBy, @<text>@Intelledox.Common.Functions.FormatDisplayName(@item.AssignedByName, @item.AssignedBy, false)</text>));
+            gridColumns.Add(grid.Column("DateCreatedUtc", @Resources.Strings.DateAssigned, @<text>@Infiniti.MvcControllers.UserSettings.FormatLocalDate(@item.DateCreatedUtc, "g")</text>, "width:15%"));
             if (Model.ShowDueDateColumn)
             {
-                gridColumns.Add(grid.Column("DateDueUtc", @Intelledox.Produce.Resources.Strings.DateDue, @<text>
+                gridColumns.Add(grid.Column("DateDueUtc", @Resources.Strings.DateDue, @<text>
 
             @if (@item.DateDueUtc != null)
             {
                 @Infiniti.MvcControllers.UserSettings.FormatLocalDate(@item.DateDueUtc, "g", true)
             }</text>));
             }
-            gridColumns.Add(grid.Column("Comment", @Intelledox.Produce.Resources.Strings.Comment, @<text>@item.Comment</text>));
+            gridColumns.Add(grid.Column("Comment", @Resources.Strings.Comment, @<text>@item.Comment</text>));
         }
 
         @grid.Table(
@@ -73,15 +73,15 @@
 
         <div class="paginationList">
             @grid.PagerList(mode: WebGridPagerModes.Numeric | WebGridPagerModes.FirstLast,
-            firstText: Intelledox.Produce.Resources.Strings.First,
-            lastText: Intelledox.Produce.Resources.Strings.Last,
+            firstText: Resources.Strings.First,
+            lastText: Resources.Strings.Last,
             paginationStyle: "pagination")
         </div>
     </div>
     <script type="text/javascript">
         if (getCookie('wfState') == "0" && $('#TaskListButton').length > 0) {
             $('#listProgress').slideToggle(0);
-            $('#TaskListButton').prop("class", 'ExpandButton');
+            $('#TaskListButton').prop("src", '@Url.Content("~/images/down.png")');
         }
 
         // SLIDE OUT Task List
@@ -90,11 +90,10 @@
                 $('#TaskListButton').click(function () {
                     if ($('#listProgress').is(':hidden')) {
                         setCookie('wfState', "1", 1);
-                        $('#TaskListButton').prop("class", 'ContractButton');
+                        $('#TaskListButton').prop("src", '@Url.Content("~/images/up-dk.png")');
                     } else {
                         setCookie('wfState', "0", 1);
-                        $('#TaskListButton').prop("class", 'ExpandButton');
-                    }
+                        $('#TaskListButton').prop("src", '@Url.Content("~/images/down-dk.png")');}
                     $('#listProgress').slideToggle(300);
                 });
             }

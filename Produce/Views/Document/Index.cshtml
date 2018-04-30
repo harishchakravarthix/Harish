@@ -7,7 +7,7 @@
 @Html.Partial("_SiteHeader")
 <div class="container ix-header-body">
     <h1 class="page-header">
-        @Intelledox.Produce.Resources.Strings.Documents
+        @Resources.Strings.Documents
     </h1>
 
     <div class="row-fluid">
@@ -23,28 +23,28 @@
                         htmlAttributes: new { id = "grdDocuments" },
                         fillEmptyRows: false,
                         columns: grid.Columns(
-                            grid.Column(format: @<text><input name="deleteId" type="checkbox" value="@item.DocumentId.ToString()" aria-label="@Intelledox.Produce.Resources.Strings.SelectRow" /></text>),
-                            grid.Column("DateCreatedUtc", Intelledox.Produce.Resources.Strings.DateGenerated, format:(item) => @Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.DateCreatedUtc, "g")),
-                            grid.Column("DisplayName", header: Intelledox.Produce.Resources.Strings.DocumentTitle,
+                            grid.Column(format: @<text><input name="deleteId" type="checkbox" value="@item.DocumentId.ToString()" aria-label="@Resources.Strings.SelectRow" /></text>),
+                            grid.Column("DateCreatedUtc", Resources.Strings.DateGenerated, format:(item) => @Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.DateCreatedUtc, "g")),
+                            grid.Column("DisplayName", header: Resources.Strings.DocumentTitle,
                                 format: @<text>
-                                    <a href="~/DocumentDownload.ashx/@Uri.EscapeDataString(Intelledox.Common.Functions.MakeValidFileName(item.DisplayName))@item.Extension?FileId=@item.DocumentId.ToString()&Extension=@item.Extension&JobId=@item.JobId.ToString()">
+                                    <a href="~/DocumentDownload.ashx/@Microsoft.Security.Application.Encoder.UrlEncode(Intelledox.Common.Functions.MakeValidFileName(item.DisplayName))@item.Extension?FileId=@item.DocumentId.ToString()&Extension=@item.Extension&JobId=@item.JobId.ToString()">
                                         @item.DisplayName@item.Extension
                                     </a>
                                 </text>),
-                            grid.Column("ProjectName", Intelledox.Produce.Resources.Strings.Form)
+                            grid.Column("ProjectName", Resources.Strings.Form)
                         )
                     )
                     @grid.PagerList(mode: WebGridPagerModes.Numeric | WebGridPagerModes.FirstLast,
-                        firstText: Intelledox.Produce.Resources.Strings.First,
-                        lastText: Intelledox.Produce.Resources.Strings.Last,
+                        firstText: Resources.Strings.First,
+                        lastText: Resources.Strings.Last,
                         paginationStyle: "pagination pull-right")
                     <div>
-                        <input type="submit" class="btn btn-default btn-del" value="@Intelledox.Produce.Resources.Strings.DeleteSelected" onclick="return confirm('@Intelledox.Produce.Resources.Strings.ConfirmDelete');" />
+                        <input type="submit" class="btn btn-default" value="@Resources.Strings.DeleteSelected" onclick="return confirm('@Resources.Strings.ConfirmDelete');" />
                     </div>
                 }
                 else
                 {
-                    @Intelledox.Produce.Resources.Strings.NoDocuments
+                    @Resources.Strings.NoDocuments
                 }
             }
         </form>

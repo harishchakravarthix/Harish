@@ -6,7 +6,7 @@
 @Html.Partial("_SiteHeader")
 <div class="container ix-header-body">
     <h1 class="page-header">
-        @Intelledox.Produce.Resources.Strings.History - @Model.ProjectName
+        @Resources.Strings.History - @Model.ProjectName
     </h1>
     <div class="row-fluid">
         <form method="post">
@@ -18,17 +18,17 @@
                         htmlAttributes: new { id = "grdHistory" },
                         fillEmptyRows: false,
                         columns: grid.Columns(
-                                 grid.Column("StateName", Intelledox.Produce.Resources.Strings.State),
-                                 grid.Column("CreatedDateUTC", Intelledox.Produce.Resources.Strings.DateCreated, @<text>@Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.CreatedDateUTC, "g")</text>),
-                                 grid.Column("AssignedToDisplayName", Intelledox.Produce.Resources.Strings.AssignedTo),
-                                 grid.Column("CompletedDateUTC", Intelledox.Produce.Resources.Strings.DateCompleted,@<text>
+                                 grid.Column("StateName", Resources.Strings.State),
+                                 grid.Column("CreatedDateUTC", Resources.Strings.DateCreated, @<text>@Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.CreatedDateUTC, "g")</text>),
+                                 grid.Column("AssignedToDisplayName", Resources.Strings.AssignedTo),
+                                 grid.Column("CompletedDateUTC", Resources.Strings.DateCompleted,@<text>
                                 @if (item.IsComplete == true)
                                 {
                                     @Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.CompletedDateUTC, "g")
                                 }
                                 else
                                 {
-                                    @Intelledox.Produce.Resources.Strings.None
+                                    @Resources.Strings.None
                                 }
                                 </text>)                                                                                                                                                                                                                
                 )                                                                                                                                                                    )

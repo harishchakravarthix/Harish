@@ -1,9 +1,8 @@
 ﻿@using Intelledox.Produce
-@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.InkQuestionViewModel>
+@model Intelledox.Produce.InkViewModel
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = IdHelper.IdFor(Model.Question);
+    var qid = Html.IdFor(Model.Question);
     var thumbWidth = 0;
     var thumbHeight = 0;
     var zoomStyle = "";
@@ -18,8 +17,8 @@
         {
             <canvas id="@(qid)cvbk" width="500" height="300"></canvas>
         }
-        <canvas id="@(qid)cv" width="500" height="300" class="inkQuestion canvasTouchAction"><span class="wrn">@Intelledox.Produce.Resources.Strings.NonCanvasBrowser</span></canvas>
-        <input type="hidden" id="@qid" name="@qid" value="@Model.Question.Value" data-bk-width="500" data-bk-height="300" />
+        <canvas id="@(qid)cv" width="500" height="300" class="inkQuestion canvasTouchAction"><span class="wrn">@Resources.Strings.NonCanvasBrowser</span></canvas>
+        <input type="hidden" id="@qid" name="@qid" value="@Html.Raw(Model.Question.Value)" data-bk-width="500" data-bk-height="300" />
     </div>
 </div>
 
@@ -28,23 +27,23 @@
     <div style="@zoomStyle">
         @if (Model.ShowUploadButton)
         {
-            <input type="button" value="@Intelledox.Produce.Resources.Strings.Upload" class="btn btn-default btn-submit" onclick="wiz.openUploadPage('@Url.Content("~/")', '@Model.Question.WizardFragment.InstanceId.ToString()', '@Model.Question.QuestionGuid.ToString()', 'ink', '@Model.RepeatPath', '@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()','@qid');" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkUpload"</text> }/>
+            <input type="button" value="@Resources.Strings.Upload" class="btn btn-default" onclick="wiz.openUploadPage('@Url.Content("~/")', '@Model.Question.WizardFragment.InstanceId.ToString()', '@Model.Question.QuestionGuid.ToString()', 'ink', '@Model.RepeatPath', '@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()','@qid');" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkUpload"</text> }/>
         }
-        <input type="button" value="@Intelledox.Produce.Resources.Strings.Clear" class="btn btn-default btn-clear" onclick="wiz.clearInk('@qid')" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkClear"</text> } />
+        <input type="button" value="@Resources.Strings.Clear" class="btn btn-default" onclick="wiz.clearInk('@qid')" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkClear"</text> } />
 
-        <input type="button" id="@(qid)btn" value="@Intelledox.Produce.Resources.Strings.Eraser" class="btn btn-default btn-erase" onclick="wiz.eraseInk('@qid');" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkEraser"</text> } />
+        <input type="button" id="@(qid)btn" value="@Resources.Strings.Eraser" class="btn btn-default" onclick="wiz.eraseInk('@qid');" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkEraser"</text> } />
 
         @if (((Intelledox.QAWizard.Design.InkQuestion)Model.Question.QuestionModel).AllowZoom)
         {
             if (Model.ZoomedIn)
             {
-                <input type="button" id="@(qid)zoomoutbtn" value="@Intelledox.Produce.Resources.Strings.ZoomOut" class="btn btn-default btn-zoomout" onclick="zoomOutAndClose();" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkZoomOut"</text> } />
+                <input type="button" id="@(qid)zoomoutbtn" value="@Resources.Strings.ZoomOut" class="btn btn-default" onclick="zoomOutAndClose();" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkZoomOut"</text> } />
             }
             else
             {
                 if (!String.IsNullOrEmpty(Model.Question.Background))
                 {
-                    <input type="button" id="@(qid)zoominbtn" value="@Intelledox.Produce.Resources.Strings.ZoomIn" class="btn btn-default btn-zoomin" onclick="wiz.zoomIn(this, '@(qid)')" data-questionguid="@Model.Question.QuestionGuid.ToString()" data-userguid="@Model.Question.WizardFragment.WizardSession.UserGuid" data-path="@Url.Content("~/")" data-log="@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()" data-repeatpath="@(Model.RepeatPath)" data-frag="@Model.Question.WizardFragment.InstanceId.ToString()" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkZoomIn"</text> }/>
+                    <input type="button" id="@(qid)zoominbtn" value="@Resources.Strings.ZoomIn" class="btn btn-default" onclick="wiz.zoomIn(this, '@(qid)')" data-questionguid="@Model.Question.QuestionGuid.ToString()" data-userguid="@Infiniti.MvcControllers.UserSettings.UserGuid" data-path="@Url.Content("~/")" data-log="@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()" data-repeatpath="@(Model.RepeatPath)" data-frag="@Model.Question.WizardFragment.InstanceId.ToString()" @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkZoomIn"</text> }/>
                 }
                 if (((Intelledox.QAWizard.Design.InkQuestion)Model.Question.QuestionModel).ThumbnailMaxWidth > 0)
                 {
@@ -59,13 +58,8 @@
 
         @if (((Intelledox.QAWizard.Design.InkQuestion)Model.Question.QuestionModel).AllowInkColourChoice)
         {
-            <span id="@(qid)inklabel" class="question-label">@Intelledox.Produce.Resources.Strings.InkColour</span>
-            <select id="@(qid + "inkcolour")" name="@(qid + "inkcolour")" class="form-control" style="width:auto;display:inline" data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="inkColour">
-                @foreach (var item in Model.Colours)
-                {
-                    <option value="@item.Value" selected="@item.Selected">@item.Text</option>
-                }
-            </select>
+            <span id="@(qid)inklabel" class="question-label">@Resources.Strings.InkColour</span>
+            @Html.DropDownList(qid + "inkcolour", Model.Colours, new { @class = "form-control", style = "width:auto;display:inline", data_analyticsid = (Model.AnalyticsID), data_analyticsevent= "inkColour" })
         }
 
     </div>

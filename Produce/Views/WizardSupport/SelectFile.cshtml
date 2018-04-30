@@ -1,20 +1,18 @@
-﻿@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.SelectFileViewModel> 
-@{
-    Layout = "~/Views/Shared/_WizardSubpage.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_LayoutSubpage.cshtml";
 }
-@section AddToHead
-{
-    <script src="~/scripts/jquery-1.8.3.min.js"></script>
-    <script src="~/scripts/FileUpload/jqueryui/jquery.ui.widget.js?v=2"></script>
-    <script src="~/scripts/FileUpload/jquery.iframe-transport.js?v=2"></script>
-    <script src="~/scripts/FileUpload/jquery.fileupload.js?v=2"></script>
-    <script src="~/scripts/FileUpload/jquery.fileupload-ui.js?v=2"></script>
-}
+
+<script src="~/scripts/jquery-1.8.3.min.js"></script>
+<script src="~/scripts/FileUpload/jqueryui/jquery.ui.widget.js?v=2"></script>
+<script src="~/scripts/FileUpload/jquery.iframe-transport.js?v=2"></script>
+<script src="~/scripts/FileUpload/jquery.fileupload.js?v=2"></script>
+<script src="~/scripts/FileUpload/jquery.fileupload-ui.js?v=2"></script>
 @{
     var clearInk = string.Empty;
-    if (Model.QID != null && Model.UploadType != null && Model.UploadType == "ink")
+    if (Request.QueryString["qid"] != null && Request.QueryString["UploadType"] != null && Request.QueryString["UploadType"] == "ink")
     {
-        clearInk = string.Format("parent.wiz.clearInk('{0}');", Model.QID);
+        var qid = Request.QueryString["qid"];
+        clearInk = string.Format("parent.wiz.clearInk('{0}');",qid);
     }
 }
 <script>
@@ -28,11 +26,11 @@
         $('#uploadingtext').hide();
         var jqXHR = null;
         $('#fileupload').fileupload({
-            url: '@Url.Content("~/")wizardSupport/selectFileUpload?FragmentGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.FragmentGuid.ToString()))&QuestionId=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.QuestionId.ToString()))&UploadType=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.UploadType))&repeatPath=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.RepeatPath))&logGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.LogGuid))',
+            url: '@Url.Content("~/")WizardSupport/SelectFileUpload?FragmentGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["FragmentGuid"]))&QuestionId=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["QuestionId"]))&UploadType=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["uploadType"]))&repeatPath=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["repeatPath"]))&logGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["logGuid"]))',
             add: function (e, data) {
                 if (data.files != null) {
                     var fileSize = data.files[0].size / 1024;
-                    if (@(Html.Raw(Model.MaxRequestLength.ToString())) != 0 && fileSize > @(Html.Raw(Model.MaxRequestLength.ToString())) ) {
+                    if (fileSize > @(Html.Raw(HttpUtility.JavaScriptStringEncode((string)ViewData["MaxRequestLength"]))) ) {
                         $('#fileTooLarge').show();
                         return;
                     } else {
@@ -42,8 +40,8 @@
                 $('#startupload').show();
                 $.ajax({
                     type: "GET",
-                    url: '@Url.Content("~/")wizardSupport/selectFileUpload?FragmentGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.FragmentGuid.ToString()))&QuestionId=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.QuestionId.ToString()))&UploadType=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.UploadType))&repeatPath=' +
-                        '@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.RepeatPath))&logGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.LogGuid))&fileTypes=1&dataFile=' + encodeURIComponent(data.files[0].name),
+                    url: '@Url.Content("~/")WizardSupport/SelectFileUpload?FragmentGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["FragmentGuid"]))&QuestionId=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["QuestionId"]))&UploadType=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["uploadType"]))&repeatPath=' +
+                        '@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["repeatPath"]))&logGuid=@Html.Raw(HttpUtility.JavaScriptStringEncode(Request.QueryString["logGuid"]))&fileTypes=1&dataFile=' + encodeURIComponent(data.files[0].name),
                     success: function (response) {
                         if (response) {
                             alert(response);
@@ -60,7 +58,7 @@
                                 }
                                 jqXHR = data.submit().fail(function (jqXHR, textStatus, errorThrown) {
                                     if (jqXHR.status === 404 || jqXHR.status === 413 || textStatus === 'parsererror') {
-                                        alert('@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.SizeMsg))');
+                                        alert('@Html.Raw(HttpUtility.JavaScriptStringEncode((string)ViewData["sizeMsg"]))');
                                         parent.wiz.closeModal();
                                     }
                                 });
@@ -97,23 +95,23 @@
     });
 </script>
 <div style="padding-left:5px;padding-top:2px">
-    <strong><span>@Model.Message</span></strong><br />
-    @if (!string.IsNullOrEmpty(Model.Extension))
+    <strong><span>@ViewData["Message"]</span></strong><br />
+    @if (!string.IsNullOrEmpty((string)ViewData["Extension"]))
     {
-        <span>@Model.Extension<br /></span>
+        <span>@ViewData["Extension"]<br /></span>
     }
     <input id="fileupload" type="file" name="files[]">
-    <div id="uploadingtext" style="float: right;">@Intelledox.Produce.Resources.Strings.Uploading ...</div>
+    <div id="uploadingtext" style="float: right;">@Resources.Strings.Uploading ...</div>
     <div id="fileTooLarge" style="display: none; margin-top: 10px;" class="wrn">
-        @Model.SizeMsg
+        @ViewData["sizeMsg"]
     </div>
 
     <div id="progress" style="padding-top:2px">
         <div class="bar" style="width: 0%;"></div>
-        <button id='startupload' class="btn btn-primary btn-submit" type="button">@Intelledox.Produce.Resources.Strings.StartUpload</button>
-        <button id='cancelupload' class="btn btn-default btn-cancel" type="button">@Intelledox.Produce.Resources.Strings.Cancel</button>
-        <button id='closeupload' class="btn btn-default btn-close" type="button">@Intelledox.Produce.Resources.Strings.Close</button>
+        <button id='startupload' class="btn btn-primary" type="button">@Resources.Strings.StartUpload</button>
+        <button id='cancelupload' class="btn btn-default" type="button">@Resources.Strings.Cancel</button>
+        <button id='closeupload' class="btn btn-default" type="button">@Resources.Strings.Close</button>
         @* Used by IE 8 and 9 *@
-        <div id="ixloading" style="float: right; display: none;" title="@Intelledox.Produce.Resources.Strings.Uploading" aria-label="@Intelledox.Produce.Resources.Strings.Uploading"></div>
+        <div id="ixloading" style="float: right; display: none;" title="@Resources.Strings.Uploading" aria-label="@Resources.Strings.Uploading"></div>
     </div>
 </div>

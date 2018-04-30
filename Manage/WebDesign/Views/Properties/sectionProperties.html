@@ -6,7 +6,7 @@
         <label for="sectionTitle" class="col-sm-4 control-label">{{ ::'Title' | translate }}</label>
         <div class="col-sm-8">
             <textarea id="sectionTitle" class="form-control input-sm f2-rename" ng-model="model.propertiesPanelModel.title" rows="3" spellcheck="true"
-                      ui-tinymce="tinymceHtmlWithPickRef" pick-Ref-Editor="model.pickRefEditor(ed)" tree-view="model.treeView"></textarea>
+                      ui-tinymce="tinymceHtml"></textarea>
         </div>
     </div>
     <div class="form-group">
@@ -16,7 +16,7 @@
                       ui-tinymce="tinymceHtmlWithPickRef" pick-Ref-Editor="model.pickRefEditor(ed)" tree-view="model.treeView"></textarea>
         </div>
     </div>
-    <ng-include src="'Views/Properties/repeatProperty.html?v=23435131442619815197'"></ng-include>
+    <ng-include src="'Views/Properties/repeatProperty.html?v=16359271001267416691'"></ng-include>
     <div class="form-group" ng-if="model.propertiesPanelModel.repeatModel.isRepeated">
         <div class="col-sm-offset-4 col-sm-8">
             <div class="checkbox">
@@ -27,6 +27,6 @@
         </div>
     </div>
     <div>
-        <ng-include src="'Views/Properties/styleProperty.html?v=23435131442619815197'"></ng-include>
+        <ng-include src="'Views/Properties/styleProperty.html?v=16359271001267416691'"></ng-include>
     </div>
 </form>

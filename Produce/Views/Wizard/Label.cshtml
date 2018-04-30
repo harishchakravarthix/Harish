@@ -1,6 +1,7 @@
-﻿@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.LabelQuestion>>
-@{
+﻿@using Intelledox.Produce
+@model Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.LabelQuestion>
+@{ 
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
+    var value = Model.Question.Value;
 }
-<div id="@IdHelper.IdFor(Model.Question)" class="question-label">@Html.Raw(Model.HtmlValue)</div>
+<div id="@Html.IdFor(Model.Question)" class="question-label">@Html.Raw(HtmlParsing.Sanitize(value != null ? value.ToString() : ""))</div>

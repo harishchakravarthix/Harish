@@ -12,15 +12,15 @@
         <div id="tblLogin">
             <br /><br />
             <div id="tblEulaAcceptance">
-                <h3 class="login-title">@Intelledox.Produce.Resources.Strings.EndUserLicenseAgreement</h3>
+                <h3 class="login-title">@Resources.Strings.EndUserLicenseAgreement</h3>
                 <div class="form-group" style="overflow-y:scroll; height: 500px; border: 1px solid; padding: 2px">
                     <span id="lblEula">@Html.Raw(ViewBag.EulaText)</span>
                 </div>
                 <div class="pull-right">
-                    <span class="checkbox"><input id="chkAcceptEula" type="checkbox" name="chkAcceptEula" onclick="chkAcceptEula_OnClick();" /><label for="chkAcceptEula">@Intelledox.Produce.Resources.Strings.UnderstandAndAcceptEula</label></span>
+                    <span class="checkbox"><input id="chkAcceptEula" type="checkbox" name="chkAcceptEula" onclick="chkAcceptEula_OnClick();" /><label for="chkAcceptEula">@Resources.Strings.UnderstandAndAcceptEula</label></span>
                 </div>
                 <div class="pull-right">
-                    <input type="submit" name="btnAcceptEula" value="@Intelledox.Produce.Resources.Strings.Accept" id="btnAcceptEula" disabled="disabled" class="btn btn-primary btn-submit" />
+                    <input type="submit" name="btnAcceptEula" value="@Resources.Strings.Accept" id="btnAcceptEula" disabled="disabled" class="btn btn-primary" />
                 </div>
             </div>
         </div>

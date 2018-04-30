@@ -220,24 +220,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Intelledox.Extension.Datasource.DatasourceConnector.AllowConnectionAttributes">
-            <summary>
-            Controls whether attributes can be configured the data source
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Intelledox.Extension.Datasource.DatasourceConnector.AllowSchema">
-            <summary>
-            Controls whether a schema can be provided for the data source
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Intelledox.Extension.Datasource.DatasourceConnector.AllowDefaultData">
-            <summary>
-            Controls whether default data can be provided for the data source
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Intelledox.Extension.Datasource.ExtensionIdentity">
             <summary>
             Unique identity for a data source.

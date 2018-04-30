@@ -1,10 +1,10 @@
-﻿@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.ButtonQuestionViewModel>
+﻿@using Intelledox.Produce
+@model Intelledox.ViewModel.Core.ButtonQuestionViewModel
 
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
 
-    var qid = IdHelper.IdFor(Model.Question);
+    var qid = Html.IdFor(Model.Question);
     var labelId = "label" + qid;
     var isSelected = Model.IsSelected;
     var isDisabled = !Model.Question.IsEditable;
@@ -29,7 +29,7 @@
 @if (Model.ButtonQuestionModel.ButtonType == Intelledox.Model.ButtonType.Toggle)
 {
     <div class="btn-group" data-toggle="buttons">
-        <label id="@labelId" name="@labelId" class="btn tile @divClass @labelClass" onmouseover="@hoverEvent" onmouseout="@hoverEvent" onclick="@clickEvent">
+        <label id="@labelId" name="@labelId" class="btn btn-primary tile @divClass @labelClass" onmouseover="@hoverEvent" onmouseout="@hoverEvent" onclick="@clickEvent">
             <input type="checkbox" id="@qid" name="@qid" autocomplete="off" disabled="@isDisabled" value="True" checked="@isSelected" aria-describedby="@(qid)Text" @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onchange=\"wiz.reload('" + qid + "');\"" : "") @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="buttonToggle"</text> }/>
             @if (Model.ButtonQuestionModel.Size != Intelledox.Model.ButtonSize.Small)
             {
@@ -52,28 +52,28 @@ else
     {
         if (Model.ButtonQuestionModel.NewTab)
         {
-            clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'buttonGoToUrl'" + ");" : "") + "wiz.openLink('" + HttpUtility.JavaScriptStringEncode(Model.ButtonQuestionModel.LaunchUrl) + "');return false;";
+            clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ", 'buttonGoToUrl'" + ");" : "") + "window.open(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.ButtonQuestionModel.LaunchUrl) + ");return false;";
         }
         else
         {
-            clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'buttonGoToUrl'" + ");" : "") + "wiz.goToLink('" + HttpUtility.JavaScriptStringEncode(Model.ButtonQuestionModel.LaunchUrl) + "');return false;";
+            clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ", 'buttonGoToUrl'" + ");" : "") + "window.location.href = " + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.ButtonQuestionModel.LaunchUrl) + ";return false;";
         }
     }
     else if (Model.ButtonQuestionModel.ButtonType == Intelledox.Model.ButtonType.GoToPage)
     {
-        clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'buttonGoToPage'" + ");" : "") + "wiz.goToPage('" + Model.ButtonQuestionModel.GoToPageGuid.ToString() + "');return false;";
+        clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ", 'buttonGoToPage'" + ");" : "") + "wiz.goToPage('" + Model.ButtonQuestionModel.GoToPageGuid.ToString() + "');return false;";
     }
     else if (Model.ButtonQuestionModel.ButtonType == Intelledox.Model.ButtonType.GoToProject)
     {
-        clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'buttonGoToProject'" + ");" : "") +
-                                          "wiz.goToProject('" + HttpUtility.JavaScriptStringEncode(Url.Content("~/")) + "', '" +
-                                          HttpUtility.JavaScriptStringEncode(Model.ButtonQuestionModel.GoToProjectGroupGuid.ToString()) + "', '" +
-                                          HttpUtility.JavaScriptStringEncode(Request.QueryString["portal"]) + "', '" +
-                                          HttpUtility.JavaScriptStringEncode(Request.QueryString["portalsave"]) + "', '" +
-                                          HttpUtility.JavaScriptStringEncode(Request.QueryString["wizardMode"]) + "');return false;";
+        clickEvent = (Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ", 'buttonGoToProject'" + ");" : "") +
+                                          "wiz.goToProject(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Url.Content("~/")) + ", " +
+                                          Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.ButtonQuestionModel.GoToProjectGroupGuid.ToString()) + ", " +
+                                          Microsoft.Security.Application.Encoder.JavaScriptEncode(Request.QueryString["portal"]) + ", " +
+                                          Microsoft.Security.Application.Encoder.JavaScriptEncode(Request.QueryString["portalsave"]) + ", " +
+                                          Microsoft.Security.Application.Encoder.JavaScriptEncode(Request.QueryString["wizardMode"]) + ");return false;";
     }
     <div class="btn-group">
-        <button id="@labelId" name="@labelId" class="btn tile @divClass @labelClass" onmouseover="@hoverEvent" onmouseout="@hoverEvent" onclick="@clickEvent">
+        <button id="@labelId" name="@labelId" class="btn btn-primary tile @divClass @labelClass" onmouseover="@hoverEvent" onmouseout="@hoverEvent" onclick="@clickEvent">
             @if (Model.ButtonQuestionModel.Size != Intelledox.Model.ButtonSize.Small)
             {
                 <span class="tile-content">@Model.Question.TitleFormatted</span>

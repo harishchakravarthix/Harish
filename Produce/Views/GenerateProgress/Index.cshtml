@@ -3,7 +3,7 @@
     Layout = null;
 }
 <!DOCTYPE HTML>
-<html dir="@(System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")" lang="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName )">
+<html dir="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")" lang="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName )">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +12,7 @@
     <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link href="~/Content/bootstrap.min.css?v=337" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-theme.min.css?v=337" rel="stylesheet" />
-    <link href="~/Content/Site.css?v=10.1.4" type="text/css" rel="stylesheet" />
+    <link href="~/Content/Site.css?v=10.0.36" type="text/css" rel="stylesheet" />
     @Html.Raw(ApplicationSettings.ThemeCss(Url.Content("~/")))
     <script src="~/scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
 </head>
@@ -20,9 +20,9 @@
     <label id="GeneratingHeader">@Html.Raw(ApplicationSettings.ThemeWizardHeader)</label>
     <input type="hidden" id="hidRequestId" value="@ViewBag.JobGuid" />
     <div id="fileCreationContainer">
-        <div id="wait-preview" title="@Intelledox.Produce.Resources.Strings.CreatingDocument" aria-label="@Intelledox.Produce.Resources.Strings.CreatingDocument"></div>
+        <div id="wait-preview" title="@Resources.Strings.CreatingDocument" aria-label="@Resources.Strings.CreatingDocument"></div>
         <label class="fileCreationTitle">@ViewBag.CurrentlyCreating</label>
-        <label class="fileCreationSubTitle">@Intelledox.Produce.Resources.Strings.PleaseWait</label><span id="divProgress"></span>
+        <label class="fileCreationSubTitle">@Resources.Strings.PleaseWait</label><span id="divProgress"></span>
     </div>
     <label id="GeneratingFooter">@Html.Raw(ApplicationSettings.ThemeWizardFooter)</label>
 

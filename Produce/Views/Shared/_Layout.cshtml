@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html dir="@(System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")" lang="@(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName )">
+<html dir="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr")" lang="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName )">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8,IE=edge" />
@@ -8,8 +8,8 @@
     <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link href="~/Content/bootstrap.min.css?v=337" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-theme.min.css?v=337" rel="stylesheet" />
-    <link href="~/Content/Site.css?v=10.1.4" type="text/css" rel="stylesheet" />
-    @if (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+    <link href="~/Content/Site.css?v=10.0.36" type="text/css" rel="stylesheet" />
+    @if (System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft)
     {
         <link href="~/Content/SiteRtl.css?v=9.7.3" type="text/css" rel="stylesheet" />
     }

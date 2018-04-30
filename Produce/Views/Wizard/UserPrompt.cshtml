@@ -1,10 +1,9 @@
 ﻿@using Intelledox.Model
 @using Intelledox.Produce
-@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.UserPromptQuestionViewModel>
+@model Intelledox.Produce.UserPromptViewModel
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = @IdHelper.IdFor(Model.Question);
+    var qid = @Html.IdFor(Model.Question);
     var questionModel = Model.Question.UserPromptQuestionModel;
     var passwordClear = "";
     if (questionModel.ValidationType == ValidationType.Password)
@@ -14,7 +13,7 @@
 {
     if (Model.Value == null || String.IsNullOrEmpty(Model.Value.ToString()))
     {
-        <div id="@qid" class="question-label notAnswered">@Intelledox.Produce.Resources.Strings.NotAnswered</div>
+        <div id="@qid" class="question-label notAnswered">@Resources.Strings.NotAnswered</div>
     }
     else
     {
@@ -33,7 +32,6 @@ else
                   @Html.Raw(questionModel.TextBoxWidth > 0 ? "style=\"width:" + questionModel.TextBoxWidth.ToString() + "px\"" : "")
                   rows="@questionModel.TextRows.ToString()"
                   cols="20"
-                  @Html.Raw(Model.Question.IsMandatory ? "required" : "") 
                   @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onchange=\"$('#" + qid + "_change').val('1');\" onblur=\"if ($('#" + qid + "_change').val() == '1') {wiz.delayPostback();}\"" : "")
                   @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "") @Html.Raw(Model.Question.IsMandatory ? "required" : "")
                   @if (Model.LogInteractions) { <text>data-analyticsid="@Model.AnalyticsID"</text> }>@Model.Value</textarea>
@@ -78,8 +76,8 @@ else
 
             case ValidationType.Currency:
                 inputType = "text";
-                additionalAttributes = "onfocus=\"wiz.removeFormat(this, '" + HttpUtility.JavaScriptStringEncode(questionModel.CurrencySymbol) + "', '" + System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator + "')\"";
-                onBlurAction = "wiz.applyFormat('" + Url.Content("~/") + "', this, '" + HttpUtility.JavaScriptStringEncode(questionModel.CurrencySymbol) + "', '" +
+                additionalAttributes = "onfocus=\"wiz.removeFormat(this, " + Microsoft.Security.Application.Encoder.JavaScriptEncode(questionModel.CurrencySymbol) + ", '" + System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator + "')\"";
+                onBlurAction = "wiz.applyFormat('" + Url.Content("~/") + "', this, " + Microsoft.Security.Application.Encoder.JavaScriptEncode(questionModel.CurrencySymbol) + ", '" +
                     System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator + "', " +
                     questionModel.CurrencyPositivePattern + ", " +
                     questionModel.CurrencyNegativePattern + ", " +
@@ -91,7 +89,6 @@ else
                 additionalAttributes = "spellcheck=\"true\"";
                 break;
         }
-
         <input type="@inputType"
                id="@qid"
                name="@qid"
@@ -103,7 +100,7 @@ else
                @Html.Raw(Model.MaxLength > 0 ? "maxlength=\"" + Model.MaxLength + "\"" : "")
                @Html.Raw(string.IsNullOrEmpty(onBlurAction) ? "" : "onblur=\"" + onBlurAction + "\" autocomplete=\"off\"")
                @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "")
-               @Html.Raw(Model.Question.IsMandatory ? "required" : "")
+               @Html.Raw(Model.Question.IsMandatory ? "required" : "") 
                @if (Model.LogInteractions) { <text>data-analyticsid="@Model.AnalyticsID"</text> } />
         if (Model.Question.IsParentQuestion || questionModel.ValidationType == ValidationType.Password || questionModel.ValidationType == ValidationType.Currency)
         {

@@ -1,5 +1,5 @@
 ﻿@using Intelledox.Produce
-@inherits System.Web.Mvc.WebViewPage<Intelledox.QAWizard.TabPage>
+@model Intelledox.QAWizard.TabPage
 <div class="panel panel-default @(Model.TabPageModel.CssStyle)" id="LTP@(@Model.TabPageGuid.ToString())">
     <div class="panel-body">
         @foreach (Intelledox.QAWizard.ILayoutNode itemNode in Model.Children)

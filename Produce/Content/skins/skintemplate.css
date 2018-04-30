@@ -11,10 +11,9 @@ h2.titleProgress, .titleNewForm, .page-header, #SearchUpdate > h2 {
 A, A:link, A:visited {
     color: [TextLinkColor];
 }
-
-    a:focus, a:hover, a:active {
-        color: [PrimaryColor];
-    }
+a:focus, a:hover, a:active {
+    color: [PrimaryColor];
+}
 
 #listProgress thead tr th a {
     color: [PrimaryColor] !important;
@@ -53,11 +52,9 @@ header {
     .navbar-text:before {
         color: [HeaderFontColor] !important;
     }
-
     .navbar-text.form-title {
         background: [HeaderBackgroundColor] !important;
     }
-
 .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-nav > li > a:active, .navbar-inverse .navbar-nav > .active > a:active,
 .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > .active > a:focus {
@@ -80,14 +77,10 @@ header {
         [LogoPlacement];
     }
 
-.table th, .table .sub-head, #grdTemplates .sub-head{
+.table th, .table .sub-head, #grdTemplates .sub-head {
     background-color: [Whisper] !important;
     color: [PrimaryColor];
 }
-
-    .table th > a, .table .sub-head > a, #grdTemplates .sub-head > a {
-        color: [PrimaryColor];
-    }
 
 .pagination > .active > a, .pagination > .active > span {
     color: [PrimaryContrast] !important;
@@ -99,12 +92,12 @@ header {
     color: [PrimaryColor];
 }
 
-    .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span:focus, .pagination > .active > span:hover,
-    .pagination > li:first-child > a:hover, .pagination > li > a:hover {
-        color: [SecondaryContrast] !important;
-        background-color: [SecondaryColor];
-        border-color: [SecondaryColor];
-    }
+.pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span:focus, .pagination > .active > span:hover,
+.pagination > li:first-child > a:hover, .pagination > li > a:hover {
+    color: [SecondaryContrast] !important;
+    background-color: [SecondaryColor];
+    border-color: [SecondaryColor];
+}
 
 #listProgress {
     border-color: [HeaderBackgroundColor];
@@ -116,16 +109,7 @@ header {
     }
 
 .form-control:hover {
-    border-color: [PrimaryColor] !important;
-}
-.form-control:disabled {
-    background-color: [RequiredFieldDisabled] !important;
-}
-
-.form-control:required, .form-control:required:focus, input:required, input:required:focus,
-.multiDataListBoxRequired, .multiDataListBoxRequired:focus, .required {
-    border-color: [RequiredFieldBackground];
-    background-color: [RequiredFieldFill];
+    border-color: [PrimaryColor];
 }
 
 #SearchWideScreen #SearchTerm {
@@ -195,12 +179,8 @@ h2.page-title, h4 {
 }
 
 #Sections {
-    background-color: [SectionsContrast];
+    background: [WhiteSmoke];
 }
-
-    #Sections:hover {
-        background-color: [SectionsHover];
-    }
 
 .cell-title {
     background-color: [PrimaryColor];
@@ -209,6 +189,39 @@ h2.page-title, h4 {
 
 .inkWrapper CANVAS:hover {
     border-color: [PrimaryColor];
+}
+
+.btn-primary {
+    background-image: -webkit-linear-gradient(top,[PrimaryColorLight] 0,[PrimaryColor] 100%);
+    background-image: -o-linear-gradient(top,[PrimaryColorLight] 0,[PrimaryColor] 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from([PrimaryColorLight] ),to([PrimaryColor] ));
+    background-image: linear-gradient(to bottom,[PrimaryColorLight] 0,[PrimaryColor] 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='[PrimaryColorLightAlpha]', endColorstr='[PrimaryColorAlpha]', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    background-color: [PrimaryColor];
+    border-color: [PrimaryColorDark];
+    text-shadow: 0 1px 0 [PrimaryShadow];
+    color: [SecondaryColor];
+}
+
+    .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+        color: [PrimaryContrast];
+        background: [PrimaryColor];
+        border-color: [PrimaryColorDark];
+        text-shadow: 0 1px 0 [PrimaryShadow];
+    }
+
+.btn-group .btn-primary.active, .btn-group .btn-primary:hover {
+    color: [SecondaryContrast];
+    background: [SecondaryColor];
+    border-color: [DarkGray];
+}
+
+.btn-group .btn-primary.disabled:hover {
+    background: [SecondaryContrast];
+    background: [SecondaryColor];
+    border-color: [DarkGray];
 }
 
 #pagesList .g-complete > a {
@@ -223,35 +236,25 @@ h2.page-title, h4 {
     background-color: [SecondaryColor] !important;
 }
 
-    #pagesList .active > A, #pagesList .active.g-complete > A {
-        color: [PrimaryColor] !important;
-    }
+#pagesList .active > A, #pagesList .active.g-complete > A {
+    color: [PrimaryColor] !important;
+    /*background-color: [SecondaryColor];*/
+}
 
-    #pagesList .active:hover > A, #pagesList .active.g-complete:hover > A {
-        color: [SecondaryColor] !important;
-    }
+#pagesList .active:hover > A, #pagesList .active.g-complete:hover > A {
+    color: [SecondaryColor] !important;
+    /*background-color: [PrimaryColor];*/
+}
 
 #pagesList .g-complete:hover, #pagesList .g-complete:focus, #pagesList .ui-sortable .g-complete:hover {
-    background-color: [PrimaryColor] !important;
+    background-color: [PrimaryColor];
 }
 
-#pagesList LI > A {
-    text-shadow: 0 1px 0 [PrimaryShadow];
+#pagesList LI:hover, #pagesList LI:focus, #pagesList .ui-sortable LI:hover,
+#pagesList LI:hover > A, #pagesList LI:focus > A, #pagesList .ui-sortable LI:hover > A {
+    /*background-color: [PrimaryColor];*/
+    color: [SecondaryColor] !important;
 }
-
-#pagesList .g-error > A {
-    text-shadow: 0 1px 0 [DarkGray];
-}
-
-#pagesList LI:hover, #pagesList .ui-sortable LI:hover {
-    background-color: [PrimaryColorLight] !important;
-}
-
-    #pagesList LI:hover, #pagesList LI:focus, #pagesList .ui-sortable LI:hover,
-    #pagesList LI:hover > A, #pagesList LI:focus > A, #pagesList .ui-sortable LI:hover > A {
-        color: [SecondaryColor] !important;
-        text-shadow: 0 1px 0 [SecondaryShadow];
-    }
 
 #pagesList .active > a, #pagesList .active:hover > a, #pagesList .active:focus > a {
     border-left-color: [SecondaryColor];
@@ -279,7 +282,6 @@ h2.page-title, h4 {
 
     .accordion A, .accordion A:link, .accordion A:visited {
         color: [PrimaryColor] !important;
-        text-shadow: 0 1px 0 [PrimaryShadow]
     }
 
 .lsrepeat {
@@ -303,9 +305,6 @@ h2.page-title, h4 {
     color: [PrimaryColor] !important;
 }
 
-    .nav > li > a:focus, .nav > li > a:hover {
-        background-color: [Gainsboro];
-    }
 
 .nav-tabs > li.active > a {
     color: [PrimaryColor];
@@ -355,49 +354,8 @@ h2.page-title, h4 {
 }
 
     .ExpandButton:hover {
-        background: transparent url('../Images/[ExpandIcon]') no-repeat 0 0;
+        background: transparent url('../Images/[ExpandIcon]') no-repeat 0 -40px;
     }
-
-.ContractButton {
-    background: transparent url('../Images/[ContractIcon]') no-repeat 0 0;
-}
-
-    .ContractButton:hover {
-        background: transparent url('../Images/[ContractIcon]') no-repeat 0 0;
-    }
-
-.btn-primary, .btn-primary2 {
-    color: [SecondaryColor];
-    background-color: [PrimaryColor];
-    background-image: -webkit-linear-gradient(top ,[PrimaryColorLight] 0%, [PrimaryColor] 100%);
-    background-image: -o-linear-gradient(top, [PrimaryColorLight] 0%, [PrimaryColor] 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, from([PrimaryColorLight]), to([PrimaryColor]));
-    background-image: linear-gradient(to bottom, [PrimaryColorLight] 0%, [PrimaryColor] 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='[PrimaryColorLightAlpha]', endColorstr='[PrimaryColorAlpha]', GradientType=0);
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-    background-repeat: repeat-x;
-    border-color: [PrimaryColorDark];
-    text-shadow: 0 1px 0 [PrimaryShadow];
-}
-
-    .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .btn-primary2:active, .btn-primary2:focus, .btn-primary2:hover {
-        color: [PrimaryContrast];
-        background: [PrimaryColor];
-        border-color: [PrimaryColorDark];
-        text-shadow: 0 1px 0 [PrimaryShadow];
-    }
-
-.btn-group .btn-primary.active, .btn-group .btn-primary:hover, .btn-group .btn-primary2.active, .btn-group .btn-primary2:hover {
-    color: [SecondaryContrast];
-    background: [SecondaryColor];
-    border-color: [DarkGray];
-}
-
-.btn-group .btn-primary.disabled:hover, .btn-group .btn-primary2.disabled:hover {
-    background: [SecondaryContrast];
-    background: [SecondaryColor];
-    border-color: [DarkGray];
-}
 
 @media (min-width: 768px) {
     .navbar-inverse .navbar-toggle .icon-bar {
@@ -411,12 +369,6 @@ h2.page-title, h4 {
         #pagesList .active:hover {
             background-color: [PrimaryColor];
         }
-}
-
-@media screen and (max-width: 480px) {
-    .navbar-toggle {
-        background-color: transparent;
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -437,40 +389,33 @@ h2.page-title, h4 {
         }
 
     .navbar-inverse .navbar-toggle {
-        border-color: transparent;
+        border-color: [HeaderLinkColor];
     }
 
-    .navbar-inverse:hover, .navbar-toggle:hover, .navbar-inverse:focus, .navbar-toggle:focus {
-        border-color: [HeaderBackgroundContrast];
-    }
+        .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+            background-color: [HeaderBackgroundColor];
+        }
 
-    .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-        background-color: transparent;
-    }
+        .navbar-inverse .navbar-toggle .icon-bar {
+            background-color: [HeaderLinkColor];
+        }
 
-    .navbar-inverse .navbar-toggle .icon-bar {
-        background-color: [HeaderBackgroundContrast];
-    }
-
-    .navbar-inverse .navbar-toggle:hover .icon-bar {
-        background-color: [HeaderBackgroundContrast];
-    }
+        .navbar-inverse .navbar-toggle:hover .icon-bar {
+            background-color: [HeaderHoverColor];
+        }
 
     #pagesList LI > A {
         color: [Gray] !important;
     }
 
-    #pagesList .g-error > a {
-        text-shadow: [DoveGray]
-    }
-
     #pagesList .g-complete:hover, #pagesList .g-complete:focus {
-        background-color: [PrimaryColor];
+       background-color: [PrimaryColor];
     }
 
-    #pagesList LI > A:hover, #pagesList LI > A:focus {
-        color: [SecondaryColor];
-    }
+        #pagesList LI > A:hover, #pagesList LI > A:focus {
+            color: [SecondaryColor];
+            /*background-color: [PrimaryColor];*/
+        }
 
     #pagesList LI:hover, #pagesList LI:focus, #pagesList .ui-sortable LI:hover {
         background-color: [PrimaryColor];

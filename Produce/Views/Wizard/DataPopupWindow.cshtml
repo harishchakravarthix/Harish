@@ -1,43 +1,47 @@
-﻿@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.DataFieldQuestionViewModel>
+﻿@using Intelledox.Produce
+@model Intelledox.QAWizard.DatasourceQuestion
 @{
-    Layout = "~/Views/Shared/_WizardSubpage.cshtml";
+    Layout = "~/Views/Shared/_LayoutSubpage.cshtml";
 }
 @section AddToHead
 {
-    <script src="~/scripts/wizard.js?v=10.1.2" type="text/javascript"></script>
+    <script src="~/scripts/jquery.history.js" type="text/javascript"></script>
+    <script src="~/scripts/wizard.js?v=10.0.56" type="text/javascript"></script>
     <script src="~/scripts/bootstrap.min.js?v=337"></script>
-    <script src="~/scripts/popupPost.js"></script>
     <!--[if lt IE 9]>
     <script src="@Url.Content("~/scripts/html5shiv.min.js")"></script>
     <script src="@Url.Content("~/scripts/respond.min.js")"></script>
     <![endif]-->
 }
-<form method="post" action="~/wizard/dataPopupWindow/@Model.Question.QuestionGuid.ToString()@(Model.QueryString)" onsubmit="return popupPost(this);">
+@using (Html.BeginForm())
+{
     <div>
         <script type="text/javascript">
             function closeMe() {
                 if (parent.wiz.isCapturingData) {
-                    parent.wiz.dataAnalyticsFocusAndBlur('@("Unique Field_" + Model.Question.DatasourceQuestionModel.ValueField + "_q" + @Model.Question.QuestionModel.ID)', "popupCancel");
+                    parent.wiz.dataAnalyticsFocusAndBlur('@("Unique Field_" + Model.DatasourceQuestionModel.ValueField + "_q" + @Model.QuestionModel.ID)', "popupCancel");
                 }
                 parent.wiz.closeLargeModal();
             }
             function clickOK() {
                 if (parent.wiz.isCapturingData) {
-                    parent.wiz.dataAnalyticsFocusAndBlur('@("Unique Field_" + Model.Question.DatasourceQuestionModel.ValueField + "_q" + @Model.Question.QuestionModel.ID)', "popupOk");
+                    parent.wiz.dataAnalyticsFocusAndBlur('@("Unique Field_" + Model.DatasourceQuestionModel.ValueField + "_q" + @Model.QuestionModel.ID)', "popupOk");
                 }
             }
         </script>
         <div id="contentinner" class="base1" style="margin-bottom:40px">
             <div class="body">
-                @Html.Partial("DataField", Model)
+                @{
+                    Html.RenderPartial("DataField", new Intelledox.Produce.DataFieldViewModel(Model));
+                }
             </div>
             <div class="popupFooter">
-                @if (Model.Question.IsEditable)
+                @if (Model.IsEditable)
                 {
-                    <input type="submit" id="btnOK" class="btn btn-primary btn-submit" value="@Intelledox.Produce.Resources.Strings.OK" onclick="clickOK()" />
+                    <input type="submit" id="btnOK" class="btn btn-primary" value="@Resources.Strings.OK" onclick="clickOK()" />
                 }
-                <input type="button" id="btnCancel" class="btn btn-default btn-close" onclick="closeMe()" value="@Intelledox.Produce.Resources.Strings.Cancel" />
+                <input type="button" id="btnCancel" class="btn btn-default" onclick="closeMe()" value="@Resources.Strings.Cancel" />
             </div>
         </div>
     </div>
-</form>
+                    }

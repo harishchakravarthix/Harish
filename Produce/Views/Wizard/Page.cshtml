@@ -1,5 +1,5 @@
 ﻿@using Intelledox.Produce
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.PageViewModel>
+@model Intelledox.Produce.PageViewModel
 <script type="text/javascript">
     wiz.overridePostback = false;
     wiz.clearWaitTimer();
@@ -44,7 +44,7 @@
                 <table align="right" role="presentation">
                     <tr>
                         <td>
-                            <a onclick="wiz.hideHelp(); return false;" href="#void" id="closeHelp">@Intelledox.Produce.Resources.Strings.CloseHelp</a>
+                            <a onclick="wiz.hideHelp(); return false;" href="#void" id="closeHelp">@Resources.Strings.CloseHelp</a>
                         </td>
                     </tr>
                 </table>
@@ -57,44 +57,66 @@
                                 <h2 class="page-title" id="page-title" tabindex="0">@Model.PageName</h2>
                             </td>
                             <td class="pageNav">
+                                @{
+                                    var queryString = string.Empty;
+
+                                    foreach (string key in Request.QueryString.Keys)
+                                    {
+                                        if (key != null)
+                                        {
+                                            // Passed in logguid may no longer be the one we currently are using
+                                            if (!key.Equals("logguid", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                queryString += queryString.Length > 0 ? "&" : "";
+                                                queryString += System.Web.HttpUtility.UrlEncode(key) + "=" + System.Web.HttpUtility.UrlEncode(Request.QueryString[key]);
+                                            }
+                                        }
+                                        else if (Request.QueryString[null] != Model.Wizard.ProjectLog.ToString())
+                                        {
+                                            queryString += queryString.Length > 0 ? "&" : "";
+                                            queryString += System.Web.HttpUtility.UrlEncode(Request.QueryString[null]);
+                                        }
+                                    }
+                                }
+
                                 @if (Model.ShowReassign)
                                 {
-                                    <a class="pageNavText" href="#" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('btnReassign', 'temporaryUserReassign');" : "")updateLocation(); wiz.openReassign('@Url.Content("~/")', '@Model.QueryString');" value="">@Model.Wizard.WizardModel.TemporaryUserSaveSettings.ReassignText</a>
+                                    <a class="pageNavText" href="#" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('btnReassign', 'temporaryUserReassign');" : "")updateLocation(); wiz.openReassign('@Url.Content("~/")', '@queryString');" value="">@Model.Wizard.WizardModel.TemporaryUserSaveSettings.ReassignText</a>
                                 }
-                                @if (Model.ShowResume && Model.IsGuest)
+                                @if (Model.ShowResume && Infiniti.MvcControllers.UserSettings.IsGuest)
                                 {
                                     <a class="pageNavText" href="~/Account/TempLogin" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('btnResume', 'resume');" : "")">@Model.Wizard.WizardModel.TemporaryUserSaveSettings.ResumeText</a>
                                 }
                                 @if (Model.ShowPreview)
                                 {
-                                    <input type="button" class="nav preview" title="@Intelledox.Produce.Resources.Strings.Preview" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('btnPreview', 'preview');" : "")wiz.openPreview('@Url.Content("~/")', '@Model.Wizard.ProjectLog.ToString()', '@Model.QueryString')" value="" />
+                                    <input type="button" class="nav preview" title="@Resources.Strings.Preview" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('btnPreview', 'preview');" : "")wiz.openPreview('@Url.Content("~/")', '@Model.Wizard.ProjectLog.ToString()', '@queryString')" value="" />
                                 }
                                 @if (Model.ShowSave)
                                 {
-                                    if (Model.Wizard.WizardModel.TemporaryUserSaveSettings.IsEnabled() && (Model.IsGuest || Model.IsTemporaryUser))
+                                    if (Model.Wizard.WizardModel.TemporaryUserSaveSettings.IsEnabled() && (Infiniti.MvcControllers.UserSettings.IsGuest || Infiniti.MvcControllers.UserSettings.IsTemporaryUser))
                                     {
-                                        <input type="submit" class="nav save" onclick="updateLocation();" data-command="@Url.Action("SaveAnswerFile", "wizard")?@Html.Raw(Model.Wizard.ProjectLog.ToString())&@Html.Raw(Model.QueryString)" accesskey="S" title="@Intelledox.Produce.Resources.Strings.Save" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnSave" data-analyticsevent="save"</text> }/>
+                                        <input type="submit" class="nav save" onclick="updateLocation();" data-command="@Url.Action("SaveAnswerFile", "wizard")?@Html.Raw(Model.Wizard.ProjectLog.ToString())&@Html.Raw(queryString)" accesskey="S" title="@Resources.Strings.Save" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnSave" data-analyticsevent="save"</text> }/>
                                     }
                                     else
                                     {
-                                        <input type="button" class="nav save" title="@Intelledox.Produce.Resources.Strings.Save" onclick="updateLocation(); wiz.openSave('@Url.Content("~/")', '@Model.Wizard.ProjectLog.ToString()')" accesskey="S" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnSave" data-analyticsevent="save"</text> }/>
+                                        <input type="button" class="nav save" title="@Resources.Strings.Save" onclick="updateLocation(); wiz.openSave('@Url.Content("~/")', '@Model.Wizard.ProjectLog.ToString()')" accesskey="S" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnSave" data-analyticsevent="save"</text> }/>
                                     }
                                 }
                                 @if (Model.ShowProviderSave)
                                 {
-                                    <input type="submit" class="nav save" data-command="@Url.Action("saveActionProvider", "wizard")?@Html.Raw(Model.QueryString)" accesskey="S" title="@Intelledox.Produce.Resources.Strings.Save" value="" />
+                                    <input type="submit" class="nav save" data-command="@Url.Action("saveActionProvider", "wizard")?@Html.Raw(queryString)" accesskey="S" title="@Resources.Strings.Save" value="" />
                                 }
                                 @if (Model.ShowBack)
                                 {
-                                    <input type="submit" class="nav previousPage" data-command="@Url.Action("previousPage", "wizard")?@Html.Raw(Model.QueryString)" accesskey="B" title="@Intelledox.Produce.Resources.Strings.BackArrow" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnPreviousTop" data-analyticsevent="back"</text> }/>
+                                    <input type="submit" class="nav previousPage" data-command="@Url.Action("previousPage", "wizard")?@Html.Raw(queryString)" accesskey="B" title="@Resources.Strings.BackArrow" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnPreviousTop" data-analyticsevent="back"</text> }/>
                                 }
                                 @if (Model.ShowNext)
                                 {
-                                    <input type="submit" class="nav nextPage" data-command="@Url.Action("nextPage", "wizard")?@Html.Raw(Model.QueryString)" id="btnNextTop" accesskey="N" title="@Intelledox.Produce.Resources.Strings.NextPage" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnNextTop" data-analyticsevent="next"</text> }/>
+                                    <input type="submit" class="nav nextPage" data-command="@Url.Action("nextPage", "wizard")?@Html.Raw(queryString)" id="btnNextTop" accesskey="N" title="@Resources.Strings.NextPage" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnNextTop" data-analyticsevent="next"</text> }/>
                                 }
                                 @if (Model.ShowGenerateTop)
                                 {
-                                    <input type="submit" class="btn btn-primary genbutton btn-submit" id="btnGenerateDocTop" onclick="updateLocation();" name="generateAction" accesskey="G" value="@Model.GenerateText" @if (Model.LogInteractions) { <text>data-analyticsid="btnSubmitTop" data-analyticsevent="submit"</text> }/>
+                                    <input type="submit" class="btn btn-primary genbutton" id="btnGenerateDocTop" onclick="updateLocation();" name="generateAction" accesskey="G" value="@Model.GenerateText" @if (Model.LogInteractions) { <text>data-analyticsid="btnSubmitTop"  data-analyticsevent="submit"</text> }/>
                                 }
                             </td>
                         </tr>
@@ -127,7 +149,7 @@
                     }
                     @if (Model.ShowGenerate)
                     {
-                        <input type="submit" id="btnGenerateDoc" name="generateAction" class="btn btn-primary genbutton" onclick="updateLocation();" accesskey="G" value="@Model.GenerateText" @if (Model.LogInteractions) { <text>data-analyticsid="btnSubmit" data-analyticsevent="submit"</text> }/>
+                        <input type="submit" id="btnGenerateDoc" name="generateAction" class="btn btn-primary genbutton" onclick="updateLocation();" accesskey="G" value="@Model.GenerateText" @if (Model.LogInteractions) { <text>data-analyticsid="btnSubmit"  data-analyticsevent="submit"</text> }/>
                     }
                     <div class="fr">
                         @if (Model.IsRepeated && Model.CanModifyRepeat)
@@ -135,20 +157,20 @@
                             @Html.DisplayValidation(Model.Page.LastValidationMessage, "P" + Model.Page.PageGuid.ToString())
                             if (!Model.IsMaximumRepeatsReached)
                             {
-                                <input type="submit" class="@(Model.IsNamedRepeat ? "repeatbtn btn" : "addPage")" id="btnAddPage" data-command="@Url.Action("addPage", "wizard")?@Html.Raw(Model.QueryString)" accesskey="A" title="@(Model.IsNamedRepeat ? Model.RepeatAdd : Model.IsRepeatAdd ? Intelledox.Produce.Resources.Strings.AddToolTip : Intelledox.Produce.Resources.Strings.InsertToolTip)" data-pushstate="true" value="@(Model.IsNamedRepeat ? Model.RepeatAdd : "")" @if (Model.LogInteractions) { <text> data-analyticsid="btnPageAdd" data-analyticsevent="pageAdd" </text>  } />
+                                <input type="submit" class="addPage" id="btnAddPage" data-command="@Url.Action("addPage", "wizard")?@Html.Raw(queryString)" accesskey="A" title="@(Model.IsNamedRepeat ? Model.RepeatAdd : Model.IsRepeatAdd ? Resources.Strings.AddToolTip : Resources.Strings.InsertToolTip)" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnPageAdd" data-analyticsevent="pageAdd"</text> }/>
                             }
                             if (Model.CanDeleteRepeatedInstance)
                             {
-                                <input type="submit" class="@(Model.IsNamedRepeat ? "repeatbtn btn" : "deletePage")" id="btnDeletePage" data-command="@Url.Action("deletePage", "wizard")?@Html.Raw(Model.QueryString)" accesskey="D" title="@(Model.IsNamedRepeat ? Model.RepeatRemove : Intelledox.Produce.Resources.Strings.DeleteToolTip)" data-pushstate="true" value="@(Model.IsNamedRepeat ? Model.RepeatRemove : "")" @if (Model.LogInteractions) { <text> data-analyticsid="btnPageDelete" data-analyticsevent="pageDelete" </text>  } />
+                                <input type="submit" class="deletePage" id="btnDeletePage" data-command="@Url.Action("deletepage", "wizard")?@Html.Raw(queryString)" accesskey="D" title="@(Model.IsNamedRepeat ? Model.RepeatRemove : Resources.Strings.DeleteToolTip)" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnPageDelete" data-analyticsevent="pageDelete"</text> }/>
                             }
                             if (Model.ShowFillDownButton)
                             {
-                                <input type="submit" class="@(Model.IsNamedRepeat ? "repeatbtn btn" : "fillDown")" id="btnPageFillDown" data-command="@Url.Action("fillDownPage", "wizard")?@Html.Raw(Model.QueryString)" accesskey="F" title="@(Model.IsNamedRepeat ? Model.RepeatFillDown : Intelledox.Produce.Resources.Strings.FillDownPage)" data-pushstate="true" value="@(Model.IsNamedRepeat ? Model.RepeatFillDown : "")" @if (Model.LogInteractions) { <text> data-analyticsid="btnPageFillDown" data-analyticsevent="pageDuplicate" </text>  } />
+                                <input type="submit" class="fillDown" id="btnPageFillDown" data-command="@Url.Action("fillDownPage", "wizard")?@Html.Raw(queryString)" accesskey="F" title="@(Model.IsNamedRepeat ? Model.RepeatFillDown : Resources.Strings.FillDownPage)" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnPageFillDown" data-analyticsevent="pageDuplicate"</text> }/>
                             }
                         }
                         @if (Model.ShowNext)
                         {
-                            <input type="submit" class="nav nextPage" id="btnNextBottom" data-command="@Url.Action("nextPage", "wizard")?@Html.Raw(Model.QueryString)" title="@Intelledox.Produce.Resources.Strings.NextPage" data-pushstate="true" value="" @if (Model.LogInteractions) { <text> data-analyticsid="btnNextBottom" data-analyticsevent="next" </text>  } />
+                            <input type="submit" class="nav nextPage" id="btnNextBottom" data-command="@Url.Action("nextPage", "wizard")?@Html.Raw(queryString)" title="@Resources.Strings.NextPage" data-pushstate="true" value="" @if (Model.LogInteractions) { <text>data-analyticsid="btnNextBottom" data-analyticsevent="next"</text> }/>
                         }
                     </div>
                 </div>
@@ -172,29 +194,29 @@
     @if (Model.HasReassigned)
     {
     <text>
-        wiz.clearDirtyState();
-        setTimeout(function() { alert('@Html.Raw(HttpUtility.JavaScriptStringEncode(@Intelledox.Produce.Resources.Strings.TaskReassigned))'); }, 0);
+        wiz.formIsDirty = false;
+        setTimeout(function() { alert('@Html.Raw(HttpUtility.JavaScriptStringEncode(@Resources.Strings.TaskReassigned))'); }, 0);
         window.location = '@Infiniti.MvcControllers.ApplicationSettings.ProduceLogOffURL(true)';
     </text>
     }
     @if (Model.ShowSavedMessage)
     {
     <text>
-        wiz.clearDirtyState();
+        wiz.formIsDirty = false;
         setTimeout(function() {
             toastr.options = { "timeOut": "3000", "extendedTimeOut": "1000" };
-            toastr.success("@Html.Raw(HttpUtility.JavaScriptStringEncode(Intelledox.Produce.Resources.Strings.ProgressSaved))");
+            toastr.success("@Html.Raw(HttpUtility.JavaScriptStringEncode(Resources.Strings.ProgressSaved))");
         }, 0);
     </text>
     }
     @if (Model.ShowTaskCompletedMessage)
     {
-        <text>setTimeout(function() { alert('@Html.Raw(HttpUtility.JavaScriptStringEncode(Intelledox.Produce.Resources.Strings.WorkflowTaskAlreadyDone))'); }, 0);</text>
+        <text>setTimeout(function() { alert('@Html.Raw(HttpUtility.JavaScriptStringEncode(Resources.Strings.WorkflowTaskAlreadyDone))'); }, 0);</text>
     }
     @if (Model.ShowTempUserSavedMessage)
     {
         <text>
-            wiz.clearDirtyState();
+            wiz.formIsDirty = false;
             setTimeout(function() { wiz.openTempUserSave('@Url.Content("~/")', '@Model.Wizard.ProjectLog.ToString()'); }, 0);</text>
     }
     @if (Model.ScrollToTop)
@@ -213,18 +235,7 @@
         setTimeout(function() { $(window).scrollTop(0); },1);
     }, 100);
     </text>
-}
-@if (Model.ValidationSetFocus)
-{
-    <text>
-    var firstFocus = $('.wrn[data-focus]:first').data('focus');
-
-    if (firstFocus != '')
-    {
-        wiz.lastFocusedControlId = firstFocus;
     }
-    </text>
-}
 </script>
 <!--[if lte IE 9]>
 <script type="text/javascript">

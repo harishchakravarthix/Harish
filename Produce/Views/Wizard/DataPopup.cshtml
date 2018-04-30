@@ -1,24 +1,23 @@
 ﻿@using Intelledox.Produce
-@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.DataPopupQuestionViewModel>
+@model Intelledox.Produce.DataPopupViewModel
 @{ 
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = IdHelper.IdFor(Model.Question);
+    var qid = Html.IdFor(Model.Question);
 }
 @if (Model.ShowUpload)
 {
     if (Model.Question.IsEditable)
     {
-        <a href="#void" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'dataUpload'" + ");" : "")wiz.openUploadPage('@Url.Content("~/")', '@Model.Question.WizardFragment.InstanceId.ToString()', '@Model.Question.QuestionGuid.ToString()', 'data', '@Model.RepeatPath', '@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()', null);return false;">@Intelledox.Produce.Resources.Strings.SelectDataFile</a>
+        <a href="#void" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur(" + @Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ", 'dataUpload'" + ");" : "")wiz.openUploadPage('@Url.Content("~/")', '@Model.Question.WizardFragment.InstanceId.ToString()', '@Model.Question.QuestionGuid.ToString()', 'data', '@Model.RepeatPath', '@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()', null);return false;">@Resources.Strings.SelectDataFile</a>
     }
     else
     {
-        <div>@Intelledox.Produce.Resources.Strings.NoDataFileSelected</div>
+        <div>@Resources.Strings.NoDataFileSelected</div>
     }
 }
 @if (Model.ShowClear && Model.Question.IsEditable)
 {
-<a href="#void" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "', 'dataClear'" + ");" : "")wiz.clearContent('@Model.Question.WizardFragment.InstanceId.ToString()', '@Model.Question.QuestionGuid.ToString()', '@Model.RepeatPath');return false;">@Intelledox.Produce.Resources.Strings.ClearFile</a><br />
+<a href="#void" onclick="@Html.Raw(Model.LogInteractions ? "wiz.dataAnalyticsFocusAndBlur(" + @Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ", 'dataClear'" + ");" : "")wiz.clearContent('@Model.Question.WizardFragment.InstanceId.ToString()', '@Model.Question.QuestionGuid.ToString()', '@Model.RepeatPath');return false;">@Resources.Strings.ClearFile</a><br />
 }
 @if (Model.ShowUpload)
 { 
@@ -26,19 +25,12 @@
 }
 else
 {
-    if (Model.Question.WizardFragment.WizardSession.TroubleshootingType != Intelledox.Model.TroubleshootingType.NoTroubleshooting)
-    {
-        foreach (KeyValuePair<double, string> query in Model.Question.QueryData)
-        {
-            <div class="question-label datasource-debug">@(Html.Raw(String.Format(Intelledox.Produce.Resources.Strings.TimeToFetchData, query.Value, query.Key).Replace(Environment.NewLine, "<br>")))</div>
-        }
-    }
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-3">
         <div class="input-group">
-            <input type="text" id="@(qid)_txtSelectedData" value="@Model.DisplayText" class="form-control" disabled="disabled" @Html.Raw(Model.Question.IsMandatory ? "required" : "") style="min-width:200px" />
+            <input type="text" id="@(qid)_txtSelectedData" value="@Model.DisplayText" class="form-control" disabled="disabled" />
             <span class="input-group-btn">
-                <input type="button" id="@(qid)_btnPopup" value="..." class="btn btn-default btn-select @Html.Raw(Model.LogInteractions ? "analyticslog" : "")" title="@Intelledox.Produce.Resources.Strings.SelectData" @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "") @Html.Raw(Model.LogInteractions ? "data-analyticsid=\"" + System.Net.WebUtility.HtmlEncode(Model.AnalyticsID) + "\" data-analyticsevent=\"popupOpen\"" : "")/>
+                <input type="button" id="@(qid)_btnPopup" value="..." class="btn btn-default @Html.Raw(Model.LogInteractions ? "analyticslog" : "")" title="@Resources.Strings.SelectData" @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "") @Html.Raw(Model.LogInteractions ? "data-analyticsid=\"" + @Html.Encode(Model.AnalyticsID) + "\" data-analyticsevent=\"popupOpen\"" : "")/>
             </span>
         </div>
     </div>
@@ -46,7 +38,12 @@ else
 @Html.DisplayValidation(Model.Question.LastValidationMessage, qid + "_btnPopup")
 <script type="text/javascript">
     $("#@(qid)_btnPopup").click(function () {
-        wiz.dataPopup(this, '@Url.Content("~/")wizard/dataPopupWindow/@Model.Question.QuestionGuid.ToString()' +
+        var iframe = $('<iframe width="100%" height="450px" frameborder="0" />');
+        $('.modal-lg-insert').html('').append(iframe);
+        $('#popupLargeModal').modal({
+            keyboard: false
+        });
+        iframe.prop('src', '@Url.Content("~/")wizard/datapopupwindow/@Model.Question.QuestionGuid.ToString()' +
                 '?FragmentGuid=@Model.Question.WizardFragment.InstanceId.ToString()' +
                 '&RepeatPath=@(Model.RepeatPath)' +
                 '&Data=@(qid)_hidSelectedIndex' +
@@ -55,6 +52,8 @@ else
                 '&KeyFieldControl=@(qid)_hidKeyFields' +
                 '&KeyFieldValues=' + encodeURIComponent(document.getElementById('@(qid)_hidKeyFields').value) +
                 '&LogGuid=@Model.Question.WizardFragment.WizardSession.ProjectLog.ToString()');
+        $('#up').attr("aria-hidden", "true");
+        $('#popupLargeModal').modal('show');
     });
 </script>
 <input type="hidden" id="@(qid)_hidSelectedIndex_Original" name="@(qid)_hidSelectedIndex_Original" value="@Model.SelectedIndex" />

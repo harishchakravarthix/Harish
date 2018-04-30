@@ -1,16 +1,16 @@
-﻿@using Intelledox.Produce
-@using Intelledox.ViewModel.Core
-@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.NumericQuestionViewModel>
+﻿@using Intelledox.Model
+@using Intelledox.Produce
+@model Intelledox.ViewModel.Core.NumericQuestionViewModel
 @{ 
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = @IdHelper.IdFor(Model.Question);
+    var qid = @Html.IdFor(Model.Question);
     var questionModel = Model.Question.NumericQuestionModel;
 }
 @if (!Model.Question.IsEditable)
 { 
     if (Model.Value == null || String.IsNullOrEmpty(Model.Value.ToString()))
     {
-        <div id="@qid" class="question-label notAnswered">@Intelledox.Produce.Resources.Strings.NotAnswered</div>
+        <div id="@qid" class="question-label notAnswered">@Resources.Strings.NotAnswered</div>
     }
     else
     {

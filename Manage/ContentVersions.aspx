@@ -62,7 +62,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$Resources:Strings, VersionComment %>">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblComment" runat="server" Text='<%# GetComment(Eval("VersionComment"), Eval("ImportModifiedDateUtc")) %>' />
+                                    <asp:Label ID="lblComment" runat="server" Text='<%# Eval("VersionComment") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$Resources:Strings, Restore %>">

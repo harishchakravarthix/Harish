@@ -81,12 +81,6 @@
             document was created from.
             </summary>
         </member>
-        <member name="P:Intelledox.Model.Document.Downloadable">
-            <summary>
-            <c>true</c> if this document can be downloaded from either workflow step/transition page or finish page, 
-            otherwise <c>false</c>.
-            </summary>
-        </member>
         <member name="T:Intelledox.Model.DocumentCollection">
             <summary>
             List of documents
@@ -127,12 +121,6 @@
         <member name="P:Intelledox.Model.GeneratedFile.Attachment">
             <summary>
             Treat this document as a separate file and dont merge into parent documents
-            </summary>
-        </member>
-        <member name="P:Intelledox.Model.GeneratedFile.Downloadable">
-            <summary>
-            <c>true</c> if this document can be donwloaded from either workflow step/transition page or finish page, 
-            otherwise <c>false</c>.
             </summary>
         </member>
         <member name="T:Intelledox.Model.ComparisonType">
