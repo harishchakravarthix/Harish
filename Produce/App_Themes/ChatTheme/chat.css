@@ -1,0 +1,28 @@
+.chatLeft {
+    padding: 20px;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+    border-bottom-left-radius: 0px;
+    border-width: 0;
+    background: #ff0000;
+    color: white; 
+}
+.chatLeft .question-text-inline {
+    color: white;
+}
+
+.chatRight {
+    padding: 20px;
+    border-top-left-radius: 17px;
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 17px;
+    border-width: 0;
+    background: #1c75ce;
+    color: white;
+}
+
+    .chatRight .question-text-inline {
+        color: white;
+    }

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="Intelledox.Design.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+    </sectionGroup>
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="Intelledox.Design.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+    <section name="nlog" type="NLog.Config.ConfigSectionHandler, NLog" />
+  </configSections>
+  <nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <targets>
+      <target name="file" xsi:type="File" layout="${longdate}|${level:uppercase=true}|${logger}|${message}${onexception:inner=${newline}${exception:format=tostring}}" fileName="${tempdir}/designlogfile.txt" keepFileOpen="false" deleteOldFileOnStartup="true" />
+    </targets>
+
+    <rules>
+      <logger name="*" minlevel="Debug" writeTo="file" />
+    </rules>
+  </nlog>
+  <appSettings>
+    <add key="ServiceURL" value="http://localhost/ManageV10_0R2/" />
+  </appSettings>
+  <system.diagnostics>
+    <sources>
+      <!-- This section defines the logging configuration for My.Application.Log -->
+      <source name="DefaultSource" switchName="DefaultSwitch">
+        <listeners>
+          <add name="FileLog" />
+          <!-- Uncomment the below section to write to the Application Event Log -->
+          <!--<add name="EventLog"/>-->
+        </listeners>
+      </source>
+    </sources>
+    <switches>
+      <add name="DefaultSwitch" value="Information" />
+    </switches>
+    <sharedListeners>
+      <add name="FileLog" type="Microsoft.VisualBasic.Logging.FileLogTraceListener, Microsoft.VisualBasic, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" initializeData="FileLogWriter" />
+      <!-- Uncomment the below section and replace APPLICATION_NAME with the name of your application to write to the Application Event Log -->
+      <!--<add name="EventLog" type="System.Diagnostics.EventLogTraceListener" initializeData="APPLICATION_NAME"/> -->
+    </sharedListeners>
+  </system.diagnostics>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6" />
+  </startup>
+  <userSettings>
+    <Intelledox.Design.My.MySettings>
+      <setting name="recent1" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="recent2" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="recent3" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="recent4" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="recent5" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="recent6" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="recentFolder" serializeAs="String">
+        <value />
+      </setting>
+      <setting name="UpgradeSettings" serializeAs="String">
+        <value>True</value>
+      </setting>
+      <setting name="ShowAnswerFileSettingsPanel" serializeAs="String">
+        <value>False</value>
+      </setting>
+    </Intelledox.Design.My.MySettings>
+  </userSettings>
+  <applicationSettings>
+    <Intelledox.Design.My.MySettings>
+      <setting name="NewsChannelUrl" serializeAs="String">
+        <value>http://www.intelledox.com/feed/?id=ix</value>
+      </setting>
+    </Intelledox.Design.My.MySettings>
+  </applicationSettings>
+  <system.net>
+    <settings>
+      <servicePointManager expect100Continue="false" />
+    </settings>
+  </system.net>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-9.0.0.0" newVersion="9.0.0.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
