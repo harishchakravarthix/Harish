@@ -23,8 +23,8 @@
                     <td valign="top" width="230">
                         <asp:Repeater ID="rpFolders" runat="server" EnableViewState="false">
                             <ItemTemplate>
-                                <asp:HyperLink runat="server" ID="lnk" CssClass="SelectLink" NavigateUrl="Folders.aspx?ID=">
-                                    <asp:Image runat="server" ID="imgFld" ImageUrl="Images/folder.png" AlternateText=" " />
+                                <asp:HyperLink runat="server" ID="lnk" CssClass="SelectLink TreeViewImageSizer" NavigateUrl="Folders.aspx?ID=">
+                                    <asp:Image runat="server" ID="imgFld" ImageUrl="Images/IX_FolderIcon.svg" AlternateText=" " />
                                     <%# Microsoft.Security.Application.Encoder.HtmlEncode(Eval("Name"))%>
                                 </asp:HyperLink>
                             </ItemTemplate>
@@ -34,8 +34,8 @@
                     <td valign="top">
                         <asp:Repeater ID="rpTemplateGroups" runat="server" EnableViewState="false">
                             <ItemTemplate>
-                                <div>
-                                <img src="Images/project.png" alt="" />
+                                <div class="TreeViewImageSizer">
+                                <img src="Images/IX_ProjectIcon.svg" alt=""/>
                                 <a href="PublishProject.aspx?FolderID=<%=Microsoft.Security.Application.Encoder.HtmlAttributeEncode(Request.QueryString("ID"))%>&ID=<%#ContentId(Container.DataItem) %>&Type=<%#GetTypeId(Container.DataItem) %>">
                                     <%#ContentName(Container.DataItem)%>
                                 </a>

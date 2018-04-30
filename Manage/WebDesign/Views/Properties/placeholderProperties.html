@@ -29,10 +29,10 @@
             <div class="input-group">
                 <input id="gapPlaceholder" class="form-control input-sm" ng-model="model.propertiesPanelModel.gapPlaceholder" readonly />
                 <span class="input-group-btn">
-                    <button class="btn btn-default input-sm" type="button" ng-click="model.propertiesPanelModel.autoGapPlaceholder()">
+                    <button class="btn btn-default input-sm" type="button" ng-click="model.propertiesPanelModel.autoGapPlaceholder()" title="{{'btnGapPlaceholderToolTip'|translate}}">
                         <img src="Images/leftArrow.png" alt="" />
                     </button>
-                    <button class="btn btn-default input-sm" type="button" title="{{'btnGapPlaceholderToolTip'|translate}}" ng-click="model.propertiesPanelModel.selectGapPlaceholder()">...</button>
+                    <button class="btn btn-default input-sm" type="button" ng-click="model.propertiesPanelModel.selectGapPlaceholder()">...</button>
                 </span>
             </div>
         </div>

@@ -6,7 +6,7 @@
         <label for="columnTitle" class="col-sm-4 control-label">{{ ::'Title' | translate }}</label>
         <div class="col-sm-8">
             <textarea id="columnTitle" class="form-control input-sm f2-rename" ng-model="model.propertiesPanelModel.title" rows="3" spellcheck="true"
-                      ui-tinymce="tinymceHtml"></textarea>
+                      ui-tinymce="tinymceHtmlWithPickRef" pick-Ref-Editor="model.pickRefEditor(ed)" tree-view="model.treeView"></textarea>
         </div>
     </div>
     <div class="form-group">
@@ -37,6 +37,6 @@
         </div>
     </div>
     <div>
-        <ng-include src="'Views/Properties/styleProperty.html?v=16359271001267416691'"></ng-include>
+        <ng-include src="'Views/Properties/styleProperty.html?v=23435131442619815197'"></ng-include>
     </div>
 </form>

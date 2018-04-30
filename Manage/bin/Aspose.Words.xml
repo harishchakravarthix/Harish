@@ -4,6 +4,24 @@
     <name>Aspose.Words</name>
   </assembly>
   <members>
+    <member name="T:Aspose.Words.ComparisonTargetType">
+      <summary>
+            Allows to specify base document which will be used during comparison.  Default value is <see cref="F:Aspose.Words.ComparisonTargetType.Current" />.
+            </summary>
+      <remarks>
+            Relates to Microsoft Word "Show changes in" option in "Compare Documents" dialog box.
+            </remarks>
+    </member>
+    <member name="F:Aspose.Words.ComparisonTargetType.Current">
+      <summary>
+            This document is used as a base during comparison.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.ComparisonTargetType.New">
+      <summary>
+            Other document is used as a base during comparison.
+            </summary>
+    </member>
     <member name="T:Aspose.Words.SignOptions">
       <summary>
             Allows to specify options for document signing.
@@ -46,6 +64,21 @@
             to decrypt source document before it will be signed.
             This is not required for documents in binary DOC format.
             </remarks>
+    </member>
+    <member name="P:Aspose.Words.SignOptions.ProviderId">
+      <summary>
+            Specifies the class ID of the signature provider.
+            Default value is <see cref="F:System.Guid.Empty" />.
+            </summary>
+      <remarks>
+        <para>The cryptographic service provider (CSP) is an independent software module that actually performs
+            cryptography algorithms for authentication, encoding, and encryption. MS Office reserves the value
+            of {00000000-0000-0000-0000-000000000000} for its default signature provider.</para>
+        <para>The GUID of the additionally installed provider should be obtained from the documentation shipped with the provider.</para>
+        <para>In addition, all the installed cryptographic providers are enumerated in windows registry.
+            It can be found in the following path: HKLM\SOFTWARE\Microsoft\Cryptography\Defaults\Provider.
+            There is a key name "CP Service UUID" which corresponds to a GUID of signature provider.</para>
+      </remarks>
     </member>
     <member name="T:Aspose.Words.HtmlControlType">
       <summary>
@@ -90,6 +123,46 @@
             </summary>
       <remarks>The NumberFormat will be reset to general if format code is linked to source.</remarks>
     </member>
+    <member name="T:Aspose.Words.Drawing.OlePackage">
+      <summary>
+            Allows to access OLE Package properties.
+            </summary>
+      <remarks>
+            OLE package is a legacy and "undocumented" way to store embedded object if OLE handler is unknown.
+            Early Windows versions such as Windows 3.1, 95 and 98 had Packager.exe application which could be used to embed any type of data into document.
+            Now this application is excluded from Windows but MS Word and other applications still use it to embed data if OLE handler is missing or unknown.
+            </remarks>
+    </member>
+    <member name="P:Aspose.Words.Drawing.OlePackage.FileName">
+      <summary>
+            Gets or sets OLE Package file name.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Drawing.OlePackage.DisplayName">
+      <summary>
+            Gets or sets OLE Package display name.
+            </summary>
+    </member>
+    <member name="T:Aspose.Words.Fields.FieldIfComparisonResult">
+      <summary>
+            Specifies the result of the IF field condition evaluation.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.Fields.FieldIfComparisonResult.Error">
+      <summary>
+            There is an error in the condition.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.Fields.FieldIfComparisonResult.True">
+      <summary>
+            The condition is <c>true</c>.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.Fields.FieldIfComparisonResult.False">
+      <summary>
+            The condition is <c>false</c>.
+            </summary>
+    </member>
     <member name="T:Aspose.Words.Fields.ToaCategories">
       <summary>
             Represents a table of authorities categories.
@@ -106,6 +179,104 @@
     <member name="P:Aspose.Words.Fields.ToaCategories.Item(System.Int32)">
       <summary>
             Gets or sets the category heading by category number.
+            </summary>
+    </member>
+    <member name="T:Aspose.Words.EndnotePosition">
+      <summary>
+            Defines the endnote position.
+            </summary>
+      <remarks>
+        <seealso cref="T:Aspose.Words.EndnoteOptions" />
+      </remarks>
+    </member>
+    <member name="F:Aspose.Words.EndnotePosition.EndOfSection">
+      <summary>
+            Endnotes are output at the end of the section.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.EndnotePosition.EndOfDocument">
+      <summary>
+            Endnotes are output at the end of the document.
+            </summary>
+    </member>
+    <member name="T:Aspose.Words.EndnoteOptions">
+      <summary>
+            Represents the endnote numbering options for a document or section.
+            </summary>
+      <remarks>
+        <seealso cref="P:Aspose.Words.Document.EndnoteOptions" />
+        <seealso cref="P:Aspose.Words.PageSetup.EndnoteOptions" />
+      </remarks>
+    </member>
+    <member name="P:Aspose.Words.EndnoteOptions.Location">
+      <summary>
+            Specifies the endnotes position.
+            </summary>
+      <remarks>
+        <para>Not all values are applicable to endnotes.
+            To ascertain which values are applicable see <see cref="T:Aspose.Words.FootnoteLocation" />.</para>
+      </remarks>
+    </member>
+    <member name="P:Aspose.Words.EndnoteOptions.Position">
+      <summary>
+            Specifies the endnotes position.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.EndnoteOptions.NumberStyle">
+      <summary>
+            Specifies the number format for automatically numbered endnotes.
+            </summary>
+      <remarks>
+        <para>Not all number styles are applicable for this property. For the list of applicable
+            number styles see the Insert Footnote or Endnote dialog box in Microsoft Word. If you select
+            a number style that is not applicable, Microsoft Word will revert to a default value.</para>
+      </remarks>
+    </member>
+    <member name="P:Aspose.Words.EndnoteOptions.StartNumber">
+      <summary>
+            Specifies the starting number or character for the first automatically numbered endnotes.
+            </summary>
+      <remarks>
+        <para>This property has effect only when <see cref="P:Aspose.Words.EndnoteOptions.RestartRule" /> is set to
+            <see cref="F:Aspose.Words.FootnoteNumberingRule.Continuous" />.</para>
+      </remarks>
+    </member>
+    <member name="P:Aspose.Words.EndnoteOptions.RestartRule">
+      <summary>
+            Determines when automatic numbering restarts.
+            </summary>
+      <remarks>
+        <para>Not all values are applicable to endnotes.
+            To ascertain which values are applicable see <see cref="T:Aspose.Words.FootnoteNumberingRule" />.</para>
+      </remarks>
+    </member>
+    <member name="T:Aspose.Words.FootnoteLocation">
+      <summary>
+            Defines the footnote or endnote position.
+            </summary>
+      <remarks>
+        <seealso cref="T:Aspose.Words.FootnoteOptions" />
+        <seealso cref="T:Aspose.Words.EndnoteOptions" />
+      </remarks>
+    </member>
+    <member name="F:Aspose.Words.FootnoteLocation.BottomOfPage">
+      <summary>
+            Footnotes are output at the bottom of each page. Valid for footnotes only.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.FootnoteLocation.BeneathText">
+      <summary>
+            Footnotes are output beneath text on each page. Valid for footnotes only.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.FootnoteLocation.EndOfSection">
+      <summary>
+            Endnotes are output at the end of the section. Valid for endnotes only.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.FootnoteLocation.EndOfDocument">
+      <summary>
+            Endnotes are output at the end of the document. Valid for endnotes only.
             </summary>
     </member>
     <member name="T:Aspose.Words.Replacing.NamespaceDoc">
@@ -283,6 +454,416 @@ For example -1 means the last item, -2 means the second before last and so on.</
       </remarks>
       <param name="index">An index into the collection.</param>
     </member>
+    <member name="T:Aspose.Words.DocumentVisitor">
+      <summary>
+            Base class for custom document visitors.
+            </summary>
+      <remarks>
+        <p>With <b>DocumentVisitor</b> you can define and execute custom operations
+            that require enumeration over the document tree.</p>
+        <p>For example, Aspose.Words uses <b>DocumentVisitor</b> internally for saving <b>Document</b>
+            in various formats and for other operations like finding fields or bookmarks over
+            a fragment of a document.</p>
+        <p>To use <b>DocumentVisitor</b>:</p>
+        <list type="number">
+          <item>Create a class derived from <b>DocumentVisitor</b>.</item>
+          <item>Override and provide implementations for some or all of the VisitXXX methods
+            to perform some custom operations.</item>
+          <item>Call <see cref="M:Aspose.Words.Node.Accept(Aspose.Words.DocumentVisitor)">Node.Accept</see> on the <b>Node</b> that
+            you want to start the enumeration from.</item>
+        </list>
+        <p>
+          <b>DocumentVisitor</b> provides default implementations for all of the VisitXXX methods 
+            to make it easier to create new document visitors as only the methods required for the particular
+            visitor need to be overridden. It is not necessary to override all of the visitor methods.</p>
+        <p>For more information see the Visitor design pattern.</p>
+      </remarks>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitDocumentStart(Aspose.Words.Document)">
+      <summary>
+            Called when enumeration of the document has started.
+            </summary>
+      <param name="doc">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitDocumentEnd(Aspose.Words.Document)">
+      <summary>
+            Called when enumeration of the document has finished.
+            </summary>
+      <param name="doc">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitSectionStart(Aspose.Words.Section)">
+      <summary>
+            Called when enumeration of a section has started.
+            </summary>
+      <param name="section">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitSectionEnd(Aspose.Words.Section)">
+      <summary>
+            Called when enumeration of a section has ended.
+            </summary>
+      <param name="section">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitBodyStart(Aspose.Words.Body)">
+      <summary>
+            Called when enumeration of the main text story in a section has started.
+            </summary>
+      <param name="body">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitBodyEnd(Aspose.Words.Body)">
+      <summary>
+            Called when enumeration of the main text story in a section has ended.
+            </summary>
+      <param name="body">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitHeaderFooterStart(Aspose.Words.HeaderFooter)">
+      <summary>
+            Called when enumeration of a header or footer in a section has started.
+            </summary>
+      <param name="headerFooter">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitHeaderFooterEnd(Aspose.Words.HeaderFooter)">
+      <summary>
+            Called when enumeration of a header or footer in a section has ended.
+            </summary>
+      <param name="headerFooter">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitParagraphStart(Aspose.Words.Paragraph)">
+      <summary>
+            Called when enumeration of a paragraph has started.
+            </summary>
+      <param name="paragraph">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitParagraphEnd(Aspose.Words.Paragraph)">
+      <summary>
+            Called when enumeration of a paragraph has ended.
+            </summary>
+      <param name="paragraph">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitTableStart(Aspose.Words.Tables.Table)">
+      <summary>
+            Called when enumeration of a table has started.
+            </summary>
+      <param name="table">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitTableEnd(Aspose.Words.Tables.Table)">
+      <summary>
+            Called when enumeration of a table has ended.
+            </summary>
+      <param name="table">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitRowStart(Aspose.Words.Tables.Row)">
+      <summary>
+            Called when enumeration of a table row has started.
+            </summary>
+      <param name="row">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitRowEnd(Aspose.Words.Tables.Row)">
+      <summary>
+            Called when enumeration of a table row has ended.
+            </summary>
+      <param name="row">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitCellStart(Aspose.Words.Tables.Cell)">
+      <summary>
+            Called when enumeration of a table cell has started.
+            </summary>
+      <param name="cell">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitCellEnd(Aspose.Words.Tables.Cell)">
+      <summary>
+            Called when enumeration of a table cell has ended.
+            </summary>
+      <param name="cell">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitRun(Aspose.Words.Run)">
+      <summary>
+            Called when a run of text in the is encountered.
+            </summary>
+      <param name="run">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitFieldStart(Aspose.Words.Fields.FieldStart)">
+      <summary>
+            Called when a field starts in the document.
+            </summary>
+      <remarks>
+        <p>A field in a Word Word document consists of a field code and field value.</p>
+        <p>For example, a field that displays a page number can be represented as follows:</p>
+        <p>[FieldStart]PAGE[FieldSeparator]98[FieldEnd]</p>
+        <p>The field separator separates field code from field value in the document. Note that some 
+            fields have only field code and do not have field separator and field value.</p>
+        <p>Fields can be nested.</p>
+      </remarks>
+      <param name="fieldStart">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitFieldSeparator(Aspose.Words.Fields.FieldSeparator)">
+      <summary>
+            Called when a field separator is encountered in the document.
+            </summary>
+      <remarks>
+        <p>The field separator separates field code from field value in the document. Note that some 
+            fields have only field code and do not have field separator and field value.</p>
+        <p>For more info see <see cref="M:Aspose.Words.DocumentVisitor.VisitFieldStart(Aspose.Words.Fields.FieldStart)" /></p>
+      </remarks>
+      <param name="fieldSeparator">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitFieldEnd(Aspose.Words.Fields.FieldEnd)">
+      <summary>
+            Called when a field ends in the document.
+            </summary>
+      <remarks>
+        <p>For more info see <see cref="M:Aspose.Words.DocumentVisitor.VisitFieldStart(Aspose.Words.Fields.FieldStart)" /></p>
+      </remarks>
+      <param name="fieldEnd">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitFormField(Aspose.Words.Fields.FormField)">
+      <summary>
+            Called when a form field is encountered in the document.
+            </summary>
+      <param name="formField">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitBookmarkStart(Aspose.Words.BookmarkStart)">
+      <summary>
+            Called when a start of a bookmark is encountered in the document.
+            </summary>
+      <param name="bookmarkStart">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitBookmarkEnd(Aspose.Words.BookmarkEnd)">
+      <summary>
+            Called when an end of a bookmark is encountered in the document.
+            </summary>
+      <param name="bookmarkEnd">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitFootnoteStart(Aspose.Words.Footnote)">
+      <summary>
+            Called when enumeration of a footnote or endnote text has started.
+            </summary>
+      <param name="footnote">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitFootnoteEnd(Aspose.Words.Footnote)">
+      <summary>
+            Called when enumeration of a footnote or endnote text has ended.
+            </summary>
+      <param name="footnote">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentStart(Aspose.Words.Comment)">
+      <summary>
+            Called when enumeration of a comment text has started.
+            </summary>
+      <param name="comment">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentEnd(Aspose.Words.Comment)">
+      <summary>
+            Called when enumeration of a comment text has ended.
+            </summary>
+      <param name="comment">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitEditableRangeStart(Aspose.Words.EditableRangeStart)">
+      <summary>
+            Called when a start of an editable range is encountered in the document.
+            </summary>
+      <param name="editableRangeStart">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitEditableRangeEnd(Aspose.Words.EditableRangeEnd)">
+      <summary>
+            Called when an end of an editable range is encountered in the document.
+            </summary>
+      <param name="editableRangeEnd">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitShapeStart(Aspose.Words.Drawing.Shape)">
+      <summary>
+            Called when enumeration of a shape has started.
+            </summary>
+      <param name="shape">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitShapeEnd(Aspose.Words.Drawing.Shape)">
+      <summary>
+            Called when enumeration of a shape has ended.
+            </summary>
+      <param name="shape">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitGroupShapeStart(Aspose.Words.Drawing.GroupShape)">
+      <summary>
+            Called when enumeration of a group shape has started.
+            </summary>
+      <param name="groupShape">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitGroupShapeEnd(Aspose.Words.Drawing.GroupShape)">
+      <summary>
+            Called when enumeration of a group shape has ended.
+            </summary>
+      <param name="groupShape">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitOfficeMathStart(Aspose.Words.Math.OfficeMath)">
+      <summary>
+            Called when enumeration of a Office Math object has started.
+            </summary>
+      <param name="officeMath">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitOfficeMathEnd(Aspose.Words.Math.OfficeMath)">
+      <summary>
+            Called when enumeration of a Office Math object has ended.
+            </summary>
+      <param name="officeMath">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitSpecialChar(Aspose.Words.SpecialChar)">
+      <summary>
+            Called when a <see cref="T:Aspose.Words.SpecialChar" /> node is encountered in the document.
+            </summary>
+      <param name="specialChar">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+      <remarks>
+            This method is not be called for generic control characters (see <see cref="T:Aspose.Words.ControlChar" />) that can be present in the document.
+            </remarks>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitAbsolutePositionTab(Aspose.Words.AbsolutePositionTab)">
+      <summary>
+            Called when a <see cref="T:Aspose.Words.AbsolutePositionTab" /> node is encountered in the document.
+            </summary>
+      <param name="tab">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitSmartTagStart(Aspose.Words.Markup.SmartTag)">
+      <summary>
+            Called when enumeration of a smart tag has started.
+            </summary>
+      <param name="smartTag">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitSmartTagEnd(Aspose.Words.Markup.SmartTag)">
+      <summary>
+            Called when enumeration of a smart tag has ended.
+            </summary>
+      <param name="smartTag">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitStructuredDocumentTagStart(Aspose.Words.Markup.StructuredDocumentTag)">
+      <summary>
+            Called when enumeration of a structured document tag has started.
+            </summary>
+      <param name="sdt">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitStructuredDocumentTagEnd(Aspose.Words.Markup.StructuredDocumentTag)">
+      <summary>
+            Called when enumeration of a structured document tag has ended.
+            </summary>
+      <param name="sdt">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitGlossaryDocumentStart(Aspose.Words.BuildingBlocks.GlossaryDocument)">
+      <summary>
+            Called when enumeration of a glossary document has started.
+            </summary>
+      <remarks>
+        <para>
+Note: A glossary document node and its children are not visited when you execute a
+Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
+glossary document, you need to call <see cref="M:Aspose.Words.BuildingBlocks.GlossaryDocument.Accept(Aspose.Words.DocumentVisitor)" />.
+</para>
+      </remarks>
+      <param name="glossary">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitGlossaryDocumentEnd(Aspose.Words.BuildingBlocks.GlossaryDocument)">
+      <summary>
+            Called when enumeration of a glossary document has ended.
+            </summary>
+      <remarks>
+        <para>
+Note: A glossary document node and its children are not visited when you execute a
+Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
+glossary document, you need to call <see cref="M:Aspose.Words.BuildingBlocks.GlossaryDocument.Accept(Aspose.Words.DocumentVisitor)" />.
+</para>
+      </remarks>
+      <param name="glossary">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitBuildingBlockStart(Aspose.Words.BuildingBlocks.BuildingBlock)">
+      <summary>
+            Called when enumeration of a building block has started.
+            </summary>
+      <remarks>
+        <para>
+Note: A building block node and its children are not visited when you execute a
+Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
+building block, you need to execute the visitor over <see cref="T:Aspose.Words.BuildingBlocks.GlossaryDocument" /> or
+call <see cref="M:Aspose.Words.BuildingBlocks.BuildingBlock.Accept(Aspose.Words.DocumentVisitor)" />.
+</para>
+      </remarks>
+      <param name="block">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitBuildingBlockEnd(Aspose.Words.BuildingBlocks.BuildingBlock)">
+      <summary>
+            Called when enumeration of a building block has ended.
+            </summary>
+      <remarks>
+        <para>
+Note: A building block node and its children are not visited when you execute a
+Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
+building block, you need to execute the visitor over <see cref="T:Aspose.Words.BuildingBlocks.GlossaryDocument" /> or
+call <see cref="M:Aspose.Words.BuildingBlocks.BuildingBlock.Accept(Aspose.Words.DocumentVisitor)" />.
+</para>
+      </remarks>
+      <param name="block">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentRangeStart(Aspose.Words.CommentRangeStart)">
+      <summary>
+            Called when the start of a commented range of text is encountered.
+            </summary>
+      <param name="commentRangeStart">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentRangeEnd(Aspose.Words.CommentRangeEnd)">
+      <summary>
+            Called when the end of a commented range of text is encountered.
+            </summary>
+      <param name="commentRangeEnd">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
+    <member name="M:Aspose.Words.DocumentVisitor.VisitSubDocument(Aspose.Words.SubDocument)">
+      <summary>
+            Called when a subDocument is encountered.
+            </summary>
+      <param name="subDocument">The object that is being visited.</param>
+      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
+    </member>
     <member name="T:Aspose.Words.License">
       <summary>
             Provides methods to license the component.
@@ -328,23 +909,23 @@ For example -1 means the last item, -2 means the second before last and so on.</
     </member>
     <member name="T:Aspose.Words.Metered">
       <summary>
-            Provides methods to set metered key.
-            </summary>
+             Provides methods to set metered key.
+             </summary>
       <example>
-            In this example, an attempt will be made to set metered public and private key
+             In this example, an attempt will be made to set metered public and private key
+             
+             <code>
+             [C#]
+             
+             Metered metered = new Metered();
+             metered.SetMeteredKey("PublicKey", "PrivateKey");
             
-            <code>
-            [C#]
             
-            Metered metered = new Metered();
-            metered.SetMeteredKey("PublicKey", "PrivateKey");
+             [Visual Basic]
             
-            
-            [Visual Basic]
-            
-            Dim metered As Metered = New Metered
-            metered.SetMeteredKey("PublicKey", "PrivateKey")
-            </code></example>
+             Dim metered As Metered = New Metered
+             metered.SetMeteredKey("PublicKey", "PrivateKey")
+             </code></example>
     </member>
     <member name="M:Aspose.Words.Metered.#ctor">
       <summary>
@@ -377,6 +958,11 @@ For example -1 means the last item, -2 means the second before last and so on.</
     <member name="P:Aspose.Words.CompareOptions.IgnoreHeadersAndFooters">
       <summary>
             True indicates that headers and footers content is ignored. By default headers and footers are not ignored.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.CompareOptions.Target">
+      <summary>
+            Specifies which document shall be used as a target during comparison.
             </summary>
     </member>
     <member name="T:Aspose.Words.CertificateHolder">
@@ -809,416 +1395,6 @@ For example -1 means the last item, -2 means the second before last and so on.</
       <remarks>
             Use the <see cref="P:Aspose.Words.Fields.FieldOptions.CurrentUser" /> property to specify user information for single document.
             </remarks>
-    </member>
-    <member name="T:Aspose.Words.DocumentVisitor">
-      <summary>
-            Base class for custom document visitors.
-            </summary>
-      <remarks>
-        <p>With <b>DocumentVisitor</b> you can define and execute custom operations
-            that require enumeration over the document tree.</p>
-        <p>For example, Aspose.Words uses <b>DocumentVisitor</b> internally for saving <b>Document</b>
-            in various formats and for other operations like finding fields or bookmarks over
-            a fragment of a document.</p>
-        <p>To use <b>DocumentVisitor</b>:</p>
-        <list type="number">
-          <item>Create a class derived from <b>DocumentVisitor</b>.</item>
-          <item>Override and provide implementations for some or all of the VisitXXX methods
-            to perform some custom operations.</item>
-          <item>Call <see cref="M:Aspose.Words.Node.Accept(Aspose.Words.DocumentVisitor)">Node.Accept</see> on the <b>Node</b> that
-            you want to start the enumeration from.</item>
-        </list>
-        <p>
-          <b>DocumentVisitor</b> provides default implementations for all of the VisitXXX methods 
-            to make it easier to create new document visitors as only the methods required for the particular
-            visitor need to be overridden. It is not necessary to override all of the visitor methods.</p>
-        <p>For more information see the Visitor design pattern.</p>
-      </remarks>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitDocumentStart(Aspose.Words.Document)">
-      <summary>
-            Called when enumeration of the document has started.
-            </summary>
-      <param name="doc">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitDocumentEnd(Aspose.Words.Document)">
-      <summary>
-            Called when enumeration of the document has finished.
-            </summary>
-      <param name="doc">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitSectionStart(Aspose.Words.Section)">
-      <summary>
-            Called when enumeration of a section has started.
-            </summary>
-      <param name="section">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitSectionEnd(Aspose.Words.Section)">
-      <summary>
-            Called when enumeration of a section has ended.
-            </summary>
-      <param name="section">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitBodyStart(Aspose.Words.Body)">
-      <summary>
-            Called when enumeration of the main text story in a section has started.
-            </summary>
-      <param name="body">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitBodyEnd(Aspose.Words.Body)">
-      <summary>
-            Called when enumeration of the main text story in a section has ended.
-            </summary>
-      <param name="body">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitHeaderFooterStart(Aspose.Words.HeaderFooter)">
-      <summary>
-            Called when enumeration of a header or footer in a section has started.
-            </summary>
-      <param name="headerFooter">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitHeaderFooterEnd(Aspose.Words.HeaderFooter)">
-      <summary>
-            Called when enumeration of a header or footer in a section has ended.
-            </summary>
-      <param name="headerFooter">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitParagraphStart(Aspose.Words.Paragraph)">
-      <summary>
-            Called when enumeration of a paragraph has started.
-            </summary>
-      <param name="paragraph">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitParagraphEnd(Aspose.Words.Paragraph)">
-      <summary>
-            Called when enumeration of a paragraph has ended.
-            </summary>
-      <param name="paragraph">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitTableStart(Aspose.Words.Tables.Table)">
-      <summary>
-            Called when enumeration of a table has started.
-            </summary>
-      <param name="table">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitTableEnd(Aspose.Words.Tables.Table)">
-      <summary>
-            Called when enumeration of a table has ended.
-            </summary>
-      <param name="table">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitRowStart(Aspose.Words.Tables.Row)">
-      <summary>
-            Called when enumeration of a table row has started.
-            </summary>
-      <param name="row">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitRowEnd(Aspose.Words.Tables.Row)">
-      <summary>
-            Called when enumeration of a table row has ended.
-            </summary>
-      <param name="row">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitCellStart(Aspose.Words.Tables.Cell)">
-      <summary>
-            Called when enumeration of a table cell has started.
-            </summary>
-      <param name="cell">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitCellEnd(Aspose.Words.Tables.Cell)">
-      <summary>
-            Called when enumeration of a table cell has ended.
-            </summary>
-      <param name="cell">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitRun(Aspose.Words.Run)">
-      <summary>
-            Called when a run of text in the is encountered.
-            </summary>
-      <param name="run">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitFieldStart(Aspose.Words.Fields.FieldStart)">
-      <summary>
-            Called when a field starts in the document.
-            </summary>
-      <remarks>
-        <p>A field in a Word Word document consists of a field code and field value.</p>
-        <p>For example, a field that displays a page number can be represented as follows:</p>
-        <p>[FieldStart]PAGE[FieldSeparator]98[FieldEnd]</p>
-        <p>The field separator separates field code from field value in the document. Note that some 
-            fields have only field code and do not have field separator and field value.</p>
-        <p>Fields can be nested.</p>
-      </remarks>
-      <param name="fieldStart">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitFieldSeparator(Aspose.Words.Fields.FieldSeparator)">
-      <summary>
-            Called when a field separator is encountered in the document.
-            </summary>
-      <remarks>
-        <p>The field separator separates field code from field value in the document. Note that some 
-            fields have only field code and do not have field separator and field value.</p>
-        <p>For more info see <see cref="M:Aspose.Words.DocumentVisitor.VisitFieldStart(Aspose.Words.Fields.FieldStart)" /></p>
-      </remarks>
-      <param name="fieldSeparator">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitFieldEnd(Aspose.Words.Fields.FieldEnd)">
-      <summary>
-            Called when a field ends in the document.
-            </summary>
-      <remarks>
-        <p>For more info see <see cref="M:Aspose.Words.DocumentVisitor.VisitFieldStart(Aspose.Words.Fields.FieldStart)" /></p>
-      </remarks>
-      <param name="fieldEnd">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitFormField(Aspose.Words.Fields.FormField)">
-      <summary>
-            Called when a form field is encountered in the document.
-            </summary>
-      <param name="formField">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitBookmarkStart(Aspose.Words.BookmarkStart)">
-      <summary>
-            Called when a start of a bookmark is encountered in the document.
-            </summary>
-      <param name="bookmarkStart">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitBookmarkEnd(Aspose.Words.BookmarkEnd)">
-      <summary>
-            Called when an end of a bookmark is encountered in the document.
-            </summary>
-      <param name="bookmarkEnd">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitFootnoteStart(Aspose.Words.Footnote)">
-      <summary>
-            Called when enumeration of a footnote or endnote text has started.
-            </summary>
-      <param name="footnote">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitFootnoteEnd(Aspose.Words.Footnote)">
-      <summary>
-            Called when enumeration of a footnote or endnote text has ended.
-            </summary>
-      <param name="footnote">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentStart(Aspose.Words.Comment)">
-      <summary>
-            Called when enumeration of a comment text has started.
-            </summary>
-      <param name="comment">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentEnd(Aspose.Words.Comment)">
-      <summary>
-            Called when enumeration of a comment text has ended.
-            </summary>
-      <param name="comment">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitEditableRangeStart(Aspose.Words.EditableRangeStart)">
-      <summary>
-            Called when a start of an editable range is encountered in the document.
-            </summary>
-      <param name="editableRangeStart">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitEditableRangeEnd(Aspose.Words.EditableRangeEnd)">
-      <summary>
-            Called when an end of an editable range is encountered in the document.
-            </summary>
-      <param name="editableRangeEnd">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitShapeStart(Aspose.Words.Drawing.Shape)">
-      <summary>
-            Called when enumeration of a shape has started.
-            </summary>
-      <param name="shape">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitShapeEnd(Aspose.Words.Drawing.Shape)">
-      <summary>
-            Called when enumeration of a shape has ended.
-            </summary>
-      <param name="shape">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitGroupShapeStart(Aspose.Words.Drawing.GroupShape)">
-      <summary>
-            Called when enumeration of a group shape has started.
-            </summary>
-      <param name="groupShape">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitGroupShapeEnd(Aspose.Words.Drawing.GroupShape)">
-      <summary>
-            Called when enumeration of a group shape has ended.
-            </summary>
-      <param name="groupShape">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitOfficeMathStart(Aspose.Words.Math.OfficeMath)">
-      <summary>
-            Called when enumeration of a Office Math object has started.
-            </summary>
-      <param name="officeMath">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitOfficeMathEnd(Aspose.Words.Math.OfficeMath)">
-      <summary>
-            Called when enumeration of a Office Math object has ended.
-            </summary>
-      <param name="officeMath">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitSpecialChar(Aspose.Words.SpecialChar)">
-      <summary>
-            Called when a <see cref="T:Aspose.Words.SpecialChar" /> node is encountered in the document.
-            </summary>
-      <param name="specialChar">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-      <remarks>
-            This method is not be called for generic control characters (see <see cref="T:Aspose.Words.ControlChar" />) that can be present in the document.
-            </remarks>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitAbsolutePositionTab(Aspose.Words.AbsolutePositionTab)">
-      <summary>
-            Called when a <see cref="T:Aspose.Words.AbsolutePositionTab" /> node is encountered in the document.
-            </summary>
-      <param name="tab">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitSmartTagStart(Aspose.Words.Markup.SmartTag)">
-      <summary>
-            Called when enumeration of a smart tag has started.
-            </summary>
-      <param name="smartTag">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitSmartTagEnd(Aspose.Words.Markup.SmartTag)">
-      <summary>
-            Called when enumeration of a smart tag has ended.
-            </summary>
-      <param name="smartTag">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitStructuredDocumentTagStart(Aspose.Words.Markup.StructuredDocumentTag)">
-      <summary>
-            Called when enumeration of a structured document tag has started.
-            </summary>
-      <param name="sdt">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitStructuredDocumentTagEnd(Aspose.Words.Markup.StructuredDocumentTag)">
-      <summary>
-            Called when enumeration of a structured document tag has ended.
-            </summary>
-      <param name="sdt">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitGlossaryDocumentStart(Aspose.Words.BuildingBlocks.GlossaryDocument)">
-      <summary>
-            Called when enumeration of a glossary document has started.
-            </summary>
-      <remarks>
-        <para>
-Note: A glossary document node and its children are not visited when you execute a
-Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
-glossary document, you need to call <see cref="M:Aspose.Words.BuildingBlocks.GlossaryDocument.Accept(Aspose.Words.DocumentVisitor)" />.
-</para>
-      </remarks>
-      <param name="glossary">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitGlossaryDocumentEnd(Aspose.Words.BuildingBlocks.GlossaryDocument)">
-      <summary>
-            Called when enumeration of a glossary document has ended.
-            </summary>
-      <remarks>
-        <para>
-Note: A glossary document node and its children are not visited when you execute a
-Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
-glossary document, you need to call <see cref="M:Aspose.Words.BuildingBlocks.GlossaryDocument.Accept(Aspose.Words.DocumentVisitor)" />.
-</para>
-      </remarks>
-      <param name="glossary">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitBuildingBlockStart(Aspose.Words.BuildingBlocks.BuildingBlock)">
-      <summary>
-            Called when enumeration of a building block has started.
-            </summary>
-      <remarks>
-        <para>
-Note: A building block node and its children are not visited when you execute a
-Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
-building block, you need to execute the visitor over <see cref="T:Aspose.Words.BuildingBlocks.GlossaryDocument" /> or
-call <see cref="M:Aspose.Words.BuildingBlocks.BuildingBlock.Accept(Aspose.Words.DocumentVisitor)" />.
-</para>
-      </remarks>
-      <param name="block">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitBuildingBlockEnd(Aspose.Words.BuildingBlocks.BuildingBlock)">
-      <summary>
-            Called when enumeration of a building block has ended.
-            </summary>
-      <remarks>
-        <para>
-Note: A building block node and its children are not visited when you execute a
-Visitor over a <see cref="T:Aspose.Words.Document" />. If you want to execute a Visitor over a
-building block, you need to execute the visitor over <see cref="T:Aspose.Words.BuildingBlocks.GlossaryDocument" /> or
-call <see cref="M:Aspose.Words.BuildingBlocks.BuildingBlock.Accept(Aspose.Words.DocumentVisitor)" />.
-</para>
-      </remarks>
-      <param name="block">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentRangeStart(Aspose.Words.CommentRangeStart)">
-      <summary>
-            Called when the start of a commented range of text is encountered.
-            </summary>
-      <param name="commentRangeStart">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitCommentRangeEnd(Aspose.Words.CommentRangeEnd)">
-      <summary>
-            Called when the end of a commented range of text is encountered.
-            </summary>
-      <param name="commentRangeEnd">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
-    </member>
-    <member name="M:Aspose.Words.DocumentVisitor.VisitSubDocument(Aspose.Words.SubDocument)">
-      <summary>
-            Called when a subDocument is encountered.
-            </summary>
-      <param name="subDocument">The object that is being visited.</param>
-      <returns>A <see cref="T:Aspose.Words.VisitorAction" /> value that specifies how to continue the enumeration.</returns>
     </member>
     <member name="T:Aspose.Words.InternableComplexAttr">
       <summary>
@@ -2847,13 +3023,13 @@ For example -1 means the last item, -2 means the second before last and so on.</
             as compared with the source document.
             </remarks>
     </member>
-    <member name="P:Aspose.Words.Saving.PclSaveOptions.FalllbackFontName">
+    <member name="P:Aspose.Words.Saving.PclSaveOptions.FallbackFontName">
       <summary>
             Name of the font that will be used 
             if no expected font is found in printer and built-in fonts collections.
             </summary>
       <remarks>
-            If no fallback is found, warning is generated and "Arial" font is used.
+            If no fallback is found, a warning is generated and "Arial" font is used.
             </remarks>
     </member>
     <member name="T:Aspose.Words.Themes.NamespaceDoc">
@@ -4537,90 +4713,6 @@ The imported node can then be inserted into the current document.</p>
       <param name="certHolder">
         <see cref="T:Aspose.Words.CertificateHolder" /> object with certificate that used to sign file.
             The certificate in holder MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-    </member>
-    <member name="M:Aspose.Words.DigitalSignatureUtil.Sign(System.String,System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,System.DateTime)">
-      <summary>
-            Signs source document using given digital signature and writes signed document to destination file. 
-            <p>Document should be either <see cref="F:Aspose.Words.LoadFormat.Doc" /> or <see cref="F:Aspose.Words.LoadFormat.Docx" />.</p></summary>
-      <param name="srcFileName">The file name of the document to sign.</param>
-      <param name="dstFileName">The file name of the signed document output.</param>
-      <param name="certificate">Certificate object used to sign file.
-            The certificate MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-      <param name="comments">The reason for signing.</param>
-      <param name="signTime">The date of signing.</param>
-    </member>
-    <member name="M:Aspose.Words.DigitalSignatureUtil.Sign(System.String,System.String,Aspose.Words.CertificateHolder,System.String,System.DateTime)">
-      <summary>
-            Signs source document using given <see cref="T:Aspose.Words.CertificateHolder" /> with digital signature
-            and writes signed document to destination file.
-            <p>Document should be either <see cref="F:Aspose.Words.LoadFormat.Doc" /> or <see cref="F:Aspose.Words.LoadFormat.Docx" />.</p></summary>
-      <param name="srcFileName">The file name of the document to sign.</param>
-      <param name="dstFileName">The file name of the signed document output.</param>
-      <param name="certHolder">
-        <see cref="T:Aspose.Words.CertificateHolder" /> object with certificate that used to sign file.
-            The certificate in holder MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-      <param name="comments">The reason for signing.</param>
-      <param name="signTime">The date of signing.</param>
-    </member>
-    <member name="M:Aspose.Words.DigitalSignatureUtil.Sign(System.String,System.String,Aspose.Words.CertificateHolder,System.String,System.DateTime,System.String)">
-      <summary>
-            Signs source document using given <see cref="T:Aspose.Words.CertificateHolder" /> with digital signature
-            and writes signed document to destination file.
-            <p>Document should be either <see cref="F:Aspose.Words.LoadFormat.Doc" /> or <see cref="F:Aspose.Words.LoadFormat.Docx" />.</p></summary>
-      <param name="srcFileName">The file name of the document to sign.</param>
-      <param name="dstFileName">The file name of the signed document output.</param>
-      <param name="certHolder">
-        <see cref="T:Aspose.Words.CertificateHolder" /> object with certificate that used to sign file.
-            The certificate in holder MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-      <param name="comments">The reason for signing.</param>
-      <param name="signTime">The date of signing.</param>
-      <param name="srcPassword">The password to decrypt source document. Can be empty string in which case it will be ignored.</param>
-      <remarks>
-            If document is encrypted and has DOCX format you should provide a <paramref name="srcPassword" />
-            to decrypt source document before it will be signed. Note, this is not required for DOC format.
-            </remarks>
-    </member>
-    <member name="M:Aspose.Words.DigitalSignatureUtil.Sign(System.IO.Stream,System.IO.Stream,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,System.DateTime)">
-      <summary>
-            Signs source document using given digital signature and writes signed document to destination stream. 
-            <p>Document should be either <see cref="F:Aspose.Words.LoadFormat.Doc" /> or <see cref="F:Aspose.Words.LoadFormat.Docx" />.</p><p><b>Output will be written to the start of stream and stream size will be updated with content length.</b></p></summary>
-      <param name="srcStream">The stream which contains the document to sign.</param>
-      <param name="dstStream">The stream that signed document will be written to.</param>
-      <param name="certificate">Certificate object used to sign file.
-            The certificate MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-      <param name="comments">The reason for signing.</param>
-      <param name="signTime">The date of signing.</param>
-    </member>
-    <member name="M:Aspose.Words.DigitalSignatureUtil.Sign(System.IO.Stream,System.IO.Stream,Aspose.Words.CertificateHolder,System.String,System.DateTime)">
-      <summary>
-            Signs source document using given <see cref="T:Aspose.Words.CertificateHolder" /> with digital signature
-            and writes signed document to destination stream.
-            <p>Document should be either <see cref="F:Aspose.Words.LoadFormat.Doc" /> or <see cref="F:Aspose.Words.LoadFormat.Docx" />.</p><p><b>Output will be written to the start of stream and stream size will be updated with content length.</b></p></summary>
-      <param name="srcStream">The stream which contains the document to sign.</param>
-      <param name="dstStream">The stream that signed document will be written to.</param>
-      <param name="certHolder">
-        <see cref="T:Aspose.Words.CertificateHolder" /> object with certificate that used to sign file.
-            The certificate in holder MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-      <param name="comments">The reason for signing.</param>
-      <param name="signTime">The date of signing.</param>
-    </member>
-    <member name="M:Aspose.Words.DigitalSignatureUtil.Sign(System.IO.Stream,System.IO.Stream,Aspose.Words.CertificateHolder,System.String,System.DateTime,System.String)">
-      <summary>
-            Signs source document using given <see cref="T:Aspose.Words.CertificateHolder" /> with digital signature
-            and writes signed document to destination stream.
-            <p>Document should be either <see cref="F:Aspose.Words.LoadFormat.Doc" /> or <see cref="F:Aspose.Words.LoadFormat.Docx" />.</p><p><b>Output will be written to the start of stream and stream size will be updated with content length.</b></p></summary>
-      <param name="srcStream">The stream which contains the document to sign.</param>
-      <param name="dstStream">The stream that signed document will be written to.</param>
-      <param name="certHolder">
-        <see cref="T:Aspose.Words.CertificateHolder" /> object with certificate that used to sign file.
-            The certificate in holder MUST contain private keys and have the X509KeyStorageFlags.Exportable flag set.</param>
-      <param name="comments">The reason for signing.</param>
-      <param name="signTime">The date of signing.</param>
-      <param name="srcPassword">The password to decrypt source document. Can be empty string in which case it will be ignored.</param>
-      <remarks>
-            If document is encrypted and has DOCX format you should provide a <paramref name="srcPassword" />
-            to decrypt source document before it will be signed. Note, this is not required for DOC format.
-            </remarks>
     </member>
     <member name="M:Aspose.Words.DigitalSignatureUtil.RemoveAllSignatures(System.String,System.String)">
       <summary>
@@ -6488,6 +6580,14 @@ For example -1 means the last item, -2 means the second before last and so on.</
             Default is true.
             </summary>
     </member>
+    <member name="P:Aspose.Words.Saving.HtmlFixedSaveOptions.UseTargetMachineFonts">
+      <summary>
+            Flag indicates whether fonts from target machine must be used to display the document.
+            If this flag is set to true, <see cref="P:Aspose.Words.Saving.HtmlFixedSaveOptions.FontFormat" /> and <see cref="P:Aspose.Words.Saving.HtmlFixedSaveOptions.ExportEmbeddedFonts" /> properties do not have effect,
+            also <see cref="P:Aspose.Words.Saving.HtmlFixedSaveOptions.ResourceSavingCallback" /> is not fired for fonts.
+            Default is false.
+            </summary>
+    </member>
     <member name="T:Aspose.Words.Saving.BookmarksOutlineLevelCollection">
       <summary>
             A collection of individual bookmarks outline level.
@@ -6678,6 +6778,11 @@ For example -1 means the last item, -2 means the second before last and so on.</
     <member name="F:Aspose.Words.Settings.MsWordVersion.Word2013">
       <summary>
             Optimize Aspose.Words behavior to match MS Word 2013 version.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.Settings.MsWordVersion.Word2016">
+      <summary>
+            Optimize Aspose.Words behavior to match MS Word 2016 version.
             </summary>
     </member>
     <member name="T:Aspose.Words.Settings.MultiplePagesType">
@@ -7238,6 +7343,21 @@ For example -1 means the last item, -2 means the second before last and so on.</
             Gets or sets identifier for this signature line.
             <p>This identifier can be associated with a digital signature, when signing document using <see cref="T:Aspose.Words.DigitalSignatureUtil" />.
             This value must be unique and by default it is randomly generated with <see cref="M:System.Guid.NewGuid" />.</p></summary>
+    </member>
+    <member name="P:Aspose.Words.Drawing.SignatureLine.ProviderId">
+      <summary>
+            Gets or sets signature provider identifier for this signature line.
+            Default value is "{00000000-0000-0000-0000-000000000000}".
+            </summary>
+      <remarks>
+        <para>The cryptographic service provider (CSP) is an independent software module that actually performs
+            cryptography algorithms for authentication, encoding, and encryption. MS Office reserves the value
+            of {00000000-0000-0000-0000-000000000000} for its default signature provider.</para>
+        <para>The GUID of the additionally installed provider should be obtained from the documentation shipped with the provider.</para>
+        <para>In addition, all the installed cryptographic providers are enumerated in windows registry.
+            It can be found in the following path: HKLM\SOFTWARE\Microsoft\Cryptography\Defaults\Provider.
+            There is a key name "CP Service UUID" which corresponds to a GUID of signature provider.</para>
+      </remarks>
     </member>
     <member name="P:Aspose.Words.Drawing.SignatureLine.IsSigned">
       <summary>
@@ -8210,6 +8330,14 @@ For example -1 means the last item, -2 means the second before last and so on.</
             in comparison using the operator designated by <see cref="P:Aspose.Words.Fields.FieldIf.ComparisonOperator" />.</p>
         <p>A field in the following format will be used as a mail merge source: { IF 0 = 0 "{PatientsNameFML}" "" \* MERGEFORMAT }</p>
       </remarks>
+    </member>
+    <member name="M:Aspose.Words.Fields.FieldIf.EvaluateCondition">
+      <summary>
+            Evaluates the condition.
+            </summary>
+      <returns>
+            A <see cref="T:Aspose.Words.Fields.FieldIfComparisonResult" /> value that represents the result of the condition evaluation.
+            </returns>
     </member>
     <member name="P:Aspose.Words.Fields.FieldIf.LeftExpression">
       <summary>
@@ -14304,6 +14432,11 @@ Returns true if formatting of the object was changed in Microsoft Word while cha
     <member name="F:Aspose.Words.Saving.ImagePixelFormat.Format64BppPArgb">
       <summary>
             64 bits per pixel, ARGB, premultiplied alpha.
+            </summary>
+    </member>
+    <member name="F:Aspose.Words.Saving.ImagePixelFormat.Format1bppIndexed">
+      <summary>
+            1 bit per pixel, Indexed.
             </summary>
     </member>
     <member name="T:Aspose.Words.Saving.NamespaceDoc">
@@ -20518,6 +20651,7 @@ The page layout-related fields are updated when you render a document or call <s
             </summary>
       <remarks>
         <seealso cref="T:Aspose.Words.FootnoteOptions" />
+        <seealso cref="T:Aspose.Words.EndnoteOptions" />
       </remarks>
     </member>
     <member name="F:Aspose.Words.FootnoteNumberingRule.Continuous">
@@ -20540,57 +20674,50 @@ The page layout-related fields are updated when you render a document or call <s
             Equals <see cref="F:Aspose.Words.FootnoteNumberingRule.Continuous" />.
             </summary>
     </member>
-    <member name="T:Aspose.Words.FootnoteLocation">
+    <member name="T:Aspose.Words.FootnotePosition">
       <summary>
-            Defines the footnote or endnote position.
+            Defines the footnote position.
             </summary>
       <remarks>
         <seealso cref="T:Aspose.Words.FootnoteOptions" />
       </remarks>
     </member>
-    <member name="F:Aspose.Words.FootnoteLocation.BottomOfPage">
+    <member name="F:Aspose.Words.FootnotePosition.BottomOfPage">
       <summary>
-            Footnotes are output at the bottom of each page. Valid for footnotes only.
+            Footnotes are output at the bottom of each page.
             </summary>
     </member>
-    <member name="F:Aspose.Words.FootnoteLocation.BeneathText">
+    <member name="F:Aspose.Words.FootnotePosition.BeneathText">
       <summary>
-            Footnotes are output beneath text on each page. Valid for footnotes only.
-            </summary>
-    </member>
-    <member name="F:Aspose.Words.FootnoteLocation.EndOfSection">
-      <summary>
-            Endnotes are output at the end of the section. Valid for endnotes only.
-            </summary>
-    </member>
-    <member name="F:Aspose.Words.FootnoteLocation.EndOfDocument">
-      <summary>
-            Endnotes are output at the end of the document. Valid for endnotes only.
+            Footnotes are output beneath text on each page.
             </summary>
     </member>
     <member name="T:Aspose.Words.FootnoteOptions">
       <summary>
-            Represents the footnote or endnote numbering options for a document or section.
+            Represents the footnote numbering options for a document or section.
             </summary>
       <remarks>
         <seealso cref="P:Aspose.Words.Document.FootnoteOptions" />
-        <seealso cref="P:Aspose.Words.Document.EndnoteOptions" />
         <seealso cref="P:Aspose.Words.PageSetup.FootnoteOptions" />
-        <seealso cref="P:Aspose.Words.PageSetup.EndnoteOptions" />
       </remarks>
     </member>
     <member name="P:Aspose.Words.FootnoteOptions.Location">
       <summary>
-            Specifies the footnotes or endnotes position.
+            Specifies the footnotes position.
             </summary>
       <remarks>
-        <para>Not all values are applicable to both footnotes and endnotes.
+        <para>Not all values are applicable to footnotes.
             To ascertain which values are applicable see <see cref="T:Aspose.Words.FootnoteLocation" />.</para>
       </remarks>
     </member>
+    <member name="P:Aspose.Words.FootnoteOptions.Position">
+      <summary>
+            Specifies the footnotes position.
+            </summary>
+    </member>
     <member name="P:Aspose.Words.FootnoteOptions.NumberStyle">
       <summary>
-            Specifies the number format for automatically numbered footnotes or endnotes.
+            Specifies the number format for automatically numbered footnotes.
             </summary>
       <remarks>
         <para>Not all number styles are applicable for this property. For the list of applicable
@@ -20600,7 +20727,7 @@ The page layout-related fields are updated when you render a document or call <s
     </member>
     <member name="P:Aspose.Words.FootnoteOptions.StartNumber">
       <summary>
-            Specifies the starting number or character for the first automatically numbered footnotes or endnotes.
+            Specifies the starting number or character for the first automatically numbered footnotes.
             </summary>
       <remarks>
         <para>This property has effect only when <see cref="P:Aspose.Words.FootnoteOptions.RestartRule" /> is set to
@@ -20611,10 +20738,15 @@ The page layout-related fields are updated when you render a document or call <s
       <summary>
             Determines when automatic numbering restarts.
             </summary>
+    </member>
+    <member name="P:Aspose.Words.FootnoteOptions.Columns">
+      <summary>
+            Specifies the number of columns with which the footnotes area is formatted.
+            </summary>
       <remarks>
-        <para>Not all values are applicable to both footnotes and endnotes.
-            To ascertain which values are applicable see <see cref="T:Aspose.Words.FootnoteNumberingRule" />.</para>
-      </remarks>
+            If this property has the value of 0, the footnotes area is formatted with a number of columns based on
+            the number of columns on the displayed page. The default value is 0.
+            </remarks>
     </member>
     <member name="T:Aspose.Words.ProtectionType">
       <summary>
@@ -22506,6 +22638,17 @@ stretched to fit the shape.</p>
       <summary>
             Gets the CLSID of the OLE object.
             </summary>
+    </member>
+    <member name="P:Aspose.Words.Drawing.OleFormat.OlePackage">
+      <summary>
+            Provide access to <see cref="T:Aspose.Words.Drawing.OlePackage" /> if OLE object is an OLE Package. Returns null otherwise.
+            </summary>
+      <remarks>OLE Package is a legacy technology that allows to wrap any file format not present in the OLE registry of a Windows system
+            into a generic package allowing to embed almost anything into a document. See <see cref="T:Aspose.Words.Drawing.OlePackage" /> type for more info. 
+            </remarks>
+      <dev>
+             Has meaning only if ProgId equal to "Package" otherwise is null.
+            </dev>
     </member>
     <member name="P:Aspose.Words.Drawing.OleFormat.OleControl">
       <summary>
@@ -25185,6 +25328,7 @@ false to clone only the node itself.</param>
         <seealso cref="P:Aspose.Words.Footnote.FootnoteType" />
         <seealso cref="M:Aspose.Words.DocumentBuilder.InsertFootnote(Aspose.Words.FootnoteType,System.String)" />
         <seealso cref="T:Aspose.Words.FootnoteOptions" />
+        <seealso cref="T:Aspose.Words.EndnoteOptions" />
       </remarks>
     </member>
     <member name="T:Aspose.Words.InlineStory">
@@ -31721,7 +31865,7 @@ Accepts a visitor.
     </member>
     <member name="P:Aspose.Words.Tables.Table.TextWrapping">
       <summary>
-            Get or sets TextWrapping <see cref="P:Aspose.Words.Tables.Table.TextWrapping" /> for table.
+            Gets or sets <see cref="P:Aspose.Words.Tables.Table.TextWrapping" /> for table.
             </summary>
     </member>
     <member name="P:Aspose.Words.Tables.Table.DistanceLeft">
@@ -31742,6 +31886,51 @@ Accepts a visitor.
     <member name="P:Aspose.Words.Tables.Table.DistanceBottom">
       <summary>
             Gets distance between table bottom and the surrounding text, in points.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.RelativeHorizontalAlignment">
+      <summary>
+            Gets table relative horizontal alignment. 
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.RelativeVerticalAlignment">
+      <summary>
+            Gets table relative vertical alignment.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.HorizontalAnchor">
+      <summary>
+            Gets the base object from which the horizontal positioning in the <see cref="P:Aspose.Words.Tables.Table.AbsoluteHorizontalDistance" />
+            and/or <see cref="P:Aspose.Words.Tables.Table.RelativeHorizontalAlignment" /> attribute should be calculated.
+            Default value is <see cref="F:Aspose.Words.Drawing.RelativeHorizontalPosition.Column" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.VerticalAnchor">
+      <summary>
+            Gets the base object from which the vertical positioning in the <see cref="P:Aspose.Words.Tables.Table.AbsoluteVerticalDistance" />
+            attribute should be calculated.
+            Default value is <see cref="F:Aspose.Words.Drawing.RelativeVerticalPosition.Margin" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.AbsoluteHorizontalDistance">
+      <summary>
+            Gets table absolute horizontal position relative to the horizontal anchor
+            specified by the <see cref="P:Aspose.Words.Tables.Table.HorizontalAnchor" />, in points. 
+            Default value is 0.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.AbsoluteVerticalDistance">
+      <summary>
+            Gets table absolute vertical position relative to the vertical anchor
+            specified by the <see cref="P:Aspose.Words.Tables.Table.VerticalAnchor" />, in points.
+            Default value is 0.
+            </summary>
+    </member>
+    <member name="P:Aspose.Words.Tables.Table.AllowOverlap">
+      <summary>
+            Gets whether a floating table shall allow other floating tables in the document
+            to overlap its extents when displayed.
+            Default value is <c>true</c>.
             </summary>
     </member>
     <member name="T:Aspose.Words.Tables.TableCollection">
@@ -31832,6 +32021,34 @@ Accepts a visitor.
             Calls <see cref="M:Aspose.Words.DocumentVisitor.VisitCommentStart(Aspose.Words.Comment)" />, then calls <see cref="M:Aspose.Words.Node.Accept(Aspose.Words.DocumentVisitor)" /> for all
             child nodes of the comment and calls <see cref="M:Aspose.Words.DocumentVisitor.VisitCommentEnd(Aspose.Words.Comment)" /> at the end.
             </remarks>
+    </member>
+    <member name="M:Aspose.Words.Comment.AddReply(System.String,System.String,System.DateTime,System.String)">
+      <summary>
+            Adds a reply to this comment.
+            </summary>
+      <param name="author">The author name for the reply.</param>
+      <param name="initial">The author initials for the reply.</param>
+      <param name="dateTime">The date and time for the reply.</param>
+      <param name="text">The reply text.</param>
+      <returns>The created <see cref="T:Aspose.Words.Comment" /> node for the reply.</returns>
+      <remarks>
+            Due to the existing MS Office limitations only 1 level of replies is allowed in the document.
+            An exception of type <see cref="T:System.InvalidOperationException" /> will be raised if this method is 
+            called on the existing Reply comment.
+            </remarks>
+    </member>
+    <member name="M:Aspose.Words.Comment.RemoveReply(Aspose.Words.Comment)">
+      <summary>
+            Removes the specified reply to this comment. 
+            </summary>
+      <remarks>All constituent nodes of the reply will be deleted from the document.</remarks>
+      <param name="reply">The comment node of the deleting reply.</param>
+    </member>
+    <member name="M:Aspose.Words.Comment.RemoveAllReplies">
+      <summary>
+            Removes all replies to this comment. 
+            </summary>
+      <remarks> All constituent nodes of the replies will be deleted from the document.</remarks>
     </member>
     <member name="M:Aspose.Words.Comment.SetText(System.String)">
       <summary>

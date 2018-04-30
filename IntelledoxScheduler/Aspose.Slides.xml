@@ -787,6 +787,99 @@
             Contains classes for work with animation in Microsoft PowerPoint presentations. 
             </summary>
     </member>
+    <member name="T:Aspose.Slides.BaseSlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the footer, date-time, page number placeholders for all slide types.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.BaseHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the footer, date-time, page number placeholders for all slide types.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.BaseSlideHeaderFooterManager.SetFooterVisibility(System.Boolean)">
+      <summary>
+            Changes slide footer placeholder visibility.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholder visible, otherwise - hides it.</param>
+    </member>
+    <member name="M:Aspose.Slides.BaseSlideHeaderFooterManager.SetSlideNumberVisibility(System.Boolean)">
+      <summary>
+            Changes slide page number placeholder visibility.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholder visible, otherwise - hides it.</param>
+    </member>
+    <member name="M:Aspose.Slides.BaseSlideHeaderFooterManager.SetDateTimeVisibility(System.Boolean)">
+      <summary>
+            Changes slide date-time placeholder visibility.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholder visible, otherwise - hides it.</param>
+    </member>
+    <member name="M:Aspose.Slides.BaseSlideHeaderFooterManager.SetFooterText(System.String)">
+      <summary>
+            Sets text to slide footer placeholder.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.BaseSlideHeaderFooterManager.SetDateTimeText(System.String)">
+      <summary>
+            Sets text to slide date-time placeholder.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="P:Aspose.Slides.BaseSlideHeaderFooterManager.IsFooterVisible">
+      <summary>
+            Gets value indicating that a footer placeholder is present.
+            Read <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.BaseSlideHeaderFooterManager.IsSlideNumberVisible">
+      <summary>
+            Gets value indicating that a page number placeholder is present.
+            Read<see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.BaseSlideHeaderFooterManager.IsDateTimeVisible">
+      <summary>
+            Gets value indicating that a date-time placeholder is present.
+            Read<see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.BlobManagementOptions">
+      <summary>
+            Represents options which can be used to manage BLOB handling rules and other BLOB settings.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.BlobManagementOptions.#ctor">
+      <summary>
+            Creates new default blob management options.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.BlobManagementOptions.PresentationLockingBehavior">
+      <summary>
+            Represents the locking behavior for the presentation's source (stream or file).
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.BlobManagementOptions.IsTemporaryFilesAllowed">
+      <summary>
+            Set that using of temporary files is not allowed to optimize memory consumption while working with
+            large amounts of data during presentation's lifetime. If false, OutOfMemoryException can be thrown.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.BlobManagementOptions.TempFilesRootPath">
+      <summary>
+            Represents the root path on the filesystem, where the temporary files will be stored. System
+            temorary directory will be used by default.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.BlobManagementOptions.MaxBlobsBytesInMemory">
+      <summary>
+            A threshold that indicates the maximum amount of bytes which BLOBs can occupied in memory. After 
+            this threshold was reached, all new BLOBs will be placed in temporary files and will not affect the 
+            total memory consumption of the process. 
+            <see cref="P:Aspose.Slides.BlobManagementOptions.IsTemporaryFilesAllowed" /> should be set to true to use this property.
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.CustomXmlPart">
       <summary>
             Represents custom xml part.
@@ -1471,6 +1564,27 @@
             Read-only <see cref="T:System.Object" />.
             </summary>
     </member>
+    <member name="T:Aspose.Slides.FontSources">
+      <summary>
+            Provides file and memory sources for external fonts.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.FontSources.#ctor">
+      <summary>
+            Creates new default font options.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.FontSources.FontFolders">
+      <summary>
+            Folders containing font files.
+            All font files located in these folders are included in the collection. Folders that are recursively searched.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.FontSources.MemoryFonts">
+      <summary>
+            A collection of fonts represented as byte arrays.
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.FormatFactory">
       <summary>
             Allows to create formats via COM interface.
@@ -1499,6 +1613,53 @@
             Format factory static instance.
             Read-only <see cref="T:Aspose.Slides.FormatFactory" />.
             </summary>
+    </member>
+    <member name="T:Aspose.Slides.LayoutSlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the layout slide footer, date-time, page number placeholders and all child placeholders.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.LayoutSlideHeaderFooterManager.SetFooterAndChildFootersVisibility(System.Boolean)">
+      <summary>
+            Changes layout slide footer placeholder and all child footer placeholders visibility.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.LayoutSlideHeaderFooterManager.SetSlideNumberAndChildSlideNumbersVisibility(System.Boolean)">
+      <summary>
+            Changes layout slide page number placeholder and all child page number placeholders visibility.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.LayoutSlideHeaderFooterManager.SetDateTimeAndChildDateTimesVisibility(System.Boolean)">
+      <summary>
+            Changes layout slide date-time placeholder and all child date-time placeholders visibility.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.LayoutSlideHeaderFooterManager.SetFooterAndChildFootersText(System.String)">
+      <summary>
+            Sets text to layout slide footer placeholder and all child footer placeholders.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.LayoutSlideHeaderFooterManager.SetDateTimeAndChildDateTimesText(System.String)">
+      <summary>
+            Sets text to layout slide date-time placeholder and all child date-time placeholders.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="text">Text to set.</param>
     </member>
     <member name="T:Aspose.Slides.LegacyDiagram">
       <summary>
@@ -1776,6 +1937,14 @@
       <summary>
             Gets unique shape identifier in presentation scope.
             Read-only <see cref="T:System.UInt32" />.
+            See also <see cref="P:Aspose.Slides.Shape.OfficeInteropShapeId" /> for getting unique shape identifier in slide scope.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Shape.OfficeInteropShapeId">
+      <summary>
+            Gets unique shape identifier in slide scope.
+            Read-only <see cref="T:System.UInt32" />.
+            See also <see cref="P:Aspose.Slides.Shape.UniqueId" /> for getting unique shape identifier in presentation scope.
             </summary>
     </member>
     <member name="P:Aspose.Slides.Shape.AlternativeText">
@@ -1897,6 +2066,53 @@
             Read-only <see cref="T:Aspose.Slides.IPatternFormat" />.
             </summary>
     </member>
+    <member name="T:Aspose.Slides.MasterSlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the master slide footer, date-time, page number placeholders and all child placeholders.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.MasterSlideHeaderFooterManager.SetFooterAndChildFootersVisibility(System.Boolean)">
+      <summary>
+            Changes master slide footer placeholder and all child footer placeholders visibility.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.MasterSlideHeaderFooterManager.SetSlideNumberAndChildSlideNumbersVisibility(System.Boolean)">
+      <summary>
+            Changes master slide page number placeholder and all child page number placeholders visibility.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.MasterSlideHeaderFooterManager.SetDateTimeAndChildDateTimesVisibility(System.Boolean)">
+      <summary>
+            Changes master slide date-time placeholder and all child date-time placeholders visibility.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.MasterSlideHeaderFooterManager.SetFooterAndChildFootersText(System.String)">
+      <summary>
+            Sets text to master slide footer placeholder and all child footer placeholders.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.MasterSlideHeaderFooterManager.SetDateTimeAndChildDateTimesText(System.String)">
+      <summary>
+            Sets text to master slide date-time placeholder and all child date-time placeholders.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
     <member name="T:Aspose.Slides.NotesSize">
       <summary>
             Represents a size of notes slide.
@@ -1906,6 +2122,257 @@
       <summary>
             Returns or sets the size in points.
             Read/write <see cref="T:System.Drawing.SizeF" />.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.PresentationHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of all footer, date-time and page number placeholders of presentation.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.HeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of a header\footer placeholders
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.HeaderFooterManager.SetFooterText(System.String)">
+      <summary>
+            Sets text to all footer placeholders including master and layout.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.HeaderFooterManager.SetDateTimeText(System.String)">
+      <summary>
+            Sets text to all date-time placeholders including master and layout. 
+            </summary>
+      <param name="date">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.HeaderFooterManager.SetVisibilityOnTitleSlide(System.Boolean)">
+      <summary>
+            Adds or removes header\footer placeholders from title slides (slides based on first layout).
+            </summary>
+      <param name="isPlaceholdersVisible">true - makes a header\footer placeholders visible on the title slide, otherwise - hides them.</param>
+    </member>
+    <member name="P:Aspose.Slides.HeaderFooterManager.IsFooterVisible">
+      <summary>
+            Gets or sets value indicating that a footer placeholders should be present on a slides.
+            Read/write <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.HeaderFooterManager.IsSlideNumberVisible">
+      <summary>
+            Gets or sets value indicating that a page number placeholders should be present on a slides.
+            Read/write <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.HeaderFooterManager.IsDateTimeVisible">
+      <summary>
+            Gets or sets value indicating that a date-time placeholders should be present on a slides.
+            Read/write <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.PresentationHeaderFooterManager.SetAllFootersVisibility(System.Boolean)">
+      <summary>
+            Changes all footer placeholders visibility, including master slides, layout slides and slides.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.PresentationHeaderFooterManager.SetAllSlideNumbersVisibility(System.Boolean)">
+      <summary>
+            Changes all page number placeholders visibility, including master slides, layout slides and slides.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.PresentationHeaderFooterManager.SetAllDateTimesVisibility(System.Boolean)">
+      <summary>
+            Changes all date-time placeholders visibility, including master slides, layout slides and slides.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.PresentationHeaderFooterManager.SetAllFootersText(System.String)">
+      <summary>
+            Sets text to all footer placeholders, including master slides, layout slides and slides.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.PresentationHeaderFooterManager.SetAllDateTimesText(System.String)">
+      <summary>
+            Sets text to all date-time placeholders, including master slides, layout slides and slides.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.PresentationHeaderFooterManager.SetVisibilityOnAllTitleSlides(System.Boolean)">
+      <summary>
+            Changes the footer, date-time and page number placeholders visibility for all title slides and for first layout slide.
+            Title slides – slides based on first layout slide (regardless of type of this first layout).
+            </summary>
+      <param name="isVisible">true - makes a placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="T:Aspose.Slides.Section">
+      <summary>
+            Represents section of slides.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Section.GetSlidesListOfSection">
+      <summary>
+            Returns list of slides in the section.
+            </summary>
+      <returns>List of slides.</returns>
+    </member>
+    <member name="P:Aspose.Slides.Section.Name">
+      <summary>
+            Name of the section.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Section.StartedFromSlide">
+      <summary>
+            Returns first slide of the section.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.SectionCollection">
+      <summary>
+            Represents a collection of sections.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.AddSection(System.String,Aspose.Slides.ISlide)">
+      <summary>
+            Add slides section started form specific slide.
+            </summary>
+      <param name="name">Name of the section</param>
+      <param name="startedFromSlide">First slide of section</param>
+      <returns>Added section.</returns>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.AppendEmptySection(System.String)">
+      <summary>
+            Add empty section to the end of the collection.
+            </summary>
+      <param name="name">Name of the section</param>
+      <returns>Added section.</returns>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.AddEmptySection(System.String,System.Int32)">
+      <summary>
+            Add empty section to specified position of the collection.
+            </summary>
+      <param name="name">Name of the section</param>
+      <param name="index">Index of new section.</param>
+      <returns>Added section.</returns>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.IndexOf(Aspose.Slides.ISection)">
+      <summary>
+            Returns an index of the specified section in the collection.
+            </summary>
+      <param name="section">Section to find.</param>
+      <returns>Index of a section or -1 if section not from this collection.</returns>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.RemoveSectionWithSlides(Aspose.Slides.ISection)">
+      <summary>
+            Remove section and slides contained in the section.
+            </summary>
+      <param name="section">The section to remove from the collection.</param>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.RemoveSection(Aspose.Slides.ISection)">
+      <summary>
+            Remove section. Slides contained in the section will be merged into previous section.
+            </summary>
+      <param name="section">The section to remove from the collection.</param>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.ReorderSectionWithSlides(Aspose.Slides.ISection,System.Int32)">
+      <summary>
+            Moves section and its slides from the collection to the specified position.
+            </summary>
+      <param name="index">Target index.</param>
+      <param name="section">Section to move.</param>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.Clear">
+      <summary>
+            Removes all sections from the collection.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.CopyTo(System.Array,System.Int32)">
+      <summary>
+            Copies the entire collection to the specified array.
+            </summary>
+      <param name="array">Target array</param>
+      <param name="index">Index in the target array.</param>
+    </member>
+    <member name="M:Aspose.Slides.SectionCollection.GetEnumerator">
+      <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+      <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            </returns>
+    </member>
+    <member name="P:Aspose.Slides.SectionCollection.Item(System.Int32)">
+      <summary>
+            Gets the element at the specified index.
+            Read-only <see cref="T:Aspose.Slides.ISection" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.SectionCollection.Count">
+      <summary>
+            Gets the number of elements actually contained in the collection.
+            Read-only <see cref="T:System.Int32" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.SectionCollection.IsSynchronized">
+      <summary>
+            Returns a value indicating whether access to the collection is synchronized (thread-safe).
+            Read-only <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.SectionCollection.SyncRoot">
+      <summary>
+            Returns a synchronization root.
+            Read-only <see cref="T:System.Object" />.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.SectionSlideCollection">
+      <summary>
+            Represents a collection of slides in the section.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.SectionSlideCollection.CopyTo(System.Array,System.Int32)">
+      <summary>
+            Copies the entire collection to the specified array.
+            </summary>
+      <param name="array">Target array</param>
+      <param name="index">Index in the target array.</param>
+    </member>
+    <member name="M:Aspose.Slides.SectionSlideCollection.GetEnumerator">
+      <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+      <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            </returns>
+    </member>
+    <member name="P:Aspose.Slides.SectionSlideCollection.Item(System.Int32)">
+      <summary>
+            Gets the element at the specified index.
+            Read-only <see cref="T:Aspose.Slides.ISlide" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.SectionSlideCollection.Count">
+      <summary>
+            Gets the number of elements actually contained in the collection.
+            Read-only <see cref="T:System.Int32" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.SectionSlideCollection.IsSynchronized">
+      <summary>
+            Returns a value indicating whether access to the collection is synchronized (thread-safe).
+            Read-only <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.SectionSlideCollection.SyncRoot">
+      <summary>
+            Returns a synchronization root.
+            Read-only <see cref="T:System.Object" />.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.SlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the slide footer, date-time, page number placeholders.
             </summary>
     </member>
     <member name="T:Aspose.Slides.TextFrameFormat">
@@ -1974,6 +2441,22 @@
             Read/write <see cref="T:Aspose.Slides.TextAutofitType" />.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.TextFrameFormat.ColumnCount">
+      <summary>
+            Returns or sets number of columns in the text area.
+            This value must be a positive number. Otherwise, the value will be set to zero. 
+            Value 0 means undefined value.
+            Read/write <see cref="T:System.Int32" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.TextFrameFormat.ColumnSpacing">
+      <summary>
+            Returns or sets the space between text columns in the text area (in points). This should only apply 
+            when there is more than 1 column present.
+            This value must be a positive number. Otherwise, the value will be set to zero. 
+            Read/write <see cref="T:System.Double" />.
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.TextFrameFormat.RotationAngle">
       <summary>
             Specifies custom the rotation that is being applied to the text within the bounding box. If it not
@@ -2026,16 +2509,16 @@
     </member>
     <member name="T:Aspose.Slides.Charts.ChartPortionFormat">
       <summary>
-            This class contains the chart portion formatting properties used in charts. 
+            This class contains the chart portion formatting properties used in charts.
             Unlike <see cref="T:Aspose.Slides.PortionFormatEffectiveData" />, all properties of this class are writeable.
             </summary>
       <remarks>
-        <para>This class is used to return and manipulate text portion formatting 
+        <para>This class is used to return and manipulate text portion formatting
             properties defined for the particular portion. This means that
-            no inheritance is applied when getting values so for the majority of cases 
+            no inheritance is applied when getting values so for the majority of cases
             you will get values meaning "undefined".</para>
-        <para>In order to get the effective formatting parameter values including 
-            inherited you need to use <see cref="M:Aspose.Slides.Portion.CreatePortionFormatEffective" /> method 
+        <para>In order to get the effective formatting parameter values including
+            inherited you need to use <see cref="M:Aspose.Slides.Portion.CreatePortionFormatEffective" /> method
             which returns a <see cref="T:Aspose.Slides.PortionFormatEffectiveData" /> instance.</para>
       </remarks>
     </member>
@@ -2077,6 +2560,11 @@
     <member name="T:Aspose.Slides.Charts.Axis">
       <summary>
             Encapsulates the object that represents a chart's axis.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Charts.Axis.SetCategoryAxisTypeAutomatically">
+      <summary>
+            Sets IAxis.CategoryAxisType property with a value that is automatically determined based on axis data.
             </summary>
     </member>
     <member name="P:Aspose.Slides.Charts.Axis.Chart">
@@ -2711,11 +3199,6 @@
             Managed container of the values of the chart category levels.
             </summary>
     </member>
-    <member name="M:Aspose.Slides.Charts.ChartCategoryLevelsManager.SetGroupingItem(System.Int32,Aspose.Slides.Charts.IChartDataCell)">
-      <summary>
-            Sets grouping item for defined level.
-            </summary>
-    </member>
     <member name="M:Aspose.Slides.Charts.ChartCategoryLevelsManager.SetGroupingItem(System.Int32,System.Object)">
       <summary>
             Sets grouping item for defined level.
@@ -2816,6 +3299,12 @@
       <param name="formula">The cells data range formula. E.g: "Sheet1!$A$1:$C$4" , "SomeSheetName!A1:B100", "Sheet1!$A$1:$B$5;Sheet1!$D$1:$D$5".</param>
       <exception cref="T:System.ArgumentNullException">formula is null.</exception>
       <exception cref="T:System.ArgumentException">formula has incorrect format.</exception>
+    </member>
+    <member name="M:Aspose.Slides.Charts.ChartData.SwitchRowColumn">
+      <summary>
+            Swap the data over the axis.
+            Data being charted on the X axis will move to the Y axis and vice versa. 
+            </summary>
     </member>
     <member name="P:Aspose.Slides.Charts.ChartData.ChartDataWorkbook">
       <summary>
@@ -4517,6 +5006,32 @@
             Gets or sets workbook data cell. Applied if IDataLabelFormat.ShowLabelValueFromCell property equals true.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.Charts.DataLabel.ActualX">
+      <summary>
+            Specifies actual x location (left) of the chart element relative to the left top corner of the chart.
+            Call method IChart.ValidateChartLayout() before to get actual values. 
+            Read <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Charts.DataLabel.ActualY">
+      <summary>
+            Specifies actual top of the chart element relative to the left top corner of the chart.
+            Call method IChart.ValidateChartLayout() before to get actual values. 
+            Read <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Charts.DataLabel.ActualWidth">
+      <summary>
+            Specifies actual width of the chart element. Call method IChart.ValidateChartLayout() before to get actual values. 
+            Read <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Charts.DataLabel.ActualHeight">
+      <summary>
+            Specifies actual height of the chart element. Call method IChart.ValidateChartLayout() before to get actual values. 
+            Read <see cref="T:System.Single" />.
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.Charts.DataLabelCollection">
       <summary>
             Represents a series labels.
@@ -5421,6 +5936,12 @@
             </summary>
       <param name="data">Font's data</param>
     </member>
+    <member name="M:Aspose.Slides.FontsLoader.GetFontFolders">
+      <summary>
+            Gets font folders. Returns folders that have been added with LoadExternalFonts method as well as system font folders
+            </summary>
+      <returns>array containing folder names</returns>
+    </member>
     <member name="M:Aspose.Slides.FontsLoader.ClearCache">
       <summary>
             Releases all custom fonts defined by user
@@ -5429,7 +5950,7 @@
     </member>
     <member name="T:Aspose.Slides.FontsManager">
       <summary>
-            Manages fonts across the presentation
+            Manages fonts across the presentation.
             </summary>
     </member>
     <member name="M:Aspose.Slides.FontsManager.GetFonts">
@@ -5447,6 +5968,18 @@
       <summary>
             Removes the embedded font
             </summary>
+    </member>
+    <member name="M:Aspose.Slides.FontsManager.AddEmbeddedFont(Aspose.Slides.IFontData,Aspose.Slides.Export.EmbedFontCharacters)">
+      <summary>
+            Adds the embedded font
+            <remarks>Keep in mind when copying any fonts that most fonts are copyrighted. First locate the license of 
+            a font before hand and verify they can be freely transferred to another machine.</remarks><exception cref="T:System.ArgumentException">An ArgumentException can be thrown if font data is null or this font is already embedded</exception></summary>
+    </member>
+    <member name="M:Aspose.Slides.FontsManager.AddEmbeddedFont(System.Byte[],Aspose.Slides.Export.EmbedFontCharacters)">
+      <summary>
+            Adds the embedded font
+            <remarks>Keep in mind when copying any fonts that most fonts are copyrighted. First locate the license of 
+            a font before hand and verify they can be freely transferred to another machine.</remarks><exception cref="T:System.ArgumentException">An ArgumentException can be thrown if font data is null or this font is already embedded</exception></summary>
     </member>
     <member name="M:Aspose.Slides.FontsManager.ReplaceFont(Aspose.Slides.IFontData,Aspose.Slides.IFontData)">
       <summary>
@@ -5835,6 +6368,20 @@
             Returns or sets an object which receives warnings and decides whether loading 
             process will continue or will be aborted.
             Read/write <see cref="T:Aspose.Slides.Warnings.IWarningCallback" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.LoadOptions.BlobManagementOptions">
+      <summary>
+            Represents the options which can be used to manage Binary Large Objects (BLOBs) handling behavior,
+            such as using of temporary files or max BLOBs bytes in memory. These options intended to set up
+            the best performance/memory consumption ratio for a perticular environment or requirements.
+            <remarks>A Binary Large Object (BLOB) is a binary data stored as a single entity - i.e. BLOB can 
+            be an audio, video or presentation itself.</remarks></summary>
+    </member>
+    <member name="P:Aspose.Slides.LoadOptions.DocumentLevelFontSources">
+      <summary>
+            Specifies sources for external fonts to be used by the presentation.
+            These fonts are available to the presentation throughout its lifetime and are not shared with other presentations
             </summary>
     </member>
     <member name="T:Aspose.Slides.SlideShow.RevealTransition">
@@ -7567,7 +8114,7 @@
     <member name="P:Aspose.Slides.ViewProperties.NotesViewProperties">
       <summary>
             Specifies common view properties associated with the notes view mode.
-            Read-only <see cref="T:Aspose.Slides.ICommonSlideViewProperties" />. 
+            Read-only <see cref="T:Aspose.Slides.ICommonSlideViewProperties" />.
             </summary>
     </member>
     <member name="T:Aspose.Slides.Export.EmbeddedEotFontsHtmlController">
@@ -7585,6 +8132,82 @@
             Creates new instance.
             </summary>
       <param name="controller">HTML formatting controller.</param>
+    </member>
+    <member name="T:Aspose.Slides.Export.EmbedAllFontsHtmlController">
+      <summary>
+            The formatting controller class to use for embedding all presentation fonts in WOFF format.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.#ctor">
+      <summary>
+            Creates new instance
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.#ctor(System.String[])">
+      <summary>
+            Creates new instance
+            </summary>
+      <param name="fontNameExcludeList">Fonts to be excluded from embedding</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteDocumentStart(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.IPresentation)">
+      <summary>
+            Called to write html document header. Called once per presentation conversion.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="presentation">Presentation which being currently rendered.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteDocumentEnd(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.IPresentation)">
+      <summary>
+            Called to write html document footer. Called once per presentation conversion.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="presentation">Presentation which being currently rendered.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteSlideStart(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.ISlide)">
+      <summary>
+            Called to write html slide header. Called once per each of slides.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="slide">Slide which being currently rendered.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteSlideEnd(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.ISlide)">
+      <summary>
+            Called to write html slide footer. Called once per each of slides.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="slide">Slide which being currently rendered.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteShapeStart(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.IShape)">
+      <summary>
+            Called before shape's rendering. Called once per each of shape. If this function writes anything to generator, current slide image generation will be finished, added html fragment inserted and new image will be started atop of the previous.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="shape">Shape which is about to render.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteShapeEnd(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.IShape)">
+      <summary>
+            Called before shape's rendering. Called once per each of shape. If this function writes anything to generator, current slide image generation will be finished, added html fragment inserted and new image will be started atop of the previous.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="shape">Shape which is rendered last.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteAllFonts(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.IPresentation)">
+      <summary>
+            Write all fonts contained in <see cref="T:Aspose.Slides.Presentation" />.
+            </summary>
+      <param name="generator">Output object.</param>
+      <param name="presentation">Presentation which being currently rendered.</param>
+    </member>
+    <member name="M:Aspose.Slides.Export.EmbedAllFontsHtmlController.WriteFont(Aspose.Slides.Export.IHtmlGenerator,Aspose.Slides.IFontData,Aspose.Slides.IFontData,System.String,System.String,System.Byte[])">
+      <summary>
+            Writes data as base64 into HTML document itself
+            </summary>
+      <param name="generator">HTML generator</param>
+      <param name="originalFont">Font to be serialized</param>
+      <param name="substitutedFont">Substituted font (if font substitution occured), null otherwise</param>
+      <param name="fontStyle">Font style</param>
+      <param name="fontWeight">Font weight</param>
+      <param name="fontData">Font data</param>
     </member>
     <member name="T:Aspose.Slides.Export.EmbeddedWoffFontsHtmlController">
       <summary>
@@ -7825,6 +8448,15 @@
             Default is 95.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.Export.SwfOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated SWF.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
+    </member>
     <member name="T:Aspose.Slides.Export.VideoPlayerHtmlController">
       <summary>
             This class allows export of video and audio files into a HTML
@@ -7837,6 +8469,26 @@
       <param name="path">The path where video and audio files will be generated</param>
       <param name="fileName">The name of the HTML file</param>
       <param name="baseUri">The base URI which will be used for links generating</param>
+    </member>
+    <member name="T:Aspose.Slides.Import.HtmlExternalResolver">
+      <summary>
+            Callback object used by HTML import routine to obtain referrenced objects such as images.
+            <remarks>Using this resolver could create a vulnurability when client provided HTML file will make server software to obtain local or network file. Use with caution. It is recommended not to specify HtmlExternalResolver at all (only embedded objects will be read) or create some subclass which checks if specified uri is valid.</remarks></summary>
+    </member>
+    <member name="M:Aspose.Slides.Import.HtmlExternalResolver.ResolveUri(System.String,System.String)">
+      <summary>
+            Resolves the absolute URI from the base and relative URIs.
+            </summary>
+      <param name="baseUri">Base URI of linking objects</param>
+      <param name="relativeUri">Relative URI to the linked object.</param>
+      <returns>Absolute URI or null if the relative URI cannot be resolved.</returns>
+    </member>
+    <member name="M:Aspose.Slides.Import.HtmlExternalResolver.GetEntity(System.String)">
+      <summary>
+            Maps a URI to an object containing the actual resource.
+            </summary>
+      <param name="absoluteUri">Absolute URI to the object.</param>
+      <returns> A <see cref="T:System.IO.Stream" /> object or null if resource cannot be streamed.</returns>
     </member>
     <member name="T:Aspose.Slides.Import.NamespaceDoc">
       <summary>
@@ -9429,6 +10081,15 @@
             larger file)
             </summary>
     </member>
+    <member name="P:Aspose.Slides.Export.HtmlOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated HTML.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
+    </member>
     <member name="T:Aspose.Slides.Export.PdfOptions">
       <summary>
             Provides options that control how a presentation is saved in Pdf format.
@@ -9514,6 +10175,15 @@
             </summary>
       <remarks>
             Default is <b>true</b>.
+            Pdf document can contain vector graphics and raster images. 
+            If SaveMetafilesAsPng is set to true then source Metafile 
+            image is converted to Png format and saved to Pdf as a raster 
+            image. If SaveMetafilesAsPng is set to false then source Metafile 
+            is converted to Pdf vector graphics. Each approach has advantages 
+            and disadvantages.For example, if Metafile is converted to PNG, 
+            then some quality loss is possible during resulting 
+            document scaling.If Metafile is converted to Pdf vector graphics, 
+            then performance issues in Pdf viewing tool are possible.
             </remarks>
     </member>
     <member name="P:Aspose.Slides.Export.PdfOptions.SufficientResolution">
@@ -9528,6 +10198,15 @@
     <member name="P:Aspose.Slides.Export.PdfOptions.DrawSlidesFrame">
       <summary>
              True to draw black frame around each slide.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
+    </member>
+    <member name="P:Aspose.Slides.Export.PdfOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated PDF.
              Read/write <see cref="T:System.Boolean" />.
              </summary>
       <remarks>
@@ -9582,6 +10261,11 @@
             </summary>
       <param name="eventType">Type of event.</param>
       <param name="handler">Javascript function to handle event. Null value removes handler.</param>
+    </member>
+    <member name="P:Aspose.Slides.Export.SvgShape.Id">
+      <summary>
+            Gets shape id
+            </summary>
     </member>
     <member name="T:Aspose.Slides.Export.TextToHtmlConversionOptions">
       <summary>
@@ -9660,6 +10344,15 @@
             Read/write <see cref="T:Aspose.Slides.Export.ImagePixelFormat" />.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.Export.TiffOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated Tiff.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
+    </member>
     <member name="T:Aspose.Slides.Export.XpsOptions">
       <summary>
             Provides options that control how a presentation is saved in XPS format.
@@ -9694,27 +10387,25 @@
             Default is <b>false</b>.
             </remarks>
     </member>
-    <member name="T:Aspose.Slides.Import.HtmlExternalResolver">
+    <member name="T:Aspose.Slides.Import.ExternalResourceResolver">
       <summary>
-            Callback object used by HTML import routine to obtain referrenced objects such as images.
-            Supports "data:" "file:" and "http:" url schemes.
-            <remarks>Using this resolver could create a vulnurability when client provided HTML file will make server software to obtain local or network file. Use with caution. It is recommended not to specify HtmlExternalResolver at all (only embedded objects will be read) or create some subclass which checks if specified uri is valid.</remarks></summary>
+            Callback class used to resolve external resources during Html, Svg documents import.
+            <remarks>Using this resolver could create a vulnerability when client provided HTML or SVG file will make server software to obtain local or network file. Use with caution. It is recommended not to specify ExternalResourceResolver at all (only embedded objects will be read) or create some subclass which checks if specified uri is valid.</remarks></summary>
     </member>
-    <member name="M:Aspose.Slides.Import.HtmlExternalResolver.ResolveUri(System.String,System.String)">
+    <member name="M:Aspose.Slides.Import.ExternalResourceResolver.ResolveUri(System.String,System.String)">
       <summary>
-            Resolves URI.
+            Resolves the absolute URI from the base and relative URIs.
             </summary>
-      <param name="baseUri">absolute URI of linking objects</param>
-      <param name="relativeUri">URI to the linked object.</param>
-      <returns>absolute URI to the linked object. Returning null will prevent object from loading.</returns>
+      <param name="baseUri">Base URI of linking objects</param>
+      <param name="relativeUri">Relative URI to the linked object.</param>
+      <returns>Absolute URI or null if the relative URI cannot be resolved.</returns>
     </member>
-    <member name="M:Aspose.Slides.Import.HtmlExternalResolver.GetEntity(System.String)">
+    <member name="M:Aspose.Slides.Import.ExternalResourceResolver.GetEntity(System.String)">
       <summary>
-            Fetches linked object.
+            Maps a URI to an object containing the actual resource.
             </summary>
-      <param name="absoluteUri">Absolute URI to the object (returned by <see cref="M:Aspose.Slides.Import.HtmlExternalResolver.ResolveUri(System.String,System.String)" /> method.</param>
-      <returns>
-        <see cref="T:System.IO.Stream" /> object with the linked object data or null if object can't or shouldn't be loaded.</returns>
+      <param name="absoluteUri">Absolute URI to the object.</param>
+      <returns> A <see cref="T:System.IO.Stream" /> object or null if resource cannot be streamed.</returns>
     </member>
     <member name="T:Aspose.Slides.PresentationText">
       <summary>
@@ -10864,6 +11555,13 @@
             Represents an embedded audio file.
             </summary>
     </member>
+    <member name="M:Aspose.Slides.Audio.GetStream">
+      <summary>
+            Returns Stream stream for reading.
+            Use 'using' or close stream after using.
+            </summary>
+      <returns>Stream for reading.</returns>
+    </member>
     <member name="P:Aspose.Slides.Audio.ContentType">
       <summary>
             Returns a MIME type of an audio, encoded in <see cref="P:Aspose.Slides.Audio.BinaryData" />.
@@ -10872,7 +11570,9 @@
     </member>
     <member name="P:Aspose.Slides.Audio.BinaryData">
       <summary>
-            Returns the copy of an audio's data.
+            Returns the copy of an audio's data. In case of large amount of data consider 
+            using of <see cref="M:Aspose.Slides.Audio.GetStream" /> method to prevent unnecessary  loading of audio's
+            data into memory or even OutOfMemoryException.
             Read-only <see cref="T:byte[]" />.
             </summary>
     </member>
@@ -10893,6 +11593,14 @@
             Creates and adds a audio to a presentation from stream.
             </summary>
       <param name="stream">Stream to add audio from.</param>
+      <returns>Added audio.</returns>
+    </member>
+    <member name="M:Aspose.Slides.AudioCollection.AddAudio(System.IO.Stream,Aspose.Slides.LoadingStreamBehavior)">
+      <summary>
+            Creates and adds a audio to a presentation from stream.
+            </summary>
+      <param name="stream">Stream to add video audio from.</param>
+      <param name="loadingStreamBehavior">The behavior which will be applied to the stream.</param>
       <returns>Added audio.</returns>
     </member>
     <member name="M:Aspose.Slides.AudioCollection.AddAudio(System.Byte[])">
@@ -13459,47 +14167,6 @@
             Read/write <see cref="T:System.Boolean" />.
             </summary>
     </member>
-    <member name="T:Aspose.Slides.HeaderFooterManager">
-      <summary>
-            Represents manager which holds behavior of a header\footer placeholders
-            </summary>
-    </member>
-    <member name="M:Aspose.Slides.HeaderFooterManager.SetFooterText(System.String)">
-      <summary>
-            Sets text to all footer placeholders including master and layout.
-            </summary>
-      <param name="text">Text to set.</param>
-    </member>
-    <member name="M:Aspose.Slides.HeaderFooterManager.SetDateTimeText(System.String)">
-      <summary>
-            Sets text to all date-time placeholders including master and layout. 
-            </summary>
-      <param name="date">Text to set.</param>
-    </member>
-    <member name="M:Aspose.Slides.HeaderFooterManager.SetVisibilityOnTitleSlide(System.Boolean)">
-      <summary>
-            Adds or removes header\footer placeholders from title slides (slides based on first layout).
-            </summary>
-      <param name="isPlaceholdersVisible">true - makes a header\footer placeholders visible on the title slide, otherwise - hides them.</param>
-    </member>
-    <member name="P:Aspose.Slides.HeaderFooterManager.IsFooterVisible">
-      <summary>
-            Gets or sets value indicating that a footer placeholders should be present on a slides.
-            Read/write <see cref="T:System.Boolean" />.
-            </summary>
-    </member>
-    <member name="P:Aspose.Slides.HeaderFooterManager.IsSlideNumberVisible">
-      <summary>
-            Gets or sets value indicating that a page number placeholders should be present on a slides.
-            Read/write <see cref="T:System.Boolean" />.
-            </summary>
-    </member>
-    <member name="P:Aspose.Slides.HeaderFooterManager.IsDateTimeVisible">
-      <summary>
-            Gets or sets value indicating that a date-time placeholders should be present on a slides.
-            Read/write <see cref="T:System.Boolean" />.
-            </summary>
-    </member>
     <member name="T:Aspose.Slides.Hyperlink">
       <summary>
             Represents a hyperlink. Immutable.
@@ -13788,6 +14455,24 @@
       <param name="buffer">Buffer.</param>
       <returns>Added image.</returns>
     </member>
+    <member name="M:Aspose.Slides.ImageCollection.AddFromSvg(System.String)">
+      <summary>
+            Add an image to a presentation from Svg. 
+            </summary>
+      <remarks>Svg to Metafile(EmfPlusOnly) conversion will be performed</remarks>
+      <param name="svgContent">Svg content.</param>
+      <returns>Added image.</returns>
+    </member>
+    <member name="M:Aspose.Slides.ImageCollection.AddFromSvg(System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
+      <summary>
+            Add an image to a presentation from Svg. 
+            </summary>
+      <remarks>Svg to Metafile(EmfPlusOnly) conversion will be performed</remarks>
+      <param name="svgContent">Svg content.</param>
+      <param name="externalResResolver">A callback object used to fetch external objects. If this parameter is null all external objects will be ignored.</param>
+      <param name="baseUri">Base URI of the specified Svg. Used to resolve relative links.</param>
+      <returns>Added image.</returns>
+    </member>
     <member name="M:Aspose.Slides.ImageCollection.GetEnumerator">
       <summary>
             Returns an enumerator that iterates through the collection.
@@ -13850,6 +14535,12 @@
             </summary>
       <returns>
       </returns>
+    </member>
+    <member name="P:Aspose.Slides.LayoutSlide.HeaderFooterManager">
+      <summary>
+            Returns HeaderFooter manager of the layout slide.
+            Read-only <see cref="T:Aspose.Slides.ILayoutSlideHeaderFooterManager" />.
+            </summary>
     </member>
     <member name="P:Aspose.Slides.LayoutSlide.MasterSlide">
       <summary>
@@ -14240,6 +14931,12 @@
             Read-only <see cref="T:Aspose.Slides.Theme.IMasterThemeManager" />.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.MasterNotesSlide.NotesStyle">
+      <summary>
+            Returns the style of a notes text.
+            Read-only <see cref="T:Aspose.Slides.ITextStyle" />.
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.MasterSlide">
       <summary>
             Represents a master slide in a presentation.
@@ -14251,6 +14948,12 @@
             </summary>
       <returns>
       </returns>
+    </member>
+    <member name="P:Aspose.Slides.MasterSlide.HeaderFooterManager">
+      <summary>
+            Returns HeaderFooter manager of the master slide.
+            Read-only <see cref="T:Aspose.Slides.IMasterSlideHeaderFooterManager" />.
+            </summary>
     </member>
     <member name="P:Aspose.Slides.MasterSlide.TitleStyle">
       <summary>
@@ -14563,6 +15266,11 @@
             Returns the file extension for the current embedded object or empty string if object is not a link
             </summary>
     </member>
+    <member name="P:Aspose.Slides.OleObjectFrame.EmbeddedFileData">
+      <summary>
+            Returns the file data of embedded OLE object
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.OleObjectFrame.IsObjectIcon">
       <summary>
             Determines whether an object is visible as icon.
@@ -14844,7 +15552,7 @@
             </summary>
       <param name="text">HTML text.</param>
     </member>
-    <member name="M:Aspose.Slides.ParagraphCollection.AddFromHtml(System.String,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ParagraphCollection.AddFromHtml(System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Adds text from specified html string to the collection.
             </summary>
@@ -15389,6 +16097,38 @@
       <summary>
             Returns or sets the number of percents of real image height that are cropped off
             the bottom of the picture. 
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.PictureFillFormat.StretchOffsetLeft">
+      <summary>
+            Returns or sets left edge of the fill rectangle that is defined by a percentage offset 
+            from the left edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.PictureFillFormat.StretchOffsetTop">
+      <summary>
+            Returns or sets top edge of the fill rectangle that is defined by a percentage offset 
+            from the top edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.PictureFillFormat.StretchOffsetRight">
+      <summary>
+            Returns or sets right edge of the fill rectangle that is defined by a percentage offset 
+            from the right edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.PictureFillFormat.StretchOffsetBottom">
+      <summary>
+            Returns or sets bottom edge of the fill rectangle that is defined by a percentage offset 
+            from the bottom edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
             Read/write <see cref="T:System.Single" />.
             </summary>
     </member>
@@ -15959,6 +16699,7 @@
              the contents of the Presentation are read.
              </summary>
       <param name="file">Input file.</param>
+      <exception cref="T:System.ArgumentException">Thrown when input file has zero length</exception>
       <example>
         <code>
              [C#]
@@ -15978,45 +16719,7 @@
             </summary>
       <param name="file">Input file.</param>
       <param name="loadOptions">Additional load options.</param>
-    </member>
-    <member name="M:Aspose.Slides.Presentation.GetPresentationText(System.String)">
-      <summary>
-            Retreieves the raw text from the slides using unarranded mode
-            </summary>
-      <param name="file">Input file</param>
-      <returns>The instance of PresentationText containing the SlideText array representing the raw slides text</returns>
-    </member>
-    <member name="M:Aspose.Slides.Presentation.GetPresentationText(System.IO.Stream)">
-      <summary>
-            Retreieves the raw text from the slides using unarranded mode
-            </summary>
-      <param name="stream">Input stream</param>
-      <returns>The instance of PresentationText containing the SlideText array representing the raw slides text</returns>
-    </member>
-    <member name="M:Aspose.Slides.Presentation.GetPresentationText(System.String,Aspose.Slides.TextExtractionArrangingMode)">
-      <summary>
-            Retreieves the raw text from the slides
-            </summary>
-      <param name="file">Input file</param>
-      <param name="mode">Extraction mode</param>
-      <returns>The instance of PresentationText containing the SlideText array representing the raw slides text</returns>
-    </member>
-    <member name="M:Aspose.Slides.Presentation.GetPresentationText(System.IO.Stream,Aspose.Slides.TextExtractionArrangingMode)">
-      <summary>
-            Retreieves the raw text from the slides
-            </summary>
-      <param name="stream">Input stream</param>
-      <param name="mode">Extraction mode</param>
-      <returns>The instance of PresentationText containing the SlideText array representing the raw slides text</returns>
-    </member>
-    <member name="M:Aspose.Slides.Presentation.GetPresentationText(System.IO.Stream,Aspose.Slides.TextExtractionArrangingMode,Aspose.Slides.LoadOptions)">
-      <summary>
-            Retreieves the raw text from the slides
-            </summary>
-      <param name="stream">Input stream</param>
-      <param name="mode">Extraction mode</param>
-      <param name="options">Load options</param>
-      <returns>The instance of PresentationText containing the SlideText array representing the raw slides text</returns>
+      <exception cref="T:System.ArgumentException">Thrown when input file has zero length</exception>
     </member>
     <member name="M:Aspose.Slides.Presentation.GetSlideById(System.UInt32)">
       <summary>
@@ -16100,6 +16803,7 @@
     <member name="M:Aspose.Slides.Presentation.Save(System.String,Aspose.Slides.Export.SaveFormat,System.Web.HttpResponse,System.Boolean)">
       <summary>
             Sends the presentation to the client browser.
+            This method is absent in ClientProfile versions of Aspose.Slide.
             </summary>
       <param name="fname">The name for the presentation that will appear at the client browser. The name should not contain path.</param>
       <param name="format">Format of the exported data.</param>
@@ -16109,6 +16813,7 @@
     <member name="M:Aspose.Slides.Presentation.Save(System.String,Aspose.Slides.Export.SaveFormat,Aspose.Slides.Export.ISaveOptions,System.Web.HttpResponse,System.Boolean)">
       <summary>
             Sends the presentation to the client browser.
+            This method is absent in ClientProfile versions of Aspose.Slide.
             </summary>
       <param name="fname">The name for the presentation that will appear at the client browser. The name should not contain path.</param>
       <param name="format">Format of the exported data.</param>
@@ -16177,6 +16882,12 @@
       <summary>
             Returns a list of all slides that are defined in the presentation.
             Read-only <see cref="T:Aspose.Slides.ISlideCollection" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Presentation.Sections">
+      <summary>
+            Returns a list of all slides sections that are defined in the presentation.
+            Read-only <see cref="T:Aspose.Slides.ISectionCollection" />.
             </summary>
     </member>
     <member name="P:Aspose.Slides.Presentation.SlideSize">
@@ -17256,6 +17967,12 @@
             Joins runs with same formatting in all paragraphs in all acceptable shapes.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.Slide.HeaderFooterManager">
+      <summary>
+            Returns HeaderFooter manager of the slide.
+            Read-only <see cref="T:Aspose.Slides.ISlideHeaderFooterManager" />.
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.Slide.ThemeManager">
       <summary>
             Returns the overriding theme manager.
@@ -17467,7 +18184,7 @@
       <param name="slide">Slide to find.</param>
       <returns>Index of a slide or -1 if slide not from this collection.</returns>
     </member>
-    <member name="M:Aspose.Slides.SlideCollection.AddFromHtml(System.String,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.SlideCollection.AddFromHtml(System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and adds them to the end of the collection.
             </summary>
@@ -17483,7 +18200,7 @@
       <param name="htmlText">Html to add.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.SlideCollection.AddFromHtml(System.IO.TextReader,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.SlideCollection.AddFromHtml(System.IO.TextReader,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and adds them to the end of the collection.
             </summary>
@@ -17499,7 +18216,7 @@
       <param name="htmlReader">TextReader object which will be used as a source of a HTML file.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.SlideCollection.AddFromHtml(System.IO.Stream,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.SlideCollection.AddFromHtml(System.IO.Stream,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and adds them to the end of the collection.
             </summary>
@@ -17515,7 +18232,7 @@
       <param name="htmlStream">A Stream object which will be used as a source of a HTML file.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.SlideCollection.InsertFromHtml(System.Int32,System.String,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.SlideCollection.InsertFromHtml(System.Int32,System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and inserts them to the collection at the specified position.
             </summary>
@@ -17533,7 +18250,7 @@
       <param name="htmlText">Html to add.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.SlideCollection.InsertFromHtml(System.Int32,System.IO.TextReader,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.SlideCollection.InsertFromHtml(System.Int32,System.IO.TextReader,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and inserts them to the collection at the specified position.
             </summary>
@@ -17551,7 +18268,7 @@
       <param name="htmlReader">TextReader object which will be used as a source of a HTML file.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.SlideCollection.InsertFromHtml(System.Int32,System.IO.Stream,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.SlideCollection.InsertFromHtml(System.Int32,System.IO.Stream,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and inserts them to the collection at the specified position.
             </summary>
@@ -18221,6 +18938,12 @@
             </summary>
       <exception cref="T:System.ArgumentException">Thrown when value is ShapeType.NotDefined or ShapeType.Custom</exception>
     </member>
+    <member name="P:Aspose.Slides.SmartArt.SmartArtShape.TextFrame">
+      <summary>
+            Returns text of the SmartArt shape.
+            Read-only <see cref="T:Aspose.Slides.ITextFrame" />.
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.SmartArt.SmartArtShapeCollection">
       <summary>
             Represents a collection of a SmartArt shapes
@@ -18735,6 +19458,13 @@
             Represents an image embedded into a presentation.
             </summary>
     </member>
+    <member name="M:Aspose.Slides.Video.GetStream">
+      <summary>
+            Returns Stream stream for reading.
+            Use 'using' or close stream after using.
+            </summary>
+      <returns>Stream for reading.</returns>
+    </member>
     <member name="P:Aspose.Slides.Video.ContentType">
       <summary>
             Returns a MIME type of an video, encoded in <see cref="P:Aspose.Slides.Video.BinaryData" />.
@@ -18743,8 +19473,11 @@
     </member>
     <member name="P:Aspose.Slides.Video.BinaryData">
       <summary>
-            Returns the copy of an audio's data.
-            Read-only <see cref="T:byte[]" /></summary>
+            Returns the copy of an audio's data. In case of large amount of data consider using of 
+            <see cref="M:Aspose.Slides.Video.GetStream" /> method to prevent unnecessary loading of video's data into memory 
+            or even OutOfMemoryException.
+            Read-only <see cref="T:byte[]" />.
+            </summary>
     </member>
     <member name="T:Aspose.Slides.VideoCollection">
       <summary>
@@ -18764,6 +19497,14 @@
             </summary>
       <param name="stream">Stream to add video file from.</param>
       <returns>Added <see cref="T:Aspose.Slides.Video" />.</returns>
+    </member>
+    <member name="M:Aspose.Slides.VideoCollection.AddVideo(System.IO.Stream,Aspose.Slides.LoadingStreamBehavior)">
+      <summary>
+            Creates and adds a video to a presentation from stream.
+            </summary>
+      <param name="stream">Stream to add video file from.</param>
+      <param name="loadingStreamBehavior">The behavior which will be applied to the stream.</param>
+      <returns>Added <see cref="T:Aspose.Slides.IVideo" />.</returns>
     </member>
     <member name="M:Aspose.Slides.VideoCollection.AddVideo(System.Byte[])">
       <summary>
@@ -20273,12 +21014,6 @@
             Represents a type of a category axis.
             </summary>
     </member>
-    <member name="F:Aspose.Slides.Charts.CategoryAxisType.Auto">
-      <summary>
-            Specifies category axis is a date or text axis based on the 
-            data that is used for the axis labels, not a specific choice.
-            </summary>
-    </member>
     <member name="F:Aspose.Slides.Charts.CategoryAxisType.Text">
       <summary>
             Specifies category axis is a text axis.
@@ -20995,6 +21730,72 @@
             Split Position in the second chart.
             </summary>
     </member>
+    <member name="T:Aspose.Slides.IBaseHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the footer, date-time, page number placeholders for all slide types.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.IBaseSlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the footer, date-time, page number placeholders for all slide types.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.IBaseSlideHeaderFooterManager.SetFooterVisibility(System.Boolean)">
+      <summary>
+            Changes slide footer placeholder visibility.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholder visible, otherwise - hides it.</param>
+    </member>
+    <member name="M:Aspose.Slides.IBaseSlideHeaderFooterManager.SetSlideNumberVisibility(System.Boolean)">
+      <summary>
+            Changes slide page number placeholder visibility.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholder visible, otherwise - hides it.</param>
+    </member>
+    <member name="M:Aspose.Slides.IBaseSlideHeaderFooterManager.SetDateTimeVisibility(System.Boolean)">
+      <summary>
+            Changes slide date-time placeholder visibility.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholder visible, otherwise - hides it.</param>
+    </member>
+    <member name="M:Aspose.Slides.IBaseSlideHeaderFooterManager.SetFooterText(System.String)">
+      <summary>
+            Sets text to slide footer placeholder.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.IBaseSlideHeaderFooterManager.SetDateTimeText(System.String)">
+      <summary>
+            Sets text to slide date-time placeholder.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="P:Aspose.Slides.IBaseSlideHeaderFooterManager.IsFooterVisible">
+      <summary>
+            Gets value indicating that a footer placeholder is present.
+            Read <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IBaseSlideHeaderFooterManager.IsSlideNumberVisible">
+      <summary>
+            Gets value indicating that a page number placeholder is present.
+            Read<see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IBaseSlideHeaderFooterManager.IsDateTimeVisible">
+      <summary>
+            Gets value indicating that a date-time placeholder is present.
+            Read<see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IBaseSlideHeaderFooterManager.AsIBaseHeaderFooterManager">
+      <summary>
+            Returns IBaseHeaderFooterManager interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
     <member name="T:Aspose.Slides.ICustomXmlPart">
       <summary>
             Represents custom xml part.
@@ -21160,6 +21961,61 @@
     <member name="P:Aspose.Slides.Export.IEmbeddedWoffFontsHtmlController.AsIHtmlFormattingController">
       <summary>
             Returns IHtmlFormattingController interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
+    <member name="T:Aspose.Slides.ILayoutSlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the layout slide footer, date-time, page number placeholders and all child placeholders.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.ILayoutSlideHeaderFooterManager.SetFooterAndChildFootersVisibility(System.Boolean)">
+      <summary>
+            Changes layout slide footer placeholder and all child footer placeholders visibility.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.ILayoutSlideHeaderFooterManager.SetSlideNumberAndChildSlideNumbersVisibility(System.Boolean)">
+      <summary>
+            Changes layout slide page number placeholder and all child page number placeholders visibility.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.ILayoutSlideHeaderFooterManager.SetDateTimeAndChildDateTimesVisibility(System.Boolean)">
+      <summary>
+            Changes layout slide date-time placeholder and all child date-time placeholders visibility.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.ILayoutSlideHeaderFooterManager.SetFooterAndChildFootersText(System.String)">
+      <summary>
+            Sets text to layout slide footer placeholder and all child footer placeholders.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.ILayoutSlideHeaderFooterManager.SetDateTimeAndChildDateTimesText(System.String)">
+      <summary>
+            Sets text to layout slide date-time placeholder and all child date-time placeholders.
+            Child placeholders mean placeholders are contained on depending slides.
+            Depending slides use and depend on layout slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="P:Aspose.Slides.ILayoutSlideHeaderFooterManager.AsIBaseSlideHeaderFooterManager">
+      <summary>
+            Returns IBaseSlideHeaderFooterManager interface.
             </summary>
       <remarks>
             For COM compatibility.
@@ -21452,6 +22308,14 @@
       <summary>
             Gets unique shape identifier in presentation scope.
             Read-only <see cref="T:System.UInt32" />.
+            See also <see cref="P:Aspose.Slides.IShape.OfficeInteropShapeId" /> for getting unique shape identifier in slide scope.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IShape.OfficeInteropShapeId">
+      <summary>
+            Gets unique shape identifier in slide scope.
+            Read-only <see cref="T:System.UInt32" />.
+            See also <see cref="P:Aspose.Slides.IShape.UniqueId" /> for getting unique shape identifier in presentation scope.
             </summary>
     </member>
     <member name="P:Aspose.Slides.IShape.IsGrouped">
@@ -21590,6 +22454,271 @@
             Sets defined text frame format properties to all element's text frames.
             </summary>
       <param name="source">ITextFrameFormat object with necessary properties set.</param>
+    </member>
+    <member name="T:Aspose.Slides.IMasterSlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the master slide footer, date-time, page number placeholders and all child placeholders.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.IMasterSlideHeaderFooterManager.SetFooterAndChildFootersVisibility(System.Boolean)">
+      <summary>
+            Changes master slide footer placeholder and all child footer placeholders visibility.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.IMasterSlideHeaderFooterManager.SetSlideNumberAndChildSlideNumbersVisibility(System.Boolean)">
+      <summary>
+            Changes master slide page number placeholder and all child page number placeholders visibility.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.IMasterSlideHeaderFooterManager.SetDateTimeAndChildDateTimesVisibility(System.Boolean)">
+      <summary>
+            Changes master slide date-time placeholder and all child date-time placeholders visibility.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.IMasterSlideHeaderFooterManager.SetFooterAndChildFootersText(System.String)">
+      <summary>
+            Sets text to master slide footer placeholder and all child footer placeholders.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.IMasterSlideHeaderFooterManager.SetDateTimeAndChildDateTimesText(System.String)">
+      <summary>
+            Sets text to master slide date-time placeholder and all child date-time placeholders.
+            Child placeholders mean placeholders are contained on depending layout slides and depending slides.
+            Depending layout slides and slides use and depend on master slide.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="P:Aspose.Slides.IMasterSlideHeaderFooterManager.AsIBaseSlideHeaderFooterManager">
+      <summary>
+            Returns IBaseSlideHeaderFooterManager interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
+    <member name="T:Aspose.Slides.IPresentationHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of all footer, date-time and page number placeholders of presentation.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.IHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of a header\footer placeholders
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.IHeaderFooterManager.SetFooterText(System.String)">
+      <summary>
+            Sets text to all footer placeholders including master and layout.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.IHeaderFooterManager.SetDateTimeText(System.String)">
+      <summary>
+            Sets text to all date-time placeholders including master and layout. 
+            </summary>
+      <param name="date">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.IHeaderFooterManager.SetVisibilityOnTitleSlide(System.Boolean)">
+      <summary>
+            Adds or removes header\footer placeholders from title slides (slides based on first layout).
+            </summary>
+      <param name="isPlaceholdersVisible">true - makes a header\footer placeholders visible on the title slide, otherwise - hides them.</param>
+    </member>
+    <member name="P:Aspose.Slides.IHeaderFooterManager.IsFooterVisible">
+      <summary>
+            Gets or sets value indicating that a footer placeholders should be present on a slides.
+            Read/write <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IHeaderFooterManager.IsSlideNumberVisible">
+      <summary>
+            Gets or sets value indicating that a page number placeholders should be present on a slides.
+            Read/write <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IHeaderFooterManager.IsDateTimeVisible">
+      <summary>
+            Gets or sets value indicating that a date-time placeholders should be present on a slides.
+            Read/write <see cref="T:System.Boolean" />.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.IPresentationHeaderFooterManager.SetAllFootersVisibility(System.Boolean)">
+      <summary>
+            Changes all footer placeholders visibility, including master slides, layout slides and slides.
+            </summary>
+      <param name="isVisible">true - makes a footer placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.IPresentationHeaderFooterManager.SetAllSlideNumbersVisibility(System.Boolean)">
+      <summary>
+            Changes all page number placeholders visibility, including master slides, layout slides and slides.
+            </summary>
+      <param name="isVisible">true - makes a page number placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.IPresentationHeaderFooterManager.SetAllDateTimesVisibility(System.Boolean)">
+      <summary>
+            Changes all date-time placeholders visibility, including master slides, layout slides and slides.
+            </summary>
+      <param name="isVisible">true - makes a date-time placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="M:Aspose.Slides.IPresentationHeaderFooterManager.SetAllFootersText(System.String)">
+      <summary>
+            Sets text to all footer placeholders, including master slides, layout slides and slides.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.IPresentationHeaderFooterManager.SetAllDateTimesText(System.String)">
+      <summary>
+            Sets text to all date-time placeholders, including master slides, layout slides and slides.
+            </summary>
+      <param name="text">Text to set.</param>
+    </member>
+    <member name="M:Aspose.Slides.IPresentationHeaderFooterManager.SetVisibilityOnAllTitleSlides(System.Boolean)">
+      <summary>
+            Changes the footer, date-time and page number placeholders visibility for all title slides and for first layout slide.
+            Title slides – slides based on first layout slide (regardless of type of this first layout).
+            </summary>
+      <param name="isVisible">true - makes a placeholders visible, otherwise - hides them.</param>
+    </member>
+    <member name="P:Aspose.Slides.IPresentationHeaderFooterManager.AsIHeaderFooterManager">
+      <summary>
+            Returns IHeaderFooterManager interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
+    <member name="P:Aspose.Slides.IPresentationHeaderFooterManager.AsIBaseHeaderFooterManager">
+      <summary>
+            Returns IBaseHeaderFooterManager interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
+    <member name="T:Aspose.Slides.ISection">
+      <summary>
+            Represents section of slides.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.ISection.GetSlidesListOfSection">
+      <summary>
+            Returns list of slides in the section.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:Aspose.Slides.ISection.Name">
+      <summary>
+            Name of the section.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ISection.StartedFromSlide">
+      <summary>
+            Returns first slide of the section.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.ISectionCollection">
+      <summary>
+            Represents a collection of sections.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.AddSection(System.String,Aspose.Slides.ISlide)">
+      <summary>
+            Add new section started form specific slide.
+            </summary>
+      <param name="name">Name of the section</param>
+      <param name="startedFromSlide">First slide of section</param>
+      <returns>Added section.</returns>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.AddEmptySection(System.String,System.Int32)">
+      <summary>
+            Add empty section to specified position of the collection.
+            </summary>
+      <param name="name">Name of the section</param>
+      <param name="index">Index of new section.</param>
+      <returns>Added section.</returns>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.RemoveSectionWithSlides(Aspose.Slides.ISection)">
+      <summary>
+            Remove section and slides contained in the section.
+            </summary>
+      <param name="section">The section to remove from the collection.</param>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.RemoveSection(Aspose.Slides.ISection)">
+      <summary>
+            Remove section. Slides contained in the section will be merged into previous section.
+            </summary>
+      <param name="section">The section to remove from the collection.</param>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.ReorderSectionWithSlides(Aspose.Slides.ISection,System.Int32)">
+      <summary>
+            Moves section and its slides from the collection to the specified position.
+            </summary>
+      <param name="index">Target index.</param>
+      <param name="section">Section to move.</param>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.AppendEmptySection(System.String)">
+      <summary>
+            Add empty section to the end of the collection.
+            </summary>
+      <param name="name">Name of the section</param>
+      <returns>Added section.</returns>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.IndexOf(Aspose.Slides.ISection)">
+      <summary>
+            Returns an index of the specified section in the collection.
+            </summary>
+      <param name="section">Section to find.</param>
+      <returns>Index of a section or -1 if section not from this collection.</returns>
+    </member>
+    <member name="M:Aspose.Slides.ISectionCollection.Clear">
+      <summary>
+            Removes all sections from the collection.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ISectionCollection.Item(System.Int32)">
+      <summary>
+            Gets the element at the specified index.
+            Read-only <see cref="T:Aspose.Slides.ISection" />.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.ISectionSlideCollection">
+      <summary>
+            Represents a collection of a slides in the section.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ISectionSlideCollection.Item(System.Int32)">
+      <summary>
+            Gets the element at the specified index.
+            Read-only <see cref="T:Aspose.Slides.ISlide" />.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.ISlideHeaderFooterManager">
+      <summary>
+            Represents manager which holds behavior of the slide footer, date-time, page number placeholders.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ISlideHeaderFooterManager.AsIBaseSlideHeaderFooterManager">
+      <summary>
+            Returns IBaseSlideHeaderFooterManager interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
     </member>
     <member name="T:Aspose.Slides.IThreeDParamSource">
       <summary>
@@ -22091,7 +23220,8 @@
     </member>
     <member name="T:Aspose.Slides.IFontsManager">
       <summary>
-      </summary>
+            Manages fonts across the presentation.
+            </summary>
     </member>
     <member name="M:Aspose.Slides.IFontsManager.GetFonts">
       <summary>
@@ -22108,6 +23238,18 @@
       <summary>
             Removes the embedded font
             </summary>
+    </member>
+    <member name="M:Aspose.Slides.IFontsManager.AddEmbeddedFont(Aspose.Slides.IFontData,Aspose.Slides.Export.EmbedFontCharacters)">
+      <summary>
+            Adds the embedded font.
+            <remarks>Keep in mind when copying any fonts that most fonts are copyrighted. First locate the license of 
+            a font before hand and verify they can be freely transferred to another machine.</remarks><exception cref="T:System.ArgumentException">An ArgumentException can be thrown if font data is null or this font is already embedded</exception></summary>
+    </member>
+    <member name="M:Aspose.Slides.IFontsManager.AddEmbeddedFont(System.Byte[],Aspose.Slides.Export.EmbedFontCharacters)">
+      <summary>
+            Adds the embedded font
+            <remarks>Keep in mind when adding any fonts that most fonts are copyrighted. First locate the license of 
+            a font before hand and verify they can be freely transferred to another machine.</remarks><exception cref="T:System.ArgumentException">An ArgumentException can be thrown if font data is null or this font is already embedded</exception></summary>
     </member>
     <member name="M:Aspose.Slides.IFontsManager.ReplaceFont(Aspose.Slides.IFontData,Aspose.Slides.IFontData)">
       <summary>
@@ -22958,6 +24100,12 @@
       <remark>
             This is for COM compatibility.
             </remark>
+    </member>
+    <member name="P:Aspose.Slides.SmartArt.ISmartArtShape.TextFrame">
+      <summary>
+            Returns text of the SmartArt shape.
+            Read-only <see cref="T:Aspose.Slides.ITextFrame" />.
+            </summary>
     </member>
     <member name="P:Aspose.Slides.SmartArt.ISmartArtShape.AsIGeometryShape">
       <summary>
@@ -24300,6 +25448,20 @@
       <param name="message">message </param>
       <param name="exception">original exception</param>
     </member>
+    <member name="T:Aspose.Slides.Export.EmbedFontCharacters">
+      <summary>
+            Represents the rule to use for adding new embedding font into <see cref="T:Aspose.Slides.IPresentation" /></summary>
+    </member>
+    <member name="F:Aspose.Slides.Export.EmbedFontCharacters.OnlyUsed">
+      <summary>
+            Embed only the characters used in the presentation (best for reducing file size).
+            </summary>
+    </member>
+    <member name="F:Aspose.Slides.Export.EmbedFontCharacters.All">
+      <summary>
+            Embed all characters (best for editing by other people).
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.Export.PicturesCompression">
       <summary>
             Represents the pictures compression level
@@ -24462,6 +25624,15 @@
             Default is 95. 
             </summary>
     </member>
+    <member name="P:Aspose.Slides.Export.ISwfOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated SWF.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
+    </member>
     <member name="P:Aspose.Slides.Export.ISwfOptions.AsISaveOptions">
       <summary>
             Returns ISaveOptions interface.
@@ -24588,7 +25759,7 @@
     </member>
     <member name="F:Aspose.Slides.Export.SaveFormat.PdfNotes">
       <summary>
-            Save presentation notes view in PDF fromat.
+            Save presentation Notes Page View in PDF fromat.
             </summary>
     </member>
     <member name="F:Aspose.Slides.Export.SaveFormat.Html">
@@ -24598,7 +25769,7 @@
     </member>
     <member name="F:Aspose.Slides.Export.SaveFormat.TiffNotes">
       <summary>
-            Save presentation notes view as multi-page TIFF image.
+            Save presentation Notes Page View as multi-page TIFF image.
             </summary>
     </member>
     <member name="F:Aspose.Slides.Export.SaveFormat.Swf">
@@ -24608,12 +25779,17 @@
     </member>
     <member name="F:Aspose.Slides.Export.SaveFormat.SwfNotes">
       <summary>
-            Save presentation notes view in SWF fromat.
+            Save presentation Notes Page View in SWF fromat.
             </summary>
     </member>
     <member name="F:Aspose.Slides.Export.SaveFormat.Otp">
       <summary>
             Save presentation in OTP (presentation template) format.
+            </summary>
+    </member>
+    <member name="F:Aspose.Slides.Export.SaveFormat.HtmlNotes">
+      <summary>
+            Save presentation Notes Page View in HTML format.
             </summary>
     </member>
     <member name="T:Aspose.Slides.Export.SvgExternalFontsHandling">
@@ -24839,6 +26015,106 @@
     <member name="F:Aspose.Slides.Export.TiffCompressionTypes.RLE">
       <summary>
             Specifies the RLE compression scheme.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.Import.IHtmlExternalResolver">
+      <summary>
+            Callback interface used by HTML import routine to obtain referrenced objects such as images.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.Import.IExternalResourceResolver">
+      <summary>
+            Callback interface used to resolve external resources during Html, Svg documents import.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Import.IExternalResourceResolver.ResolveUri(System.String,System.String)">
+      <summary>
+            Resolves the absolute URI from the base and relative URIs.
+            </summary>
+      <param name="baseUri">Base URI of linking objects</param>
+      <param name="relativeUri">Relative URI to the linked object.</param>
+      <returns>Absolute URI or null if the relative URI cannot be resolved.</returns>
+    </member>
+    <member name="M:Aspose.Slides.Import.IExternalResourceResolver.GetEntity(System.String)">
+      <summary>
+            Maps a URI to an object containing the actual resource.
+            </summary>
+      <param name="absoluteUri">Absolute URI to the object.</param>
+      <returns> A <see cref="T:System.IO.Stream" /> object or null if resource cannot be streamed.</returns>
+    </member>
+    <member name="P:Aspose.Slides.Import.IHtmlExternalResolver.AsIExternalResourceResolver">
+      <summary>
+            Returns IExternalResourceResolver interface.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
+    <member name="T:Aspose.Slides.IBlobManagementOptions">
+      <summary>
+            A Binary Large Object (BLOB) is a binary data stored as a single entity - i.e. BLOB can be an 
+            audio, video or presentation itself. A number of techniques are used to optimize memory consumption 
+            while working with BLOBs - which was already stored in the presentation or be added later programmatically. 
+            Using <see cref="T:Aspose.Slides.IBlobManagementOptions" /> you can change a different behavior aspects regarding BLOBs 
+            handling for the <see cref="T:Aspose.Slides.IPresentation" /> instance lifetime.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IBlobManagementOptions.PresentationLockingBehavior">
+      <summary>
+            This property defines if an instance of the Presentation class can be an owner of the source - file 
+            or stream during the instance lifetime. If the instance is an owner, it locks the source. This helps 
+            to improve memory consumption and performance while working with BLOBs, but the source (stream or file) 
+            can't be changed during Presentation's instance lifetime. This is an example:
+            <code>
+            LoadOptions loadOptions = new LoadOptions { 
+              BlobManagementOptions = {PresentationLockingBehavior = PresentationLockingBehavior.KeepLocked} };
+            using (Presentation pres = new Presentation("pres.pptx", loadOptions)) {
+              // IOException will be thrown because pres.pptx is locked for a Presentation lifetime
+              // File.Delete("pres.pptx");
+            }
+            // after Presentation object disposed, file is unlocked and can be deleted
+            File.Delete("pres.pptx");
+            </code></summary>
+    </member>
+    <member name="P:Aspose.Slides.IBlobManagementOptions.IsTemporaryFilesAllowed">
+      <summary>
+            This property defines if temporary files can be created while working with BLOBs, what greatly 
+            decreases  the memory consumption but requires permissions to create files.
+            <remarks>All files will be deleted after work with the presentation will be finished.</remarks></summary>
+    </member>
+    <member name="P:Aspose.Slides.IBlobManagementOptions.TempFilesRootPath">
+      <summary>
+            The root path where temporary files will be created. Hosting process should have permissions to 
+            create files and folders there.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IBlobManagementOptions.MaxBlobsBytesInMemory">
+      <summary>
+            Defines the maximum amount (in bytes) that all BLOBs in total may occupy in memory. First, all BLOBs 
+            loading into memory as default behavior and only when it reaches the limit defined by this property, 
+            other mechanisms (such as temporary files) can be involved. In terms of performance, the most efficient 
+            way is storing BLOBs in memory, but from the other side, it leads to a high memory consumption what 
+            may be undesirable. Using this property, you may set the optimal behavior for your environment or 
+            other requirements.
+            <remarks>This property will be ignored if <see cref="P:Aspose.Slides.IBlobManagementOptions.IsTemporaryFilesAllowed" /> is
+            set to false. It makes no sense to limit the maximum BLOBs in memory, because if 
+            <see cref="P:Aspose.Slides.IBlobManagementOptions.IsTemporaryFilesAllowed" /> is set to false, the memory is the only place 
+            where BLOBs can be stored.</remarks><remarks>Default value is 629,145,600 bytes (600Mb).</remarks></summary>
+    </member>
+    <member name="T:Aspose.Slides.IFontSources">
+      <summary>
+            Provides file and memory sources for external fonts.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IFontSources.FontFolders">
+      <summary>
+            Folders containing font files.
+            All font files located in these folders are included in the collection. Folders that are recursively searched.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IFontSources.MemoryFonts">
+      <summary>
+            A collection of fonts represented as byte arrays.
             </summary>
     </member>
     <member name="T:Aspose.Slides.LoadFormat">
@@ -34522,6 +35798,46 @@
       <param name="message">message </param>
       <param name="exception">original exception</param>
     </member>
+    <member name="T:Aspose.Slides.LoadingStreamBehavior">
+      <summary>
+            The <see cref="T:System.IO.Stream" /> passed to a method is considered as a Binary Large Object (BLOB) (see 
+            <see cref="T:Aspose.Slides.IBlobManagementOptions" /> description). Values of this enumeration identify how 
+            the <see cref="T:System.IO.Stream" /> should be treated when it passed to the method. Depending on the 
+            requirements, different decisions could be made to provide the most efficient behavior. 
+            </summary>
+    </member>
+    <member name="F:Aspose.Slides.LoadingStreamBehavior.ReadStreamAndRelease">
+      <summary>
+            The stream will be read to the end and then released - i.e. it will be guaranteed that this stream 
+            will not be used by <see cref="T:Aspose.Slides.IPresentation" /> instance in the future. It can be closed by the client 
+            code or used in any other way.
+            <example><code>
+            using (Presentation pres = new Presentation()) {
+              FileStream fileStream = new FileStream("video.avi", FileMode.Open);
+              pres.Videos.AddVideo(fileStream, LoadingStreamBehavior.ReadStreamAndRelease);
+              fileStream.Close(); // the stream can be closed, it's no longer needed for the "pres" object.
+            }
+            </code></example></summary>
+    </member>
+    <member name="F:Aspose.Slides.LoadingStreamBehavior.KeepLocked">
+      <summary>
+            The stream will be locked inside the <see cref="T:Aspose.Slides.IPresentation" /> object, i.e. the ownership of 
+            the stream will be transferred. The <see cref="T:Aspose.Slides.IPresentation" /> object will be responsible to 
+            correctly dispose the stream when this object will be disposed itself. 
+            This behavior is extremely useful when you need to serialize a large BLOB file (such as a large 
+            video or audio -see <see cref="T:Aspose.Slides.IBlobManagementOptions" /> description) and want to prevent loading 
+            this file into memory or other performance issues. You may just open the <see cref="T:System.IO.FileStream" /> 
+            for this file and pass to a method, choosing <see cref="F:Aspose.Slides.LoadingStreamBehavior.KeepLocked" /> LoadingStreamBehavior.
+            <example><code>
+            using (Presentation pres = new Presentation()) {
+              FileStream fileStream = new FileStream("Huge Monster Sized Video.avi", FileMode.Open);
+              pres.Videos.AddVideo(fileStream, LoadingStreamBehavior.KeepLocked);
+              // fileStream.Close(); // You should not close the stream or interact with it in any other way, it will lead to an error in Save method.
+              // The fileStream will be used for saving, what will prevent high memory consumption
+              pres.Save("My Presentation With Huge Monster Sized Video.pptx", SaveFormat.Pptx);
+            }
+            </code></example></summary>
+    </member>
     <member name="T:Aspose.Slides.IMetered">
       <summary>
             Provides methods to set metered key.
@@ -34533,6 +35849,50 @@
             </summary>
       <param name="publicKey">Metered public key.</param>
       <param name="privateKey">Metered private key.</param>
+    </member>
+    <member name="T:Aspose.Slides.PresentationLockingBehavior">
+      <summary>
+            Represents the behavior regarding treating the <see cref="T:Aspose.Slides.IPresentation" /> source (file or 
+            <see cref="T:System.IO.Stream" />) while loading and working with an instance of <see cref="T:Aspose.Slides.IPresentation" />. 
+            <remarks>The source is the parameter passed to the <see cref="T:Aspose.Slides.IPresentation" /> constructor. In the 
+            example below, the source is the "pres.pptx" file:
+            <example><code>
+            LoadOptions loadOptions = new LoadOptions { 
+              BlobManagementOptions = { PresentationLockingBehavior = PresentationLockingBehavior.KeepLocked } };
+            using (IPresentation pres = new Presentation("pres.pptx", loadOptions)) { }
+            </code></example>
+            For this example, the source ("pres.pptx" file) will be locked for a <see cref="T:Aspose.Slides.IPresentation" /> 
+            instance lifetime, i.e. can't be changed or deleted by the other process.
+            </remarks></summary>
+    </member>
+    <member name="F:Aspose.Slides.PresentationLockingBehavior.LoadAndRelease">
+      <summary>
+            The source will be locked only for a time of <see cref="T:Aspose.Slides.IPresentation" /> constructor execution.
+            <remarks>If <see cref="P:Aspose.Slides.IBlobManagementOptions.IsTemporaryFilesAllowed" /> is set to false, all BLOBs 
+            will be loaded into memory. Otherwise, other means such a temporary files might be used.</remarks><remarks>This behavior is slower than <see cref="F:Aspose.Slides.PresentationLockingBehavior.KeepLocked" />, and if it is possible to pass the 
+            ownership of the source to <see cref="T:Aspose.Slides.IPresentation" />, it is recommended to use <see cref="F:Aspose.Slides.PresentationLockingBehavior.KeepLocked" />.
+            </remarks></summary>
+    </member>
+    <member name="F:Aspose.Slides.PresentationLockingBehavior.KeepLocked">
+      <summary>
+            The source will be locked for a whole lifetime of <see cref="T:Aspose.Slides.IPresentation" /> instance, until it will 
+            be disposed.
+            <remarks><see cref="P:Aspose.Slides.IBlobManagementOptions.IsTemporaryFilesAllowed" /> is must be set to true for using 
+            this behavior, otherwise exception will be thrown.</remarks><remarks>This behavior is recommended, it is faster and consumes less memory than <see cref="F:Aspose.Slides.PresentationLockingBehavior.LoadAndRelease" />.
+            </remarks></summary>
+    </member>
+    <member name="F:Aspose.Slides.PresentationLockingBehavior.LoadAndRelease_Legacy_TemporaryDefault">
+      <summary>
+            The source will be locked only for a time of <see cref="T:Aspose.Slides.IPresentation" /> constructor execution, all BLOBs 
+            will be loaded into memory.
+            This behavior is the legacy behavior to provide backward compatibility. The same behavior can be achieved 
+            by using <see cref="F:Aspose.Slides.PresentationLockingBehavior.LoadAndRelease" /> and set <see cref="P:Aspose.Slides.IBlobManagementOptions.IsTemporaryFilesAllowed" /> 
+            to false. 
+            Please consider choosing the <see cref="F:Aspose.Slides.PresentationLockingBehavior.LoadAndRelease" /> or <see cref="F:Aspose.Slides.PresentationLockingBehavior.KeepLocked" /> behavior, what is 
+            the most suitable for you. 
+            After <see cref="F:Aspose.Slides.PresentationLockingBehavior.LoadAndRelease_Legacy_TemporaryDefault" /> will be removed, <see cref="F:Aspose.Slides.PresentationLockingBehavior.KeepLocked" /> 
+            will be the default behavior.
+            </summary>
     </member>
     <member name="T:Aspose.Slides.ILicense">
       <summary>
@@ -34689,6 +36049,43 @@
       <summary>
             Slide Thumbnail View
             </summary>
+    </member>
+    <member name="T:Aspose.Slides.Warnings.IObsoletePresLockingBehaviorWarningInfo">
+      <summary>
+            This warning indicates that an obsolete presentation locking behavior is used.
+            </summary>
+    </member>
+    <member name="T:Aspose.Slides.Warnings.IWarningInfo">
+      <summary>
+            Represents a base interface for all warnings.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Warnings.IWarningInfo.SendWarning(Aspose.Slides.Warnings.IWarningCallback)">
+      <summary>
+            If receiver is not null ends warning to a specified receiver and throws the 
+            AbortRequestedException if receiver decided to abort a operation.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Warnings.IWarningInfo.WarningType">
+      <summary>
+            Returns a type of warning.
+            Read-only <see cref="P:Aspose.Slides.Warnings.IWarningInfo.WarningType" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Warnings.IWarningInfo.Description">
+      <summary>
+            Returns a human readable description of this warning.
+            Read-only <see cref="T:System.String" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.Warnings.IObsoletePresLockingBehaviorWarningInfo.AsIWarningInfo">
+      <summary>
+            Returns IWarningInfo interface.
+            Read-only <see cref="T:Aspose.Slides.Warnings.IWarningInfo" />.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
     </member>
     <member name="T:Aspose.Slides.Warnings.NamespaceDoc">
       <summary>
@@ -34873,6 +36270,11 @@
       <param name="eventType">Type of event.</param>
       <param name="handler">Javascript function to handle event. Null value removes handler.</param>
     </member>
+    <member name="P:Aspose.Slides.Export.ISvgShape.Id">
+      <summary>
+            Sets or gets id for the shape
+            </summary>
+    </member>
     <member name="T:Aspose.Slides.Export.IXpsOptions">
       <summary>
             Provides options that control how a presentation is saved in XPS format.
@@ -34952,6 +36354,15 @@
             Specifies the pixel format for the generated images.
             Read/write <see cref="T:Aspose.Slides.Export.ImagePixelFormat" />.
             </summary>
+    </member>
+    <member name="P:Aspose.Slides.Export.ITiffOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated Tiff.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
     </member>
     <member name="P:Aspose.Slides.Export.ITiffOptions.AsISaveOptions">
       <summary>
@@ -35120,6 +36531,15 @@
             </summary>
       <remarks>
             Default is <b>true</b>.
+            Pdf document can contain vector graphics and raster images. 
+            If SaveMetafilesAsPng is set to true then source Metafile 
+            image is converted to Png format and saved to Pdf as a raster 
+            image. If SaveMetafilesAsPng is set to false then source Metafile 
+            is converted to Pdf vector graphics. Each approach has advantages 
+            and disadvantages.For example, if Metafile is converted to PNG, 
+            then some quality loss is possible during resulting 
+            document scaling.If Metafile is converted to Pdf vector graphics, 
+            then performance issues in Pdf viewing tool are possible.
             </remarks>
     </member>
     <member name="P:Aspose.Slides.Export.IPdfOptions.SufficientResolution">
@@ -35134,6 +36554,15 @@
     <member name="P:Aspose.Slides.Export.IPdfOptions.DrawSlidesFrame">
       <summary>
              True to draw black frame around each slide.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
+    </member>
+    <member name="P:Aspose.Slides.Export.IPdfOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated PDF.
              Read/write <see cref="T:System.Boolean" />.
              </summary>
       <remarks>
@@ -35207,6 +36636,15 @@
             larger file)
             Read/write <see cref="T:System.Boolean" />.
             </summary>
+    </member>
+    <member name="P:Aspose.Slides.Export.IHtmlOptions.IncludeComments">
+      <summary>
+             True to insert comment pages into generated HTML.
+             Read/write <see cref="T:System.Boolean" />.
+             </summary>
+      <remarks>
+            Default is <b>false</b>.
+            </remarks>
     </member>
     <member name="P:Aspose.Slides.Export.IHtmlOptions.AsISaveOptions">
       <summary>
@@ -35289,28 +36727,6 @@
             Read/write <see cref="T:System.String" />.
             </summary>
     </member>
-    <member name="T:Aspose.Slides.Import.IHtmlExternalResolver">
-      <summary>
-            Callback object used by HTML import routine to obtain referrenced objects such as images.
-            Supports "data:" "file:" and "http:" url schemes.
-            <remarks>Using this resolver could create a vulnurability when client provided HTML file will make server software to obtain local or network file. Use with caution. It is recommended not to specify HtmlExternalResolver at all (only embedded objects will be read) or create some subclass which checks if specified uri is valid.</remarks></summary>
-    </member>
-    <member name="M:Aspose.Slides.Import.IHtmlExternalResolver.ResolveUri(System.String,System.String)">
-      <summary>
-            Resolves URI.
-            </summary>
-      <param name="baseUri">absolute URI of linking objects</param>
-      <param name="relativeUri">URI to the linked object.</param>
-      <returns>absolute URI to the linked object. Returning null will prevent object from loading.</returns>
-    </member>
-    <member name="M:Aspose.Slides.Import.IHtmlExternalResolver.GetEntity(System.String)">
-      <summary>
-            Fetches linked object.
-            </summary>
-      <param name="absoluteUri">Absolute URI to the object (returned by <see cref="M:Aspose.Slides.Import.IHtmlExternalResolver.ResolveUri(System.String,System.String)" /> method.</param>
-      <returns>
-        <see cref="T:System.IO.Stream" /> object with the linked object data or null if object can't or shouldn't be loaded.</returns>
-    </member>
     <member name="T:Aspose.Slides.ILoadOptions">
       <summary>
             Allows to specify additional options (such as format or default font) when loading a presentation.
@@ -35367,6 +36783,20 @@
             Returns or sets an object which receives warnings and decides whether loading 
             process will continue or will be aborted.
             Read/write <see cref="T:Aspose.Slides.Warnings.IWarningCallback" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ILoadOptions.BlobManagementOptions">
+      <summary>
+            Represents the options which can be used to manage Binary Large Objects (BLOBs) handling behavior,
+            such as using of temporary files or max BLOBs bytes in memory. These options intended to set up
+            the best performance/memory consumption ratio for a perticular environment or requirements.
+            <remarks>A Binary Large Object (BLOB) is a binary data stored as a single entity - i.e. BLOB can 
+            be an audio, video or presentation itself.</remarks></summary>
+    </member>
+    <member name="P:Aspose.Slides.ILoadOptions.DocumentLevelFontSources">
+      <summary>
+            Specifies sources for external fonts to be used by the presentation.
+            These fonts are available to the presentation throughout its lifetime and are not shared with other presentations
             </summary>
     </member>
     <member name="T:Aspose.Slides.Animation.IBehaviorFactory">
@@ -37659,11 +39089,6 @@
             Managed container of the values of the chart category levels.
             </summary>
     </member>
-    <member name="M:Aspose.Slides.Charts.IChartCategoryLevelsManager.SetGroupingItem(System.Int32,Aspose.Slides.Charts.IChartDataCell)">
-      <summary>
-            Sets grouping item for defined level.
-            </summary>
-    </member>
     <member name="M:Aspose.Slides.Charts.IChartCategoryLevelsManager.SetGroupingItem(System.Int32,System.Object)">
       <summary>
             Sets grouping item for defined level.
@@ -37682,6 +39107,11 @@
     <member name="T:Aspose.Slides.Charts.IAxis">
       <summary>
             Encapsulates the object that represents a chart's axis.
+            </summary>
+    </member>
+    <member name="M:Aspose.Slides.Charts.IAxis.SetCategoryAxisTypeAutomatically">
+      <summary>
+            Sets IAxis.CategoryAxisType property with a value that is automatically determined based on axis data.
             </summary>
     </member>
     <member name="P:Aspose.Slides.Charts.IAxis.AxisBetweenCategories">
@@ -38110,6 +39540,14 @@
       <summary>
             Returns IOverridableText interface.
             Read-only <see cref="T:Aspose.Slides.Charts.IOverridableText" />.
+            </summary>
+      <remarks>
+            For COM compatibility.
+            </remarks>
+    </member>
+    <member name="P:Aspose.Slides.Charts.IDataLabel.AsIActualLayout">
+      <summary>
+            Returns IActualLayout interface.
             </summary>
       <remarks>
             For COM compatibility.
@@ -39030,6 +40468,12 @@
       <exception cref="T:System.ArgumentNullException">formula is null.</exception>
       <exception cref="T:System.ArgumentException">formula has incorrect format.</exception>
     </member>
+    <member name="M:Aspose.Slides.Charts.IChartData.SwitchRowColumn">
+      <summary>
+            Swap the data over the axis.
+            Data being charted on the X axis will move to the Y axis and vice versa. 
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.Charts.IChartData.ChartDataWorkbook">
       <summary>
             Gets the cells factory to create cells used for chart series or categories.
@@ -39711,6 +41155,22 @@
       <summary>
             Returns or sets text's autofit mode.
             Read/write <see cref="T:Aspose.Slides.TextAutofitType" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ITextFrameFormat.ColumnCount">
+      <summary>
+            Returns or sets number of columns in the text area.
+            This value must be a positive number. Otherwise, the value will be set to zero. 
+            Value 0 means undefined value.
+            Read/write <see cref="T:System.Int32" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ITextFrameFormat.ColumnSpacing">
+      <summary>
+            Returns or sets the space between text columns in the text area (in points). This should only apply 
+            when there is more than 1 column present.
+            This value must be a positive number. Otherwise, the value will be set to zero. 
+            Read/write <see cref="T:System.Double" />.
             </summary>
     </member>
     <member name="P:Aspose.Slides.ITextFrameFormat.RotationAngle">
@@ -41245,47 +42705,6 @@
             Read-only <see cref="T:System.String" />.
             </summary>
     </member>
-    <member name="T:Aspose.Slides.IHeaderFooterManager">
-      <summary>
-            Represents manager which holds behavior of a header\footer placeholders
-            </summary>
-    </member>
-    <member name="M:Aspose.Slides.IHeaderFooterManager.SetFooterText(System.String)">
-      <summary>
-            Sets text to all footer placeholders including master and layout.
-            </summary>
-      <param name="text">Text to set.</param>
-    </member>
-    <member name="M:Aspose.Slides.IHeaderFooterManager.SetDateTimeText(System.String)">
-      <summary>
-            Sets text to all date-time placeholders including master and layout. 
-            </summary>
-      <param name="date">Text to set.</param>
-    </member>
-    <member name="M:Aspose.Slides.IHeaderFooterManager.SetVisibilityOnTitleSlide(System.Boolean)">
-      <summary>
-            Adds or removes header\footer placeholders from title slides (slides based on first layout).
-            </summary>
-      <param name="isPlaceholdersVisible">true - makes a header\footer placeholders visible on the title slide, otherwise - hides them.</param>
-    </member>
-    <member name="P:Aspose.Slides.IHeaderFooterManager.IsFooterVisible">
-      <summary>
-            Gets or sets value indicating that a footer placeholders should be present on a slides.
-            Read/write <see cref="T:System.Boolean" />.
-            </summary>
-    </member>
-    <member name="P:Aspose.Slides.IHeaderFooterManager.IsSlideNumberVisible">
-      <summary>
-            Gets or sets value indicating that a page number placeholders should be present on a slides.
-            Read/write <see cref="T:System.Boolean" />.
-            </summary>
-    </member>
-    <member name="P:Aspose.Slides.IHeaderFooterManager.IsDateTimeVisible">
-      <summary>
-            Gets or sets value indicating that a date-time placeholders should be present on a slides.
-            Read/write <see cref="T:System.Boolean" />.
-            </summary>
-    </member>
     <member name="T:Aspose.Slides.IStreamWrapper">
       <summary>
             Aspose.IO.Stream wrapper for COM interface.
@@ -42758,7 +44177,7 @@
             </summary>
       <param name="text">HTML text.</param>
     </member>
-    <member name="M:Aspose.Slides.IParagraphCollection.AddFromHtml(System.String,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.IParagraphCollection.AddFromHtml(System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Adds text from specified html string to the collection.
             </summary>
@@ -43378,6 +44797,11 @@
     <member name="P:Aspose.Slides.IOleObjectFrame.EmbeddedFileExtension">
       <summary>
             Returns the file extension for the current embedded object or empty string if object is not a link
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IOleObjectFrame.EmbeddedFileData">
+      <summary>
+            Returns the file data of embedded OLE object
             </summary>
     </member>
     <member name="P:Aspose.Slides.IOleObjectFrame.IsObjectIcon">
@@ -44060,6 +45484,7 @@
     <member name="P:Aspose.Slides.IParagraphFormat.Depth">
       <summary>
             Returns or sets depth of the paragraph.
+            Value 0 means undefined value.
             Read/write <see cref="T:System.Int16" />.
             </summary>
     </member>
@@ -44285,6 +45710,12 @@
       <summary>
       </summary>
     </member>
+    <member name="P:Aspose.Slides.IMasterNotesSlide.NotesStyle">
+      <summary>
+            Returns the style of a notes text.
+            Read-only <see cref="T:Aspose.Slides.ITextStyle" />.
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.IMasterNotesSlide.AsIBaseSlide">
       <summary>
             Allows to get base IBaseSlide interface.
@@ -44313,6 +45744,12 @@
             </summary>
       <returns>
       </returns>
+    </member>
+    <member name="P:Aspose.Slides.IMasterSlide.HeaderFooterManager">
+      <summary>
+            Returns HeaderFooter manager of the master slide.
+            Read-only <see cref="T:Aspose.Slides.IMasterSlideHeaderFooterManager" />.
+            </summary>
     </member>
     <member name="P:Aspose.Slides.IMasterSlide.TitleStyle">
       <summary>
@@ -44528,6 +45965,12 @@
             To avoid throwing of the PptxEditException check layout's HasDependingSlides property before.
             </remarks>
     </member>
+    <member name="P:Aspose.Slides.ILayoutSlide.HeaderFooterManager">
+      <summary>
+            Returns HeaderFooter manager of the layout slide.
+            Read-only <see cref="T:Aspose.Slides.ILayoutSlideHeaderFooterManager" />.
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.ILayoutSlide.MasterSlide">
       <summary>
             Returns or sets the master slide for a layout.
@@ -44700,6 +46143,12 @@
     <member name="M:Aspose.Slides.ISlide.Reset">
       <summary>
             Resets position, size and formatting of every shape that has a prototype on LayoutSlide.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.ISlide.HeaderFooterManager">
+      <summary>
+            Returns HeaderFooter manager of the slide.
+            Read-only <see cref="T:Aspose.Slides.ISlideHeaderFooterManager" />.
             </summary>
     </member>
     <member name="P:Aspose.Slides.ISlide.SlideNumber">
@@ -44911,7 +46360,7 @@
       <param name="slide">Slide to find.</param>
       <returns>Index of a slide or -1 if slide not from this collection.</returns>
     </member>
-    <member name="M:Aspose.Slides.ISlideCollection.AddFromHtml(System.String,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ISlideCollection.AddFromHtml(System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and adds them to the end of the collection.
             </summary>
@@ -44927,7 +46376,7 @@
       <param name="htmlText">Html to add.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.ISlideCollection.AddFromHtml(System.IO.TextReader,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ISlideCollection.AddFromHtml(System.IO.TextReader,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and adds them to the end of the collection.
             </summary>
@@ -44943,7 +46392,7 @@
       <param name="htmlReader">TextReader object which will be used as a source of a HTML file.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.ISlideCollection.AddFromHtml(System.IO.Stream,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ISlideCollection.AddFromHtml(System.IO.Stream,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and adds them to the end of the collection.
             </summary>
@@ -44959,7 +46408,7 @@
       <param name="htmlStream">A Stream object which will be used as a source of a HTML file.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.ISlideCollection.InsertFromHtml(System.Int32,System.String,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ISlideCollection.InsertFromHtml(System.Int32,System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and inserts them to the collection at the specified position.
             </summary>
@@ -44977,7 +46426,7 @@
       <param name="htmlText">Html to add.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.ISlideCollection.InsertFromHtml(System.Int32,System.IO.TextReader,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ISlideCollection.InsertFromHtml(System.Int32,System.IO.TextReader,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and inserts them to the collection at the specified position.
             </summary>
@@ -44995,7 +46444,7 @@
       <param name="htmlReader">TextReader object which will be used as a source of a HTML file.</param>
       <returns>Added slides</returns>
     </member>
-    <member name="M:Aspose.Slides.ISlideCollection.InsertFromHtml(System.Int32,System.IO.Stream,Aspose.Slides.Import.IHtmlExternalResolver,System.String)">
+    <member name="M:Aspose.Slides.ISlideCollection.InsertFromHtml(System.Int32,System.IO.Stream,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
       <summary>
             Creates slides from HTML text and inserts them to the collection at the specified position.
             </summary>
@@ -47637,6 +49086,38 @@
             Read/write <see cref="T:System.Single" />.
             </summary>
     </member>
+    <member name="P:Aspose.Slides.IPictureFillFormat.StretchOffsetLeft">
+      <summary>
+            Returns or sets left edge of the fill rectangle that is defined by a percentage offset 
+            from the left edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IPictureFillFormat.StretchOffsetTop">
+      <summary>
+            Returns or sets top edge of the fill rectangle that is defined by a percentage offset 
+            from the top edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IPictureFillFormat.StretchOffsetRight">
+      <summary>
+            Returns or sets right edge of the fill rectangle that is defined by a percentage offset 
+            from the right edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IPictureFillFormat.StretchOffsetBottom">
+      <summary>
+            Returns or sets bottom edge of the fill rectangle that is defined by a percentage offset 
+            from the bottom edge of the shape's bounding box. 
+            A positive percentage specifies an inset, while a negative percentage specifies an outset.
+            Read/write <see cref="T:System.Single" />.
+            </summary>
+    </member>
     <member name="P:Aspose.Slides.IPictureFillFormat.AsIFillParamSource">
       <summary>
             Allows to get base IFillParamSource interface.
@@ -47978,6 +49459,13 @@
             Represents a video embedded into a presentation.
             </summary>
     </member>
+    <member name="M:Aspose.Slides.IVideo.GetStream">
+      <summary>
+            Returns Stream stream for reading.
+            Use 'using' or close stream after using.
+            </summary>
+      <returns>Stream for reading.</returns>
+    </member>
     <member name="P:Aspose.Slides.IVideo.ContentType">
       <summary>
             Returns a MIME type of an video, encoded in <see cref="P:Aspose.Slides.IVideo.BinaryData" />.
@@ -47986,7 +49474,9 @@
     </member>
     <member name="P:Aspose.Slides.IVideo.BinaryData">
       <summary>
-            Returns the copy of an audio's data.
+            Returns the copy of an audio's data. In case of large amount of data consider using of 
+            <see cref="M:Aspose.Slides.IVideo.GetStream" /> method to prevent unnecessary loading of video's data into memory 
+            or even OutOfMemoryException.
             Read-only <see cref="T:byte[]" />.
             </summary>
     </member>
@@ -48008,6 +49498,14 @@
       <param name="stream">Stream to add video file from.</param>
       <returns>Added <see cref="T:Aspose.Slides.IVideo" />.</returns>
     </member>
+    <member name="M:Aspose.Slides.IVideoCollection.AddVideo(System.IO.Stream,Aspose.Slides.LoadingStreamBehavior)">
+      <summary>
+            Creates and adds a video to a presentation from stream.
+            </summary>
+      <param name="stream">Stream to add video file from.</param>
+      <param name="loadingStreamBehavior">The behavior which will be applied to the stream.</param>
+      <returns>Added <see cref="T:Aspose.Slides.IVideo" />.</returns>
+    </member>
     <member name="M:Aspose.Slides.IVideoCollection.AddVideo(System.Byte[])">
       <summary>
             Creates and adds a video to a presentation from byte array.
@@ -48025,6 +49523,13 @@
       <summary>
       </summary>
     </member>
+    <member name="M:Aspose.Slides.IAudio.GetStream">
+      <summary>
+            Returns Stream stream for reading.
+            Use 'using' or close stream after using.
+            </summary>
+      <returns>Stream for reading.</returns>
+    </member>
     <member name="P:Aspose.Slides.IAudio.ContentType">
       <summary>
             Returns a MIME type of an audio, encoded in <see cref="P:Aspose.Slides.IAudio.BinaryData" />.
@@ -48033,7 +49538,9 @@
     </member>
     <member name="P:Aspose.Slides.IAudio.BinaryData">
       <summary>
-            Returns the copy of an audio's data.
+            Returns the copy of an audio's data. In case of large amount of data consider 
+            using of <see cref="M:Aspose.Slides.IAudio.GetStream" /> method to prevent unnecessary  loading of audio's
+            data into memory or even OutOfMemoryException.
             Read-only <see cref="T:byte[]" />.
             </summary>
     </member>
@@ -48054,6 +49561,14 @@
             Creates and adds a audio to a presentation from stream.
             </summary>
       <param name="stream">Stream to add audio from.</param>
+      <returns>Added audio.</returns>
+    </member>
+    <member name="M:Aspose.Slides.IAudioCollection.AddAudio(System.IO.Stream,Aspose.Slides.LoadingStreamBehavior)">
+      <summary>
+            Creates and adds a audio to a presentation from stream.
+            </summary>
+      <param name="stream">Stream to add video audio from.</param>
+      <param name="loadingStreamBehavior">The behavior which will be applied to the stream.</param>
       <returns>Added audio.</returns>
     </member>
     <member name="M:Aspose.Slides.IAudioCollection.AddAudio(System.Byte[])">
@@ -48171,6 +49686,24 @@
             Adds a copy of an image from an another presentation.
             </summary>
       <param name="imageSource">Source image.</param>
+      <returns>Added image.</returns>
+    </member>
+    <member name="M:Aspose.Slides.IImageCollection.AddFromSvg(System.String)">
+      <summary>
+            Add an image to a presentation from Svg. 
+            </summary>
+      <remarks>Svg to Metafile(EmfPlusOnly) conversion will be performed</remarks>
+      <param name="svgContent">Svg content.</param>
+      <returns>Added image.</returns>
+    </member>
+    <member name="M:Aspose.Slides.IImageCollection.AddFromSvg(System.String,Aspose.Slides.Import.IExternalResourceResolver,System.String)">
+      <summary>
+            Add an image to a presentation from Svg. 
+            </summary>
+      <remarks>Svg to Metafile(EmfPlusOnly) conversion will be performed</remarks>
+      <param name="svgContent">Svg content.</param>
+      <param name="externalResResolver">A callback object used to fetch external objects. If this parameter is null all external objects will be ignored.</param>
+      <param name="baseUri">Base URI of the specified Svg. Used to resolve relative links.</param>
       <returns>Added image.</returns>
     </member>
     <member name="P:Aspose.Slides.IImageCollection.Item(System.Int32)">
@@ -48627,6 +50160,7 @@
     <member name="M:Aspose.Slides.IPresentation.Save(System.String,Aspose.Slides.Export.SaveFormat,System.Web.HttpResponse,System.Boolean)">
       <summary>
             Sends the presentation to the client browser.
+            This method is absent in ClientProfile versions of Aspose.Slide.
             </summary>
       <param name="fname">The name for the presentation that will appear at the client browser. 
             The name should not contain path.</param>
@@ -48637,6 +50171,7 @@
     <member name="M:Aspose.Slides.IPresentation.Save(System.String,Aspose.Slides.Export.SaveFormat,Aspose.Slides.Export.ISaveOptions,System.Web.HttpResponse,System.Boolean)">
       <summary>
             Sends the presentation to the client browser.
+            This method is absent in ClientProfile versions of Aspose.Slide.
             </summary>
       <param name="fname">The name for the presentation that will appear at the client browser. The name should not contain path.</param>
       <param name="format">Format of the exported data.</param>
@@ -48707,6 +50242,12 @@
       <summary>
             Returns a list of all slides that are defined in the presentation.
             Read-only <see cref="T:Aspose.Slides.ISlideCollection" />.
+            </summary>
+    </member>
+    <member name="P:Aspose.Slides.IPresentation.Sections">
+      <summary>
+            Returns a list of all slides sections that are defined in the presentation.
+            Read-only <see cref="T:Aspose.Slides.ISectionCollection" />.
             </summary>
     </member>
     <member name="P:Aspose.Slides.IPresentation.SlideSize">
@@ -48934,29 +50475,6 @@
     <member name="T:Aspose.Slides.Warnings.INotImplementedWarningInfo">
       <summary>
             Represents a warning about known not implemented feature which won't be implemented in the near future.
-            </summary>
-    </member>
-    <member name="T:Aspose.Slides.Warnings.IWarningInfo">
-      <summary>
-            Represents a base interface for all warnings.
-            </summary>
-    </member>
-    <member name="M:Aspose.Slides.Warnings.IWarningInfo.SendWarning(Aspose.Slides.Warnings.IWarningCallback)">
-      <summary>
-            If receiver is not null ends warning to a specified receiver and throws the 
-            AbortRequestedException if receiver decided to abort a operation.
-            </summary>
-    </member>
-    <member name="P:Aspose.Slides.Warnings.IWarningInfo.WarningType">
-      <summary>
-            Returns a type of warning.
-            Read-only <see cref="P:Aspose.Slides.Warnings.IWarningInfo.WarningType" />.
-            </summary>
-    </member>
-    <member name="P:Aspose.Slides.Warnings.IWarningInfo.Description">
-      <summary>
-            Returns a human readable description of this warning.
-            Read-only <see cref="T:System.String" />.
             </summary>
     </member>
     <member name="P:Aspose.Slides.Warnings.INotImplementedWarningInfo.AsIWarningInfo">

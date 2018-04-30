@@ -34,7 +34,11 @@
                                     <%#:Intelledox.Manage.General.DisplayName(Eval("Modified_By"), Eval("Full_Name").ToString(), Eval("Username").ToString())%>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Comment" HeaderText="<%$Resources:Strings, Comment %>" />
+                            <asp:TemplateField HeaderText="<%$Resources:Strings, Comment %>" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lblComment" runat="server" style='white-space: pre-wrap;' Text='<%# GetComment(Eval("Comment"), Eval("Import_Date")) %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$Resources:Strings, Restore %>" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRestore" runat="server" CommandName="Restore" 

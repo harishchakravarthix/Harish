@@ -8,14 +8,14 @@
     <link rel="icon" type="image/x-icon" href="Content/design.ico" />
     <link href="../Content/bootstrap.min.css?v=337" rel="stylesheet" type="text/css" />
     <link href="../Content/bootstrap-theme.min.css?v=337" rel="stylesheet" />
-    <link href="Content/Site.css?v=16359271001267416691" rel="stylesheet" />
+    <link href="Content/Site.css?v=23435131442619815197" rel="stylesheet" />
     <script src="../Scripts/jquery-3.1.1.js"></script>
     <script src="../Scripts/bootstrap.min.js?v=337"></script>
     <script src="../Scripts/angular.min.js?v=140"></script>
     <script src="../Scripts/angular-translate.min.js"></script>
     <script src="../Scripts/angular-translate-loader-static-files.min.js"></script>
     <script src="../Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
-    <script src="scripts/app.js?v=16359271001267416691"></script>
+    <script src="scripts/app.js?v=23435131442619815197"></script>
 </head>
 <body ng-controller="startupCtrl">
     <div id="pageWrapper">
@@ -32,7 +32,7 @@
                     <div>
                         <div class="startup-col startup-tasks">
                             <div class="startup-btn">
-                                <a href="editor.html?v=16359271001267416691" ng-show="model.isLoggedIn">
+                                <a href="editor.html?v=23435131442619815197" ng-show="model.isLoggedIn">
                                     <img src="Images/NewProject64.png" alt="" />
                                     {{ 'CreateNewProject' | translate }}
                                 </a>
@@ -47,7 +47,7 @@
                         <div class="startup-col">
                             <ol>
                                 <li ng-repeat="recent in model.recentProjects">
-                                    <a href="editor.html?v=16359271001267416691#/?id={{ recent.projectGuid }}">{{ recent.name }}</a>
+                                    <a href="editor.html?v=23435131442619815197#/?id={{ recent.projectGuid }}">{{ recent.name }}</a>
                                 </li>
                             </ol>
                         </div>
@@ -68,7 +68,7 @@
                             </tr>
                             <tr ng-repeat="project in model.filteredExistingProjects">
                                 <td>
-                                    <a href="editor.html?v=16359271001267416691#/?id={{ project.projectGuid }}">{{ project.name }}</a>
+                                    <a href="editor.html?v=23435131442619815197#/?id={{ project.projectGuid }}">{{ project.name }}</a>
                                 </td>
                                 <td ng-switch on="project.projectTypeId">
                                     <span ng-switch-when="1">{{ 'Form' | translate }}</span>

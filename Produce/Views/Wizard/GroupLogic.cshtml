@@ -1,10 +1,11 @@
 ﻿@using Intelledox.Produce
-@model Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.GroupLogicQuestion>
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.GroupLogicQuestion>>
 
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
 
-    var qid = Html.IdFor(Model.Question);
+    var qid = IdHelper.IdFor(Model.Question);
     var columns = 0;
     var currentColumn = -1;
     var isMultiChoice = (Model.Question.GroupLogicQuestionModel.DisplayType == Intelledox.Model.QuestionDisplayType.MultiChoice);
@@ -39,49 +40,49 @@
 <input type="hidden" id="@(qid)_change" name="@(qid)_change" value="0" />
 @if (columns > 0)
 {
-    <table class="NoBorder NoSpacing NoPadding" role="presentation">
+    <div class="mc-table">
     @foreach (Intelledox.QAWizard.Answer a in activeAnswers)
 {
-    var aid = Html.IdFor(a);
+    var aid = IdHelper.IdFor(a);
 
     if (currentColumn == -1)
     {
-        @:<tr>
+        @:<div class="mc-row">
     }
     currentColumn++;
-        <td style="padding-right:10px">
+        <div class="mc-cell@(columns)">
             <div class="@classType">
                 <label>
                     <input type="@controlType" id="@aid" name="@qid" disabled="@isDisabled" value="@a.ID" checked="@a.Selected" onclick="@Html.Raw(onClick)" aria-describedby="@(qid)Text" @Html.Raw(Model.Question.IsMandatory ? "required" : "") @if (Model.LogInteractions) { <text>data-analyticsid="@(a.AnalyticsID())"</text> }/>
-                    @Html.Raw(HtmlParsing.Sanitize(((Intelledox.QAWizard.GroupLogicAnswer)a).DisplayTextFormatted))
+                    @Html.Raw(Intelledox.Common.HtmlParsing.Sanitize(((Intelledox.QAWizard.GroupLogicAnswer)a).DisplayTextFormatted))
                 </label>
             </div>
-        </td>
+        </div>
 
     if (currentColumn == columns - 1)
     {
-        @:</tr>
+        @:</div>
         currentColumn = -1;
     }
 }
 @if (currentColumn > -1)
 {
-    @:</tr>
+    @:</div>
 }
-    </table>
+    </div>
 }
 else
 {
     @:<div>
         foreach (Intelledox.QAWizard.Answer a in activeAnswers)
         {
-        var aid = Html.IdFor(a);
+        var aid = IdHelper.IdFor(a);
         <div class="@classType">
             <label>
                 <input type="@controlType" id="@aid" name="@qid" disabled="@isDisabled" value="@a.ID" checked="@a.Selected" onclick="@Html.Raw(onClick)" aria-describedby="@(qid)Text" @Html.Raw(Model.Question.IsMandatory ? "required" : "") @if (Model.LogInteractions) { <text>data-analyticsid="@(a.AnalyticsID())"</text> }/>
-                @Html.Raw(HtmlParsing.Sanitize(((Intelledox.QAWizard.GroupLogicAnswer)a).DisplayTextFormatted))
+                @Html.Raw(Intelledox.Common.HtmlParsing.Sanitize(((Intelledox.QAWizard.GroupLogicAnswer)a).DisplayTextFormatted))
             </label>
         </div>
         }
     @:</div>
-}@Html.DisplayValidation(Model.Question.LastValidationMessage, Html.IdFor(activeAnswers[0]))
+}@Html.DisplayValidation(Model.Question.LastValidationMessage, IdHelper.IdFor(activeAnswers[0]))

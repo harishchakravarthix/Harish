@@ -7,7 +7,7 @@
 @Html.Partial("_SiteHeader")
 <div class="container ix-header-body">
     <h1 class="page-header">
-        @Resources.Strings.AnswerFiles
+        @Intelledox.Produce.Resources.Strings.AnswerFiles
     </h1>
 
     <div class="row-fluid">
@@ -23,31 +23,31 @@
                         htmlAttributes: new { id = "grdAnswerFiles" },
                         fillEmptyRows: false,
                         columns: grid.Columns(
-                            grid.Column(format: @<text><input name="deleteId" type="checkbox" value="@item.AnswerFileGuid.ToString()" aria-label="@Resources.Strings.SelectRow" /></text>),
-                            grid.Column("RunDateUtc", Resources.Strings.DateCreated, format:(item) => @Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.RunDateUtc, "g")),
-                            grid.Column("Description", header: Resources.Strings.Description,
+                            grid.Column(format: @<text><input name="deleteId" type="checkbox" value="@item.AnswerFileGuid.ToString()" aria-label="@Intelledox.Produce.Resources.Strings.SelectRow" /></text>),
+                            grid.Column("RunDateUtc", Intelledox.Produce.Resources.Strings.DateCreated, format:(item) => @Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.RunDateUtc, "g")),
+                            grid.Column("Description", header: Intelledox.Produce.Resources.Strings.Description,
                                 format: @<text>
-                                <a href="~/wizard/@item.ProjectGroupGuid/?Gen=true&amp;AnswerFileID=@item.AnswerFileID">
-                                    <img src="~/Images/GenIcon.png" style="margin:0px 4px 0px 4px;vertical-align:middle;border:0;" alt="@Resources.Strings.GenDocFromFile" title="@Resources.Strings.GenDocFromFile" />
+                                <a class="ImageSize" href="~/wizard/@item.ProjectGroupGuid/?Gen=true&amp;AnswerFileID=@item.AnswerFileID">
+                                    <img src="~/Images/IX_SavedAnswer.svg" style="margin:0px 0px 0px 0px;vertical-align:middle;border:0;" alt="@Intelledox.Produce.Resources.Strings.GenDocFromFile" title="@Intelledox.Produce.Resources.Strings.GenDocFromFile" />
                                 </a>
                                 <a href="~/wizard/@item.ProjectGroupGuid/?AnswerFileID=@item.AnswerFileID">
                                     @item.Description
                                 </a>
                                 </text>),
-                            grid.Column("ProjectGroupName", Resources.Strings.Form)
+                            grid.Column("ProjectGroupName", Intelledox.Produce.Resources.Strings.Form)
                         )
                     )
                     @grid.PagerList(mode: WebGridPagerModes.Numeric | WebGridPagerModes.FirstLast,
-                        firstText: Resources.Strings.First,
-                        lastText: Resources.Strings.Last,
+                        firstText: Intelledox.Produce.Resources.Strings.First,
+                        lastText: Intelledox.Produce.Resources.Strings.Last,
                         paginationStyle: "pagination pull-right")
                     <div>
-                        <input type="submit" class="btn btn-default" value="@Resources.Strings.DeleteSelected" onclick="return confirm('@Resources.Strings.ConfirmDelete');" />
+                        <input type="submit" class="btn btn-default btn-del" value="@Intelledox.Produce.Resources.Strings.DeleteSelected" onclick="return confirm('@Intelledox.Produce.Resources.Strings.ConfirmDelete');" />
                     </div>
                 }
                 else
                 {
-                    @Resources.Strings.NoAnswerFiles
+                    @Intelledox.Produce.Resources.Strings.NoAnswerFiles
                 }
             }
         </form>

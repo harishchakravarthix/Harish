@@ -117,10 +117,12 @@
             display: block;
             white-space: pre-wrap;
         }
+
         .morecontent span {
             display: none;
             white-space: pre-wrap;
         }
+
         .morelink {
             display: block;
         }
@@ -232,12 +234,28 @@
                     </tr>
                     <tr id="trSystemName" runat="server">
                         <td>
-                            <asp:Label ID="lblSystemName" runat="server" Text="<%$Resources:Strings, SystemName %>"
-                                AssociatedControlID="txtSystemName" ToolTip="<%$Resources:Strings, SystemName %>"></asp:Label>
+                           <div style ="display: inline-block"> <asp:Label ID="lblSystemName" runat="server" Text="<%$Resources:Strings, SystemName %>"
+                                AssociatedControlID="txtSystemName"></asp:Label></div>
+                              <div class ="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext"><asp:Label ID="lblSystemNameHelp" runat="server" /></span>
+                        </div>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtSystemName" runat="server" MaxLength="4000" CssClass="fld" ToolTip="<%$Resources:Strings, SystemName %>"></asp:TextBox>
+                            <asp:TextBox ID="txtSystemName" runat="server" MaxLength="4000" CssClass="fld" type="text"></asp:TextBox>
                         </td>
+                    </tr>
+                    <tr id="trBrowserTabName">
+                    <td>
+                        <div style ="display: inline-block"><asp:Label ID="lblBrowserTabName" runat="server" AssociatedControlID="txtBrowserTabName" /></div>
+                        <div class ="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext"><asp:Label ID="lblBrowserTabNameHelp" runat="server" /></span>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtBrowserTabName" MaxLength="60" CssClass="fld" runat="server" type="text"></asp:TextBox>
+                    </td>
                     </tr>
                     <tr id="trGoogleAnalytics" runat="server">
                         <td>
@@ -389,7 +407,7 @@
                         </td>
                         <td>
                             <div>
-                                <asp:Checkbox ID="chkLogInteractionDefault" runat="server" />
+                                <asp:CheckBox ID="chkLogInteractionDefault" runat="server" />
                             </div>
                         </td>
                     </tr>
@@ -697,6 +715,26 @@
                             <asp:TextBox ID="txtFieldToTimeZone" runat="server" MaxLength="255"></asp:TextBox>
                         </td>
                     </tr>
+                    <asp:Repeater ID="rptUserCustFields" runat="server">
+                        <HeaderTemplate>
+                            <tr>
+                                <th colspan="4">
+                                    <asp:Literal ID="litUserCusomFields" runat="server" Text="<%$Resources:Strings, CustomFields %>" />
+                                </th>
+                            </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:Label runat="server" ID="lblName" Text='<%# Microsoft.Security.Application.Encoder.HtmlEncode(DataBinder.Eval(Container.DataItem, "Title")) %>' AssociatedControlID="txtCustUserFieldVal"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtCustUserFieldVal" runat="server" MaxLength="255"></asp:TextBox>
+                                </td>
+                                <td colspan="2" />
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </table>
             </div>
             <div id="pageSecurity" class="tabPage" style="display: none" runat="server" clientidmode="static">
@@ -960,7 +998,7 @@
                             </asp:CustomValidator>
                         </td>
                     </tr>
-                   <tr>
+                    <tr>
                         <td>
                             <asp:Label ID="lblKeepWorkflowHistory" runat="server" Text="<%$Resources:Strings, KeepWorkflowHistory %>"
                                 AssociatedControlID="chkKeepWorkflowHistory" ToolTip="<%$Resources:Strings, KeepWorkflowHistoryToolTip %>"></asp:Label>
@@ -969,10 +1007,10 @@
                             <asp:CheckBox ID="chkKeepWorkflowHistory" runat="server" />
                         </td>
                     </tr>
-                    <tr id="trStoreLocationData" runat="server" Visible="False">
+                    <tr id="trStoreLocationData" runat="server" visible="False">
                         <td>
                             <asp:Label ID="lbStoreLocationData" runat="server" Text="<%$Resources:Strings, StoreLocationData %>"
-                                       AssociatedControlID="chkStoreLocationData" ToolTip="<%$Resources:Strings, StoreLocationDataToolTip %>"></asp:Label>
+                                AssociatedControlID="chkStoreLocationData" ToolTip="<%$Resources:Strings, StoreLocationDataToolTip %>"></asp:Label>
                         </td>
                         <td>
                             <asp:CheckBox ID="chkStoreLocationData" runat="server" />

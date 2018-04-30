@@ -1,8 +1,9 @@
 ﻿@using Intelledox.Produce
-@model Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.GroupLogicQuestion>
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.GroupLogicQuestion>>
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = Html.IdFor(Model.Question);
+    var qid = IdHelper.IdFor(Model.Question);
     var activeAnswers = Model.Question.ActiveAnswers();
     var watermark = Model.Question.WatermarkFormatted;
     var onChange = "";
@@ -28,9 +29,9 @@
 }
 <input type="hidden" id="@(qid)_change" name="@(qid)_change" value="0" />
 
-<select id="@Html.IdFor(Model.Question)"
+<select id="@IdHelper.IdFor(Model.Question)"
         class="form-control@(Model.LogInteractions ? " analyticslogdd" : "")@(string.IsNullOrEmpty(watermark) ? "" : " watermarked")@(isDefaultSelected ? " select-watermark" : "")"
-        name="@Html.IdFor(Model.Question)"
+        name="@IdHelper.IdFor(Model.Question)"
         onchange="@onChange"
         @(!Model.Question.IsEditable ? "disabled=disabled" : "")
         @(Model.Question.HasValidationErrors() ? "aria-invalid=true aria-describedby=error_" + qid : "")

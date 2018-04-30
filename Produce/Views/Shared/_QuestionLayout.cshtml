@@ -1,18 +1,17 @@
-﻿@using Intelledox.Produce
-@{
+﻿@{
     var question = Model.Question;
     var questionModel = question.QuestionModel;
-    var qid = ControlHtmlHelper.IdFor(null, question);
+    var qid = Intelledox.ViewModel.Core.IdHelper.IdFor(question);
     var repeatPath = Model.RepeatPath;
-    string titleText = HtmlParsing.Sanitize(question.TextFormatted);
+    string titleText = Model.HtmlTextFormatted;
     var commentsIcon = "commentsIcon";
     if (question.IsMandatoryShowing)
     {
-        titleText += " " + Resources.Strings.Mandatory;
+        titleText += " " + Intelledox.Produce.Resources.Strings.Mandatory;
     }
     else if (question.IsOptionalShowing)
     {
-        titleText += " " + Resources.Strings.OptionalQuestion;
+        titleText += " " + Intelledox.Produce.Resources.Strings.OptionalQuestion;
     }
     if (questionModel.AllowComments && question.HasComments)
     {
@@ -72,9 +71,9 @@
                data-path="@Url.Content("~/")"
                data-log="@question.WizardFragment.WizardSession.ProjectLog.ToString()" 
                data-frag="@question.WizardFragment.InstanceId.ToString()" 
-               data-repeatpath="@(repeatPath)" class="helpIcon help-question" title="@Resources.Strings.ClickForHelp" id="@(qid)_help"
+               data-repeatpath="@(repeatPath)" class="helpIcon help-question" title="@Intelledox.Produce.Resources.Strings.ClickForHelp" id="@(qid)_help"
                @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="questionHelp"</text> }>
-                <span class="sr-only">@Resources.Strings.Help</span>
+                <span class="sr-only">@Intelledox.Produce.Resources.Strings.Help</span>
                </a>
         }
 
@@ -86,15 +85,15 @@
                name="@(qid)_commentsPopup" 
                onclick="wiz.commentsPopup(this, '@qid', '@question.WizardFragment.WizardSession.UserGuid');"
                data-questionguid="@question.QuestionGuid.ToString()" 
-               data-userguid="@Infiniti.MvcControllers.UserSettings.UserGuid" 
+               data-userguid="@question.WizardFragment.WizardSession.UserGuid" 
                data-path="@Url.Content("~/")" 
                data-log="@question.WizardFragment.WizardSession.ProjectLog.ToString()" 
                data-frag="@question.WizardFragment.InstanceId.ToString()" 
-               data-repeatpath="@(repeatPath)" class="@(commentsIcon)" title="@Resources.Strings.Comments"
+               data-repeatpath="@(repeatPath)" class="@(commentsIcon)" title="@Intelledox.Produce.Resources.Strings.Comments"
                @if (Model.LogInteractions) { <text>data-analyticsid="@(Model.AnalyticsID)" data-analyticsevent="questionOpenComment"</text> }>
-                <span class="sr-only">@Resources.Strings.Comments</span>
+                <span class="sr-only">@Intelledox.Produce.Resources.Strings.Comments</span>
                </a>
-            <span class="commentCounter" id="@(qid)_commentsCounter" name="@(qid)_commentsCounter">@(question.GetCommentsToView(Infiniti.MvcControllers.UserSettings.UserGuid))</span>
+            <span class="commentCounter" id="@(qid)_commentsCounter" name="@(qid)_commentsCounter">@(question.GetCommentsToView(question.WizardFragment.WizardSession.UserGuid))</span>
         </span>
         }
     }
@@ -115,14 +114,13 @@
         if (questionModel.AllowComments)
         {
             <span class="comments-question">
-                <a href="#void" id="@(qid)_commentsPopup" name="@(qid)_commentsPopup" onclick="wiz.commentsPopup(this, '@qid', '@question.WizardFragment.WizardSession.UserGuid');" data-questionguid="@question.QuestionGuid.ToString()" data-userguid="@Infiniti.MvcControllers.UserSettings.UserGuid" data-path="@Url.Content("~/")" data-log="@question.WizardFragment.WizardSession.ProjectLog.ToString()" data-frag="@question.WizardFragment.InstanceId.ToString()" data-repeatpath="@(repeatPath)" class="@(commentsIcon)" title="@Resources.Strings.Comments"><span class="sr-only">@Resources.Strings.Comments</span></a>
-                <span class="commentCounter" id="@(qid)_commentsCounter" name="@(qid)_commentsCounter">@(question.GetCommentsToView(Infiniti.MvcControllers.UserSettings.UserGuid))</span>
+                <a href="#void" id="@(qid)_commentsPopup" name="@(qid)_commentsPopup" onclick="wiz.commentsPopup(this, '@qid', '@question.WizardFragment.WizardSession.UserGuid');" data-questionguid="@question.QuestionGuid.ToString()" data-userguid="@question.WizardFragment.WizardSession.UserGuid" data-path="@Url.Content("~/")" data-log="@question.WizardFragment.WizardSession.ProjectLog.ToString()" data-frag="@question.WizardFragment.InstanceId.ToString()" data-repeatpath="@(repeatPath)" class="@(commentsIcon)" title="@Intelledox.Produce.Resources.Strings.Comments"><span class="sr-only">@Intelledox.Produce.Resources.Strings.Comments</span></a>
+                <span class="commentCounter" id="@(qid)_commentsCounter" name="@(qid)_commentsCounter">@(question.GetCommentsToView(question.WizardFragment.WizardSession.UserGuid))</span>
             </span>
         }
     }
 
-    @Html.Raw("</div>")
-
+    </div>
 
     @if (questionModel.TextPosition == Intelledox.QAWizard.Design.TextPosition.Left)
     {
@@ -133,7 +131,7 @@
  {
     <input type="hidden" id="@Html.Raw(qid + "_allcomments")" name="@Html.Raw(qid + "_allcomments")" value="" />
  }
- @if (question.WizardFragment.WizardSession.TroubleshootingType != Intelledox.Model.TroubleshootingType.NoTroubleshooting && question is Intelledox.QAWizard.DatasourceQuestion && !String.IsNullOrEmpty(Model.ErrorMessage))
+ @if (question.WizardFragment.WizardSession.TroubleshootingType != Intelledox.Model.TroubleshootingType.NoTroubleshooting && question is Intelledox.QAWizard.DatasourceQuestion && !String.IsNullOrEmpty(Model.HtmlErrorMessage))
  {
-    <div class="datasource-debug">@Html.Raw(Intelledox.Common.HtmlParsing.Sanitize(Model.ErrorMessage))</div>
+    <div class="datasource-debug">@Html.Raw(Intelledox.Common.HtmlParsing.Sanitize(Model.HtmlErrorMessage))</div>
  }

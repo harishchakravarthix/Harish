@@ -1,20 +1,20 @@
 ﻿@using Intelledox.Produce
-@model CustomFieldViewModel
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.CustomFieldViewModel>
 <div class="form-group">
     <label for="@(Model.Prefix)Value" class="col-sm-2 control-label">@Model.Title</label>
     <div class="col-sm-10">
-        @if (Model.ValidationType == 0)
+        @if (Model.ValidationType == Intelledox.Model.ValidationType.Text)
         {
             <input type="text" id="@(Model.Prefix)Value" name="@(Model.Prefix)Value" style="width:200px" class="form-control" value="@Model.Value" data-id="@Model.Id" disabled="@(!Model.IsEditable)" />
         }
-        else if (Model.ValidationType == 1)
+        else if (Model.ValidationType == Intelledox.Model.ValidationType.DateType)
         {
             <div class="input-group" style="width:200px">
                 <input type="text" id="@(Model.Prefix)Value" name="@(Model.Prefix)Value" value="@Model.Value" class="form-control" style="width:auto" disabled="@(!Model.IsEditable)" />
                 @if (Model.IsEditable)
                 {
-                    <label for="@(Model.Prefix)Value" class="input-group-addon" onclick="$('#@(Model.Prefix)Value').datepicker('show');">
-                        <img width="12" height="11" title="@Resources.Strings.SelectDate" alt="@Resources.Strings.SelectDate" class="datepicker-trigger" src="~/Images/calendar2.gif" />
+                    <label for="@(Model.Prefix)Value" class="input-group-addon btn-calendar" onclick="$('#@(Model.Prefix)Value').datepicker('show');">
+                        <img height="16" title="@Intelledox.Produce.Resources.Strings.SelectDate" alt="@Intelledox.Produce.Resources.Strings.SelectDate" class="datepicker-trigger" src="~/Images/IX_Calendar.svg" />
                     </label>
                     <script type="text/javascript">
                         $('#@(Model.Prefix)Value').datepicker({

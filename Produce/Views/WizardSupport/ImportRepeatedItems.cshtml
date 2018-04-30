@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutSubpage.cshtml";
+    Layout = "~/Views/Shared/_WizardSubpage.cshtml";
 }
 <form method="post" enctype="multipart/form-data">
     <div>
@@ -14,7 +14,7 @@
         </script>
         <div style="padding:5px">
             <br />
-            <div style="text-align:center">@Resources.Strings.ItemImportDesc</div>
+            <div style="text-align:center">@Intelledox.Produce.Resources.Strings.ItemImportDesc</div>
             <br />
 
             @if (!string.IsNullOrEmpty(ViewBag.Message))
@@ -25,8 +25,8 @@
             <input type="file" name="uploadControl" id="uploadControl" style="width:300px;" />
             <br />
             <div style="text-align:center">
-                <input type="submit" name="btnImport" value="@Resources.Strings.Import" id="btnImport" class="btn btn-primary" />
-                <input type="button" id="btnClose" class="btn btn-default" value="@Resources.Strings.Close" onclick="closeMe()" />
+                <input type="submit" name="btnImport" value="@Intelledox.Produce.Resources.Strings.Import" id="btnImport" class="btn btn-primary btn-import" />
+                <input type="button" id="btnClose" class="btn btn-default btn-close" value="@Intelledox.Produce.Resources.Strings.Close" onclick="closeMe()" />
             </div>
         </div>
     </div>

@@ -43,7 +43,7 @@
 
 <div class="container ix-header-body">
     <div id="SearchThinScreen">
-        <input id="SearchTermThin" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="@Resources.Strings.Search" maxlength="50" aria-label="@Resources.Strings.Search" />
+        <input id="SearchTermThin" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="@Intelledox.Produce.Resources.Strings.Search" maxlength="50" aria-label="@Intelledox.Produce.Resources.Strings.Search" />
     </div>
     <div id="SearchUpdate">
         <form id="actionForm" method="post">
@@ -74,7 +74,7 @@
     @if (Model.ShowContinueAlert)
     {
     <text>
-    if (confirm('@Html.Raw(HttpUtility.JavaScriptStringEncode(Resources.Strings.UnfinishedDocument))')) {
+    if (confirm('@Html.Raw(HttpUtility.JavaScriptStringEncode(Intelledox.Produce.Resources.Strings.UnfinishedDocument))')) {
         document.location = '@Url.Action("ContinueUnfinished", "Home")';
     } else {
         $.post('@Url.Action("ClearUnfinished", "Home")', { clear: 1 });

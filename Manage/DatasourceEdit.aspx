@@ -18,37 +18,51 @@
                 document.getElementById('<%=txtUserName.ClientId %>').disabled = true;
                 document.getElementById('<%=txtPassword.ClientId %>').disabled = true;
             }
-            connectionTypeChange();
         }
 
-        function connectionTypeChange() {
-            var value = $("#<%=lstConnectionType.ClientID%>").val().toLowerCase();
-            if (value == "infiniti") {
-                $('.dseCredentials').hide();
-                $('.dseConnectionString').hide();
-                $('.dseOptions').hide();
-            } else {
-                $('.dseCredentials').show();
-                $('.dseConnectionString').show();
-                $('.dseOptions').show()
+        function showSchemaDialog() {
+            document.getElementById('<%=filSchema.ClientID%>').click();
+        }
+
+        function showDefaultDataDialog() {
+            document.getElementById('<%=filDefaultData.ClientID%>').click();
+        }
+
+        function newSchemaUpload(file) {
+            document.getElementById('<%=hdnRemoveSchema.ClientID%>').value = 'false';
+            document.getElementById('<%=lblSchemaFileName.ClientID%>').innerText = file.files[0].name;
+            var downloadLink = document.getElementById('<%=hypSchemaDownload.ClientID%>');
+            if (downloadLink != null) {
+                downloadLink.style.display = 'none';
+            }
+            var removeLink = document.getElementById('<%=lnkSchemaRemove.ClientID%>');
+            if (removeLink != null) {
+                removeLink.style.display = 'none';
             }
         }
-        $(document).ready(function () {
-            connectionTypeChange();
-        });
 
+        function newDefaultDataUpload(file) {
+            document.getElementById('<%=hdnRemoveDefaultData.ClientID%>').value = 'false';
+            document.getElementById('<%=lblDefaultDataFileName.ClientID%>').innerText = file.files[0].name;
+            var downloadLink = document.getElementById('<%=hypDefaultDataDownload.ClientID%>');
+            if (downloadLink != null) {
+                downloadLink.style.display = 'none';
+            }
+            var removeLink = document.getElementById('<%=lnkDefaultDataRemove.ClientID%>');
+            if (removeLink != null) {
+                removeLink.style.display = 'none';
+            }
+        }
     </script>
     <div id="contentinner" class="base1">
         <div class="toolbar">
             <asp:Button ID="btnSave" runat="server" CssClass="toolbtn" Text="<%$Resources:Strings, Save %>" />
-            <Controls:DeleteButton ID="btnDelete" runat="server" CssClass="toolbtn" CausesValidation="False">
-            </Controls:DeleteButton>
+            <Controls:DeleteButton ID="btnDelete" runat="server" CssClass="toolbtn" CausesValidation="False"></Controls:DeleteButton>
             <asp:Button ID="btnTestConnection" runat="server" CssClass="toolbtn" Text="<%$Resources:Strings, TestConnection %>" />
             <span class="tooldiv" id="divObjects" runat="server"></span>
             <asp:Button ID="btnObjects" runat="server" CssClass="toolbtn" Text="<%$Resources:Strings, DataObjects %>" />
             <span class="tooldiv"></span>
-            <asp:Button ID="btnBack" runat="server" CssClass="toolbtn" Text="<%$Resources:Strings, Back %>"
-                CausesValidation="false" />
+            <asp:Button ID="btnBack" runat="server" CssClass="toolbtn" Text="<%$Resources:Strings, Back %>" CausesValidation="false" />
         </div>
         <div class="body">
             <div class="msg" id="msg" runat="server" visible="false">
@@ -75,17 +89,6 @@
                         </asp:DropDownList>
                     </td>
                 </tr>
-                <tr class="dseConnectionString">
-                    <td>
-                        <span class="m">*</span><asp:Label ID="lblConnectionString" runat="server" Text="<%$Resources:Strings, ConnectionString %>"
-                            AssociatedControlID="txtConnectionString"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtConnectionString" runat="server" CssClass="fld" TextMode="MultiLine"
-                            Rows="6"></asp:TextBox><asp:RequiredFieldValidator ID="valConnectionString" runat="server"
-                                ErrorMessage="" Display="Dynamic" ControlToValidate="txtConnectionString" CssClass="wrn"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
                 <tr id="rowId" runat="server">
                     <td>
                         <asp:Label ID="lblId" runat="server" Text="<%$Resources:Strings, ID %>"></asp:Label>
@@ -94,11 +97,65 @@
                         <asp:Label ID="lblDataServiceGuid" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
-                <tr class="dseOptions">
+                <tr id="dseConnectionAttributes" runat="server">
                     <td>
+                        <asp:Label ID="lblConnectionAttributes" runat="server" Text="<%$Resources:Strings, ConnectionAttributes %>" AssociatedControlID="txtConnectionAttributes"></asp:Label>
                     </td>
                     <td>
-                        <asp:CheckBox ID="chkAllowConnectionExport" runat="server" Text="<%$Resources:Strings, AllowConnectionExport %>" />
+                        <asp:TextBox ID="txtConnectionAttributes" runat="server" CssClass="fld" TextMode="MultiLine" Rows="6"></asp:TextBox>
+                        <br />
+
+                    </td>
+                </tr>
+                <tr id="dseSchema" runat="server">
+                    <td>
+                        <asp:Label ID="lblSchema" runat="server" Text="<%$Resources:Strings, Schema %>" AssociatedControlID="filSchema"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hypSchemaDownload" runat="server" Text="<%$Resources:Strings, Download %>" class="dataSourceDownload" />
+                        <asp:Label ID="lblSchemaFileName" runat="server" AssociatedControlID="filSchema" />
+                        <asp:LinkButton ID="lnkSchemaRemove" runat="server" Text="<%$Resources:Strings, Remove %>" class="dataSourceDownload" />
+                        <asp:LinkButton ID="lnkSchemaUpload" runat="server" Text="<%$Resources:Strings, Upload %>" OnClientClick="showSchemaDialog(); return false;" class="dataSourceDownload" />
+
+                        <asp:FileUpload ID="filSchema" runat="server" Style="display: none;" onchange="newSchemaUpload(this)" />
+                        <asp:HiddenField ID="hdnRemoveSchema" runat="server" Value="false" />
+                    </td>
+
+                </tr>
+                <tr id="dseDefaultData" runat="server">
+                    <td>
+                        <asp:Label ID="lblDefaultData" runat="server" Text="<%$Resources:Strings, DefaultData %>" AssociatedControlID="filDefaultData"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hypDefaultDataDownload" runat="server" Text="<%$Resources:Strings, Download %>" class="dataSourceDownload" />
+                        <asp:Label ID="lblDefaultDataFileName" runat="server" AssociatedControlID="filDefaultData" />
+                        <asp:LinkButton ID="lnkDefaultDataRemove" runat="server" Text="<%$Resources:Strings, Remove %>" class="dataSourceDownload" />
+                        <asp:LinkButton ID="lnkDefaultDataUpload" runat="server" Text="<%$Resources:Strings, Upload %>" OnClientClick="showDefaultDataDialog(); return false;" class="dataSourceDownload" />
+
+                        <asp:FileUpload ID="filDefaultData" runat="server" Style="display: none;" onchange="newDefaultDataUpload(this)" />
+                        <asp:HiddenField ID="hdnRemoveDefaultData" runat="server" Value="false" />
+                    </td>
+                </tr>
+                <tr id="dseExportConnectionAttributes" runat="server">
+                    <td></td>
+                    <td>
+                        <asp:CheckBox ID="chkExportConnectionAttributes" runat="server" Text="<%$Resources:Strings, ExportConnectionAttributes %>" />
+                        <div class="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext">
+                                <asp:Label ID="lblExportConnectionAttributesHelp" runat="server" /></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="dseExportDefaultData" runat="server">
+                    <td></td>
+                    <td>
+                        <asp:CheckBox ID="chkExportDefaultData" runat="server" Text="<%$Resources:Strings, ExportDefaultData %>" Checked="true" />
+                        <div class="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext">
+                                <asp:Label ID="lblExportDefaultDataHelp" runat="server" /></span>
+                        </div>
                     </td>
                 </tr>
                 <tr class="dseCredentials" id="dseCredentials" runat="server">

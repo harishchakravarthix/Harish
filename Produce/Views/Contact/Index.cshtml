@@ -7,7 +7,7 @@
 @Html.Partial("_SiteHeader")
 <div class="container ix-header-body">
     <h1 class="page-header">
-        @Resources.Strings.Contacts
+        @Intelledox.Produce.Resources.Strings.Contacts
     </h1>
 
     <div class="table-responsive">
@@ -16,19 +16,19 @@
                 <thead>
                     <tr>
                         <th><input type="checkbox" title="Select/Deselect all addresses" onclick="selectAll(this);" /></th>
-                        <th>@Resources.Strings.FullName</th>
-                        <th>@Resources.Strings.JobTitle</th>
-                        <th>@Resources.Strings.Organisation</th>
-                        <th>@Resources.Strings.PhoneNumber</th>
-                        <th>@Resources.Strings.FaxNumber</th>
-                        <th>@Resources.Strings.Email</th>
+                        <th>@Intelledox.Produce.Resources.Strings.FullName</th>
+                        <th>@Intelledox.Produce.Resources.Strings.JobTitle</th>
+                        <th>@Intelledox.Produce.Resources.Strings.Organisation</th>
+                        <th>@Intelledox.Produce.Resources.Strings.PhoneNumber</th>
+                        <th>@Intelledox.Produce.Resources.Strings.FaxNumber</th>
+                        <th>@Intelledox.Produce.Resources.Strings.Email</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var row in Model)
                     {
                         <tr>
-                            <td><input type="checkbox" name="contactId" value="@row.AddressId" aria-label="@Resources.Strings.SelectRow" /></td>
+                            <td><input type="checkbox" name="contactId" value="@row.AddressId" aria-label="@Intelledox.Produce.Resources.Strings.SelectRow" /></td>
                             <td>
                                 <a href="@Url.Action("Edit", new { Id = row.AddressId })">
                                     @if (String.IsNullOrWhiteSpace(row.FullName))
@@ -52,10 +52,10 @@
             </table>
 
             <div>
-                <input class="btn btn-primary" type="button" value="@Resources.Strings.NewAddress" onclick="document.location='@Url.Action("Edit")'" />
-                <input class="btn btn-default" name="Delete" type="submit" value="@Resources.Strings.DeleteSelected" onclick="return confirm('@Resources.Strings.ConfirmDelete');" />
-                <input class="btn btn-default" type="button" value="@Resources.Strings.ExportSelected" onclick="saveNames()" />
-                <input class="btn btn-default" type="button" value="@Resources.Strings.Import" onclick="document.location='@Url.Action("Import")'" />
+                <input class="btn btn-primary btn-edit" type="button" value="@Intelledox.Produce.Resources.Strings.NewAddress" onclick="document.location='@Url.Action("Edit")'" />
+                <input class="btn btn-default btn-del" name="Delete" type="submit" value="@Intelledox.Produce.Resources.Strings.DeleteSelected" onclick="return confirm('@Intelledox.Produce.Resources.Strings.ConfirmDelete');" />
+                <input class="btn btn-default btn-export" type="button" value="@Intelledox.Produce.Resources.Strings.ExportSelected" onclick="saveNames()" />
+                <input class="btn btn-default btm-import" type="button" value="@Intelledox.Produce.Resources.Strings.Import" onclick="document.location='@Url.Action("Import")'" />
             </div>
         </form>
     </div>

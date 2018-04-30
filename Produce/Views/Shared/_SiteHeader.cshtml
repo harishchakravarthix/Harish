@@ -32,43 +32,43 @@
                 @if (ViewBag.CurrentTab != MenuTab.Home)
                 {
                     <li class="@(ViewBag.CurrentTab == MenuTab.Home ? "active" : "")" id="HomeMenu">
-                        <a href="~/Home">@Resources.Strings.Home</a>
+                        <a href="~/Home">@Intelledox.Produce.Resources.Strings.Home</a>
                     </li>
                 }
                 @if (!Infiniti.MvcControllers.UserSettings.IsGuest && !Infiniti.MvcControllers.UserSettings.IsTemporaryUser && ViewBag.CurrentTab == MenuTab.Home)
                 {
                     <li class="@(ViewBag.CurrentTab == MenuTab.Profile ? "active" : "")" id="ProfileMenu">
-                        <a href="~/Account">@Resources.Strings.Profile</a>
+                        <a href="~/Account">@Intelledox.Produce.Resources.Strings.Profile</a>
                     </li>
                     if (ViewBag.ShowActiveForms)
                     {
                     <li class="@(ViewBag.CurrentTab == MenuTab.FormActivity? "active" : "")" id="InProgressMenu">
-                        @Html.ActionLink(Resources.Strings.FormActivity, "Index", "FormActivity")
+                        @Html.ActionLink(Intelledox.Produce.Resources.Strings.FormActivity, "Index", "FormActivity")
                     </li>
                     }
                     if (ViewBag.ShowContacts)
                     {
                     <li class="@(ViewBag.CurrentTab == MenuTab.Contact ? "active" : "")" id="ContactsMenu">
-                        <a href="~/Contact">@Resources.Strings.AddressBook</a>
+                        <a href="~/Contact">@Intelledox.Produce.Resources.Strings.AddressBook</a>
                     </li>
                     }
                     if (ViewBag.ShowAnswerFiles)
                     {
                     <li class="@(ViewBag.CurrentTab == MenuTab.AnswerFiles ? "active" : "")" id="AnswerFilesMenu">
-                        @Html.ActionLink(Resources.Strings.AnswerFiles, "Index", "AnswerFile")
+                        @Html.ActionLink(Intelledox.Produce.Resources.Strings.AnswerFiles, "Index", "AnswerFile")
                     </li>
                     }
                     if (ViewBag.ShowDocuments)
                     {
                     <li class="@(ViewBag.CurrentTab == MenuTab.Documents ? "active" : "")" id="DocumentsMenu">
-                        @Html.ActionLink(Resources.Strings.Documents, "Index", "Document")
+                        @Html.ActionLink(Intelledox.Produce.Resources.Strings.Documents, "Index", "Document")
                     </li>
                     }
                 }
                 @if (!String.IsNullOrEmpty(ViewBag.BackUrl))
                 {
                     <li id="BackMenu">
-                        <a href="@ViewBag.BackUrl">@Resources.Strings.Back</a>
+                        <a href="@ViewBag.BackUrl">@Intelledox.Produce.Resources.Strings.Back</a>
                     </li>
                 }
             </ul>
@@ -77,26 +77,26 @@
                 @if (ViewBag.CurrentTab == MenuTab.Home)
                 {
                     <li id="SearchWideScreen">
-                        <input id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="@Resources.Strings.Search" maxlength="50" aria-label="@Resources.Strings.Search" />
+                        <input id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="@Intelledox.Produce.Resources.Strings.Search" maxlength="50" aria-label="@Intelledox.Produce.Resources.Strings.Search" />
                     </li>
                 }
 
                 @if (Infiniti.MvcControllers.UserSettings.IsAdmin && !String.IsNullOrEmpty(Infiniti.MvcControllers.ApplicationSettings.ManageUrl))
                 {
                     <li id="ManageMenu">
-                        <a href="@Infiniti.MvcControllers.ApplicationSettings.ManageUrl">@Resources.Strings.Manage</a>
+                        <a href="@Infiniti.MvcControllers.ApplicationSettings.ManageUrl">@Intelledox.Produce.Resources.Strings.Manage</a>
                     </li>
                 }
                 @if (Infiniti.MvcControllers.UserSettings.IsGuest)
                 {
                     <li id="LogoutMenu">
-                        <a href="~/Account/Challenge">@Resources.Strings.Login</a>
+                        <a href="~/Account/Challenge">@Intelledox.Produce.Resources.Strings.Login</a>
                     </li>
                 }
                 else if (!System.Security.Claims.ClaimsPrincipal.Current.HasClaim(c => c.Type == Intelledox.Common.ConstantValues.NOLOGOUT_CLAIM))
                 {
                     <li id="LogoutMenu">
-                        <a id="lnkSignOut" class="signout-link" href="~/Account/LogOff">@Resources.Strings.LogOut</a>
+                        <a id="lnkSignOut" class="signout-link" href="~/Account/LogOff">@Intelledox.Produce.Resources.Strings.LogOut</a>
                     </li>
                 }
             </ul>

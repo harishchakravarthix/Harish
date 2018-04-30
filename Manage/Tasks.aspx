@@ -87,16 +87,16 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <%# If(Eval("IsAborted") = 0,
-                                            If(Eval("LockedByUserGuid") <> Guid.Empty AndAlso Eval("AssignedType") = Intelledox.Model.TaskListStateAssignedType.Group,
-                                                "<img src=""Images/Lock.png"" title=""" & Resources.Strings.Locked & """ /><em> " & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("ProjectName")) & " (" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("StateName")) & ")</em>",
-                                                Microsoft.Security.Application.Encoder.HtmlEncode(Eval("ProjectName")) & " (" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("StateName")) & ")"),
-                                            "<span title=""" & Resources.Strings.Terminated & """><em>" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("ProjectName")) & " (" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("StateName")) & ")</em></span>")
+                                                                    If(Eval("LockedByUserGuid") <> Guid.Empty AndAlso Eval("AssignedType") = Intelledox.Model.TaskListStateAssignedType.Group,
+                                                                        "<img src=""Images/IX_Lock.svg"" title=""" & Resources.Strings.Locked & """ height=""16px""/><em> " & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("ProjectName")) & " (" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("StateName")) & ")</em>",
+                                                                        Microsoft.Security.Application.Encoder.HtmlEncode(Eval("ProjectName")) & " (" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("StateName")) & ")"),
+                                                                    "<span title=""" & Resources.Strings.Terminated & """><em>" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("ProjectName")) & " (" & Microsoft.Security.Application.Encoder.HtmlEncode(Eval("StateName")) & ")</em></span>")
                                     %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <%# "<a href='TaskHistory.aspx?ID=" & Eval("TaskListId").ToString() & "'><img src='Images/History.png' title='" & Resources.Strings.History & "' /></a>"
+                                    <%# "<a href='TaskHistory.aspx?ID=" & Eval("TaskListId").ToString() & "'><img src='Images/IX_History.svg' title='" & Resources.Strings.History & "' height='16' /></a>"
                                     %>
                                 </ItemTemplate>
                             </asp:TemplateField>

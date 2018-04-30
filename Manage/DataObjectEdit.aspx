@@ -35,6 +35,8 @@
         <div class="body">
             <div class="msg" id="msg" runat="server" visible="false">
             </div>
+            <div class="warningmsg" id="fieldWarning" visible="false" runat="server"></div>
+
             <input type="hidden" id="hidFilterFields" name="hidFilterFields" />
             <input type="hidden" id="hidSchemaFields" name="hidSchemaFields" />
             <input type="hidden" id="hidDisplayFields" name="hidDisplayFields" />
@@ -54,7 +56,7 @@
                         <span class="m">*</span><asp:Label ID="lblName" runat="server" Text="<%$Resources:Strings, DataObjectName %>"
                             AssociatedControlID="txtName"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtName" runat="server" MaxLength="500" CssClass="fld" Rows="10" Width="540px" ClientIDMode="Static"></asp:TextBox>
+                        <asp:TextBox ID="txtName" runat="server" CssClass="fld" Rows="10" Width="540px" ClientIDMode="Static"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="valName" runat="server" ErrorMessage="" Display="Dynamic" ControlToValidate="txtName" CssClass="wrn"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
@@ -76,10 +78,14 @@
                 <tr id="trCache" runat="server">
                     <td>
                         <asp:Label ID="lblAllowCache" runat="server" Text="<%$Resources:Strings, MobileCache %>"></asp:Label>
+                        <div class="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext">
+                                <asp:Label ID="lblMobileChaceHelp" runat="server" Text="<%$Resources:Strings, MobileCacheHelp %>"></asp:Label></span>
+                        </div>
                     </td>
                     <td>
                         <asp:CheckBox ID="chkAllowCache" runat="server" CssClass="fld"></asp:CheckBox>
-                        <asp:Label ID="Label4" runat="server" Text="<%$Resources:Strings, MobileCacheHelp %>"></asp:Label>
                     </td>
                 </tr>
                 <tr id="trRefreshRate" runat="server">
@@ -102,35 +108,40 @@
                         <asp:TextBox ID="txtCacheWarning" runat="server" CssClass="fld" Width="100px"></asp:TextBox>
                         <asp:CustomValidator ID="valCacheWarning" ErrorMessage="<%$Resources:Strings, InvalidTime %>" runat="server" Display="Dynamic" ControlToValidate="txtCacheWarning" OnServerValidate="ValidateTimeSpan" CssClass="wrn"></asp:CustomValidator>
                         <label>(DD:HH:MM) - </label>
-                        <asp:Label ID="Label1" runat="server" Text="<%$Resources:Strings, WarningMessage %>"></asp:Label>
+                        <asp:Label ID="lblCacheWarningMessage" runat="server" Text="<%$Resources:Strings, WarningMessage %>"></asp:Label>
                         <asp:TextBox ID="txtCacheWarningMessage" runat="server" CssClass="fld" Width="272px"></asp:TextBox>
-
                     </td>
                 </tr>
                 <tr id="trCacheExpiry" runat="server">
                     <td>
                         <asp:Label ID="lblCacheExpiry" runat="server" Text="<%$Resources:Strings, Expiry %>"></asp:Label>
+                        <div class="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext">
+                                <asp:Label ID="lblCacheExpiryHelp" runat="server" Text="<%$Resources:Strings, CacheExpiryHelp %>"></asp:Label></span>
+                        </div>
                     </td>
                     <td>
                         <asp:TextBox ID="txtCacheExpiry" runat="server" CssClass="fld" Width="100px"></asp:TextBox>
                         <asp:CustomValidator ID="valVacheExpiry" ErrorMessage="<%$Resources:Strings, InvalidTime %>" runat="server" Display="Dynamic" ControlToValidate="txtCacheExpiry" OnServerValidate="ValidateTimeSpan" CssClass="wrn"></asp:CustomValidator>
                         <label>(DD:HH:MM)</label>
-                        <asp:Label ID="Label3" runat="server" Text="<%$Resources:Strings, CacheExpiryHelp %>"></asp:Label>
-                        
                     </td>
                 </tr>
                 <tr id="trCacheUseAnswerFile" runat="server">
                     <td>
                         <asp:Label ID="lblCacheUseAnswerFile" runat="server" Text="<%$Resources:Strings, CacheUseAnswerFile %>"></asp:Label>
-
+                        <div class="tooltip">
+                            <div class="question-svg"></div>
+                            <span class="tooltiptext">
+                                <asp:Label ID="lblAnswerFileDataHelp" runat="server" Text="<%$Resources:Strings, AnswerFileDataHelp %>"></asp:Label></span>
+                        </div>
                     </td>
                     <td>
                         <asp:CheckBox ID="chkUseAnswerFileData" runat="server" CssClass="fld"></asp:CheckBox>
-                        <asp:Label ID="Label2" runat="server" Width="600px" Text="<%$Resources:Strings, AnswerFileDataHelp %>"></asp:Label>
-                        
                     </td>
                 </tr>
             </table>
+
             <br />
             <br />
             <table align="center" class="editsection layoutgrd" cellspacing="0" id="tblFilterFields" runat="server" role="presentation">
@@ -174,19 +185,20 @@
                 </tr>
                 <tr>
                     <td valign="top">
-                        <div class="fld" style="height:200px;width:300px;overflow:auto;background-color:white">
-                            <select id="lstAvailableSchemaFields" runat="server" enableviewstate="false" ClientIDMode="Static" size="14" onchange="availableSchemaFieldsClick(this)" style="min-width:300px"></select>
+                        <div class="fld" style="height: 200px; width: 300px; overflow: auto; background-color: white">
+                            <select id="lstAvailableSchemaFields" runat="server" enableviewstate="false" clientidmode="Static" size="14" onchange="availableSchemaFieldsClick(this)" style="min-width: 300px"></select>
                         </div>
                     </td>
-                    <td style="width:120px;">
+                    <td style="width: 120px;">
                         <input type="button" id="btnAddSchema" disabled="disabled" class="toolbtn fullwidth" value="<%:Resources.Strings.AddArrow%>" onclick="addSchemaField()" /><br />
-                        <input type="button" id="btnAddAllSchema" disabled="disabled" class="toolbtn fullwidth" value="<%:Resources.Strings.AddAll %>" onclick="addAllSchemaFields()" /><br /><br />
+                        <input type="button" id="btnAddAllSchema" disabled="disabled" class="toolbtn fullwidth" value="<%:Resources.Strings.AddAll %>" onclick="addAllSchemaFields()" /><br />
+                        <br />
                         <input type="button" id="btnRemoveSchema" disabled="disabled" class="toolbtn fullwidth" value="<%:Resources.Strings.RemoveArrow%>" onclick="removeSchemaField()" /><br />
                         <input type="button" id="btnRemoveAllSchema" disabled="disabled" class="toolbtn fullwidth" value="<%:Resources.Strings.RemoveAll %>" onclick="removeAllSchemaFields()" />
                     </td>
                     <td>
-                        <div class="fld" style="height:200px;width:300px;overflow:auto;background-color:white">
-                            <select id="lstSchemaFields" runat="server" EnableViewState="false" ClientIDMode="Static" size="14" onchange="schemaFieldsClick(this)" style="min-width:300px"></select>
+                        <div class="fld" style="height: 200px; width: 300px; overflow: auto; background-color: white">
+                            <select id="lstSchemaFields" runat="server" enableviewstate="false" clientidmode="Static" size="14" onchange="schemaFieldsClick(this)" style="min-width: 300px"></select>
                         </div>
                     </td>
                 </tr>

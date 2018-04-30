@@ -1,5 +1,5 @@
 ﻿function updateLog(path, userGuid, loginTimeUtc, businessUnitGuid, latitude, longitude) {
-    if ('https:' == document.location.protocol) {
+    if ('https:' === document.location.protocol) {
         path = path.replace('http:', 'https:');
     }
 
@@ -23,7 +23,7 @@
 }
 
 function getGeolocation(userGuid, latitudeId, longitudeId, errorId, accurate, onchangeCallback) {
-    if (navigator && navigator.geolocation && 'https:' == document.location.protocol) {
+    if (navigator && navigator.geolocation && ('https:' === document.location.protocol || 'file:' === document.location.protocol)) {
         navigator.geolocation.getCurrentPosition(
             function (position) {
                 createCookie(userGuid + "_latitude", position.coords.latitude, 1);
@@ -46,8 +46,8 @@ function getGeolocation(userGuid, latitudeId, longitudeId, errorId, accurate, on
         );
     } else {
         $('#' + errorId).show();
-        }
-};
+    }
+}
 
 function createCookie(name, value, days) {
     var expires = "";

@@ -1,10 +1,11 @@
 ﻿@using Intelledox.Produce
-@model Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.GroupLogicQuestion>
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.GroupLogicQuestion>>
 
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
 
-    var qid = Html.IdFor(Model.Question);
+    var qid = IdHelper.IdFor(Model.Question);
     var isMultiChoice = (Model.Question.GroupLogicQuestionModel.DisplayType == Intelledox.Model.QuestionDisplayType.MultiChoiceToggleButton);
     var controlType = isMultiChoice ? "radio" : "checkbox";
     var isDisabled = !Model.Question.IsEditable;
@@ -21,7 +22,7 @@
 <div class="btn-group btn-block" @Html.Raw(isDisabled ? "" : "data-toggle=\"buttons\"")>
     @foreach (Intelledox.QAWizard.Answer a in activeAnswers)
     {
-        var aid = Html.IdFor(a);
+        var aid = IdHelper.IdFor(a);
         var labelClass = a.Selected ? "btn btn-primary active" : "btn btn-primary";
         labelClass = isDisabled ? labelClass + " disabled" : labelClass;
         var answerChange = "";
@@ -36,8 +37,8 @@
 
         <label class="@labelClass">
             <input type="@controlType" id="@aid" name="@qid" autocomplete="off" disabled="@isDisabled" value="@a.ID" checked="@a.Selected" class="sr-only" onchange="@Html.Raw(answerChange)" aria-describedby="@(qid)Text" @Html.Raw(Model.Question.IsMandatory ? "required" : "")/>
-            @Html.Raw(HtmlParsing.Sanitize(((Intelledox.QAWizard.GroupLogicAnswer)a).DisplayTextFormatted))
+            @Html.Raw(Intelledox.Common.HtmlParsing.Sanitize(((Intelledox.QAWizard.GroupLogicAnswer)a).DisplayTextFormatted))
         </label>
     }
 </div>
-@Html.DisplayValidation(Model.Question.LastValidationMessage, Html.IdFor(activeAnswers[0]))
+@Html.DisplayValidation(Model.Question.LastValidationMessage, IdHelper.IdFor(activeAnswers[0]))

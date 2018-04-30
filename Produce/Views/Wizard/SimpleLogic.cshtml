@@ -1,18 +1,18 @@
-﻿@using Intelledox.Produce
-@model Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.SimpleLogicQuestion>
+﻿@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.QuestionViewModel<Intelledox.QAWizard.SimpleLogicQuestion>>
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = Html.IdFor(Model.Question);
+    var qid = IdHelper.IdFor(Model.Question);
 }
 <div class="radio-inline">
     <label>
         <input type="radio" id="@(qid)_Yes" name="@qid" value="True" checked="@(Model.Question.Value.ToString() == "True")" @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onclick=\"wiz.reload()\"" : "") />
-        @Resources.Strings.Yes
+        @Intelledox.Produce.Resources.Strings.Yes
     </label>
 </div>
 <div class="radio-inline">
     <label>
         <input type="radio" id="@(qid)_No" name="@qid" value="False" checked="@(Model.Question.Value.ToString() == "False")" @Html.Raw(Model.Question.IsRealtimeParentQuestion ? "onclick=\"wiz.reload()\"" : "") />
-        @Resources.Strings.No
+        @Intelledox.Produce.Resources.Strings.No
     </label>
 </div>

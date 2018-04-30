@@ -165,13 +165,24 @@
             Current wizard properties and context
             </summary>
         </member>
-        <member name="M:Intelledox.QAWizard.DatasourceProperties.#ctor(System.Guid,System.Guid,System.Guid)">
+        <member name="P:Intelledox.QAWizard.DatasourceProperties.Schema">
+            <summary>
+            A predefined schema definition for the data source
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.DatasourceProperties.ExcludedFields">
+            <summary>
+            Metadata fields that have been excluded for the data source
+            </summary>
+        </member>
+        <member name="M:Intelledox.QAWizard.DatasourceProperties.#ctor(System.Guid,System.Guid,System.Guid,System.String)">
             <summary>
             Creates a DatasourceProperties object
             </summary>
-            <param name="BusinessUnitGuid">Current user's business unit</param>
-            <param name="UserGuid">Current user</param>
-            <param name="TaskListStateGuid">Workflow id</param>
+            <param name="businessUnitGuid">Current user's business unit</param>
+            <param name="userGuid">Current user</param>
+            <param name="taskListStateGuid">Workflow Task Guid</param>
+            <param name="schema">Data source schema where provided.</param>
         </member>
         <member name="T:Intelledox.QAWizard.GlobalSettingPropertiesBase">
             <summary>
@@ -685,6 +696,11 @@
             Output value from an action
             </summary>
         </member>
+        <member name="P:Intelledox.QAWizard.ActionResult.AllowRetry">
+            <summary>
+            Flag whether a retry is appropriate. Default is True
+            </summary>
+        </member>
         <member name="M:Intelledox.QAWizard.ActionResult.#ctor">
             <summary>
             Creates an action result
@@ -734,6 +750,11 @@
         <member name="P:Intelledox.QAWizard.Resources.Strings.BahtPlural">
             <summary>
               Looks up a localized string similar to Baht.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.BeginsWith">
+            <summary>
+              Looks up a localized string similar to begins with.
             </summary>
         </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.BeginWith">
@@ -836,9 +857,9 @@
               Looks up a localized string similar to [{0} choice answer not found].
             </summary>
         </member>
-        <member name="P:Intelledox.QAWizard.Resources.Strings.ChoiceMustReferenceMultipleChoice">
+        <member name="P:Intelledox.QAWizard.Resources.Strings.ChoiceMustReferenceCorrectAnswerType">
             <summary>
-              Looks up a localized string similar to [{0} is not a multiple choice answer].
+              Looks up a localized string similar to [{0} is not a multiple choice or button].
             </summary>
         </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.ChoiceQuestionNotFound">
@@ -856,9 +877,19 @@
               Looks up a localized string similar to Chon.
             </summary>
         </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.CircularReferenceError">
+            <summary>
+              Looks up a localized string similar to @@CIRCULAR REFERENCE ERROR@@.
+            </summary>
+        </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.Contain">
             <summary>
               Looks up a localized string similar to contain.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.Contains">
+            <summary>
+              Looks up a localized string similar to contains.
             </summary>
         </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.ContentItemNameRequired">
@@ -879,6 +910,11 @@
         <member name="P:Intelledox.QAWizard.Resources.Strings.DanishOrePlural">
             <summary>
               Looks up a localized string similar to Øre.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.DoesntContain">
+            <summary>
+              Looks up a localized string similar to doesn&apos;t contain.
             </summary>
         </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.Dollar">
@@ -919,6 +955,11 @@
         <member name="P:Intelledox.QAWizard.Resources.Strings.Eleven">
             <summary>
               Looks up a localized string similar to Eleven.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.EndsWith">
+            <summary>
+              Looks up a localized string similar to ends with.
             </summary>
         </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.EndWith">
@@ -1394,6 +1435,21 @@
         <member name="P:Intelledox.QAWizard.Resources.Strings.RealPlural">
             <summary>
               Looks up a localized string similar to Reais.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.ReferenceError_CannotFindAnswer">
+            <summary>
+              Looks up a localized string similar to @@REFERENCE ERROR: Cannot find answer {0} @@.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.ReferenceError_CannotFindQuestion">
+            <summary>
+              Looks up a localized string similar to @@REFERENCE ERROR: Cannot find question {0} @@.
+            </summary>
+        </member>
+        <member name="P:Intelledox.QAWizard.Resources.Strings.ReferenceError_Generic">
+            <summary>
+              Looks up a localized string similar to @@REFERENCE ERROR: {0} @@.
             </summary>
         </member>
         <member name="P:Intelledox.QAWizard.Resources.Strings.RequiredField">

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<preserve resultType="8" virtualPath="/global.asax" hash="ffffffffd5a094ea" filehash="1a9254df3101" flags="150000" assembly="Intelledox.Pages" type="ASP._global_asax">
+<preserve resultType="8" virtualPath="/global.asax" hash="ffffffffd5a094ea" filehash="233284b4e6df" flags="150000" assembly="Intelledox.Pages" type="ASP._global_asax">
   <filedeps>
     <filedep name="/global.asax" />
   </filedeps>

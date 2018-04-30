@@ -6,7 +6,7 @@
 @Html.Partial("_SiteHeader")
 <div class="container ix-header-body">
     <h1 class="page-header">
-        @Resources.Strings.FormActivity
+        @Intelledox.Produce.Resources.Strings.FormActivity
     </h1>
     <div class="row-fluid">
         <form method="post">
@@ -20,7 +20,7 @@
                         htmlAttributes: new { id = "grdFormActivity" },
                         fillEmptyRows: false,
                         columns: grid.Columns(
-                                 grid.Column("ProjectName", Resources.Strings.Form, @<text>
+                                 grid.Column("ProjectName", Intelledox.Produce.Resources.Strings.Form, @<text>
 
                                 @if (item.AssignedToGuid == Infiniti.MvcControllers.UserSettings.UserGuid || item.LockedByUserGuid == Infiniti.MvcControllers.UserSettings.UserGuid || (item.AssignedType == Intelledox.Model.TaskListStateAssignedType.Group && item.LockedByUserGuid == Guid.Empty))
                                 {
@@ -31,23 +31,23 @@
                                     @item.ProjectName
                                 }
                                 </text>),
-                                 grid.Column("StateName", Resources.Strings.State),
-                                 grid.Column("AssignedToDisplayName", Resources.Strings.AssignedTo),
-                                 grid.Column("AssignedByDisplayName", Resources.Strings.AssignedBy),
-                                 grid.Column("LastUpdatedUTC", Resources.Strings.LastUpdated, @<text>@Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.LastUpdatedUTC, "g")</text>),
-                                 grid.Column("CreatedByDisplayName", Resources.Strings.CreatedBy),
-                                 grid.Column("History", Resources.Strings.History, @<text><a href="@Url.Action("ShowHistory", new { Id = @item.TaskListId, showBack = true })"><img src="~/Images/History.png" alt="@Resources.Strings.History" /></a></text>, canSort: false)
+                                 grid.Column("StateName", Intelledox.Produce.Resources.Strings.State),
+                                 grid.Column("AssignedToDisplayName", Intelledox.Produce.Resources.Strings.AssignedTo),
+                                 grid.Column("AssignedByDisplayName", Intelledox.Produce.Resources.Strings.AssignedBy),
+                                 grid.Column("LastUpdatedUTC", Intelledox.Produce.Resources.Strings.LastUpdated, @<text>@Infiniti.MvcControllers.UserSettings.FormatLocalDate(item.LastUpdatedUTC, "g")</text>),
+                                 grid.Column("CreatedByDisplayName", Intelledox.Produce.Resources.Strings.CreatedBy),
+                                 grid.Column("History", Intelledox.Produce.Resources.Strings.History, @<text><a href="@Url.Action("ShowHistory", new { Id = @item.TaskListId, showBack = true })"><img src="~/Images/IX_History.svg" alt="@Intelledox.Produce.Resources.Strings.History" height="16"/></a></text>, canSort: false)
          ))
                     <div class="paginationList">
                         @grid.PagerList(mode: WebGridPagerModes.Numeric | WebGridPagerModes.FirstLast,
-                        firstText: Resources.Strings.First,
-                        lastText: Resources.Strings.Last,
+                        firstText: Intelledox.Produce.Resources.Strings.First,
+                        lastText: Intelledox.Produce.Resources.Strings.Last,
                         paginationStyle: "pagination")
                     </div>
                 }
                 else
                 {
-                    @Resources.Strings.NoFormActivity
+                    @Intelledox.Produce.Resources.Strings.NoFormActivity
                 }
             }
         </form>

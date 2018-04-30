@@ -6,7 +6,7 @@
 @Html.Partial("_SiteHeader")
 <div class="container ix-header-body">
     <h2>
-        @Resources.Strings.Contacts
+        @Intelledox.Produce.Resources.Strings.Contacts
     </h2>
 
     @if (!String.IsNullOrEmpty(ViewBag.Message))
@@ -16,12 +16,12 @@
 
     <form method="post" enctype="multipart/form-data" action="@Url.Action("Import")">
         <div class="form-group">
-            <label for="contactFile">@Resources.Strings.AddressImportDesc</label>
+            <label for="contactFile">@Intelledox.Produce.Resources.Strings.AddressImportDesc</label>
             <input type="file" id="contactFile" name="contactFile" class="form-control" />
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">@Resources.Strings.Import</button>
+            <button type="submit" class="btn btn-primary btn-submit">@Intelledox.Produce.Resources.Strings.Import</button>
         </div>
     </form>
 </div>

@@ -1,20 +1,23 @@
 ﻿@using Intelledox.Produce
-@model Intelledox.Produce.RichTextViewModel
+@using Intelledox.ViewModel.Core
+@inherits System.Web.Mvc.WebViewPage<Intelledox.ViewModel.Core.RichTextQuestionViewModel>
 @{
     Layout = "~/Views/Shared/_QuestionLayout.cshtml";
-    var qid = Html.IdFor(Model.Question);
+    var qid = IdHelper.IdFor(Model.Question);
     var isDirtyId = "isDirty" + qid;
 }
 @if (!Model.Question.IsEditable && (Model.Question.Value == null || String.IsNullOrEmpty(Model.Question.Value.ToString())))
 {
-    <div id="@qid" class="label notAnswered">@Resources.Strings.NotAnswered</div>
+    <div id="@qid" class="label notAnswered">@Intelledox.Produce.Resources.Strings.NotAnswered</div>
 }
 else
 {
+    <div class="@Html.Raw(Model.Question.IsMandatory ? "mce-required" : "")">
 <textarea id="@qid" name="@qid" class="field tinyMCE" style="width:99%;display:none" rows="@Model.TextRows.ToString()" cols="20"
-          @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "") @Html.Raw(Model.Question.IsMandatory ? "required" : "")>
-    @HtmlParsing.Sanitize(Model.Question.Value != null ? Model.Question.Value.ToString() : "")
+          @Html.Raw(Model.Question.HasValidationErrors() ? "aria-invalid=\"true\" aria-describedby=\"error_" + qid + "\"" : "")>
+    @Model.HtmlValue
 </textarea>
+        </div>
     <input type="hidden" id="@isDirtyId" name="@isDirtyId" value="false" />
     @Html.DisplayValidation(Model.Question.LastValidationMessage, qid)
     <script type="text/javascript">
@@ -46,7 +49,7 @@ else
                 editor.on('change', function (e) { editor.save(); document.getElementById('@isDirtyId').value = 'true'; });
 
                 @if (Model.LogInteractions) {
-                    @Html.Raw("editor.on('focus', function(e) { wiz.dataAnalyticsFocus(" + Microsoft.Security.Application.Encoder.JavaScriptEncode(Model.AnalyticsID) + ");} );")
+                    @Html.Raw("editor.on('focus', function(e) { wiz.dataAnalyticsFocus('" + HttpUtility.JavaScriptStringEncode(Model.AnalyticsID) + "');} );")
                 }
                 @Html.Raw(Model.ProtectedFieldsButton())
                 @if (Model.Question.IsRealtimeParentQuestion || Model.LogInteractions)
@@ -70,11 +73,11 @@ else
                     {
                         var wordStyle = Model.Styles[i];
                      @Html.Raw("{title:'" +
-                         Ajax.JavaScriptStringEncode(wordStyle.Title) +
+                         HttpUtility.JavaScriptStringEncode(wordStyle.Title) +
                          "', inline:'span', styles:{'font-size': '" +
                          (wordStyle.Size * 96.0 / 72.0).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) +
                          "px', 'font-family':'" +
-                         Ajax.JavaScriptStringEncode(wordStyle.FontName) +
+                         HttpUtility.JavaScriptStringEncode(wordStyle.FontName) +
                          "', 'color':'" +
                          Model.ConvertColour(wordStyle.FontColour) + "'" +
                          (wordStyle.Bold ? ", 'font-weight':'bold'" : "") +
